@@ -38,10 +38,10 @@ $(document).ready(function() {
         
         for (let i = 0; i < categoriesList.length; i += 2) {
             tableHTML += '<tr>';
-            tableHTML += `<td><span class="category-marker"></span>${categoriesList[i]}</td>`;
+            tableHTML += `<td><span class="category-marker">${categoriesList[i]}</span></td>`;
             
             if (i + 1 < categoriesList.length) {
-                tableHTML += `<td><span class="category-marker"></span>${categoriesList[i+1]}</td>`;
+                tableHTML += `<td><span class="category-marker">${categoriesList[i+1]}</span></td>`;
             } else {
                 tableHTML += '<td></td>';
             }

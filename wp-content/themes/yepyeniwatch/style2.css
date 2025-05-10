@@ -5185,6 +5185,24 @@ ul.sub-menu a i.fas.fa-caret-down {
     color: #ffffff;
 }
 
+.category-marker {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    border: none;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.active .category-marker {
+    background-color: #8e8ec2;
+}
+
+.deactive .category-marker {
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
 .filter-button {
     width: 100%;
