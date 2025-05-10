@@ -114,7 +114,7 @@ $(document).ready(function() {
         } else if (releaseYearStart) {
             apiUrl += `&date=${releaseYearStart}`;
         } else if (releaseYearEnd) {
-            apiUrl += `&date=1900,${releaseYearEnd}`;
+            apiUrl += `&date=1880,${releaseYearEnd}`;
         } else {
             // Tarih alanları boş olsa bile parametre eklenir
             apiUrl += `&date=`;
@@ -148,11 +148,12 @@ $(document).ready(function() {
                         // Get genres
                         const genres = anime.genres || [];
                         const genreTags = genres.slice(0, 5).map(genre => 
-                            `<span class="anime-tag">${genre}</span>`
+                            genreurl = genre.toLowerCase().replace(/ /g, '-')
+                            `<span class="anime-tag" href="https://openani.me/explore?page=1&keywords=${genreurl},&score=&date=">${genre}</span>`
                         ).join('');
                         
                         // Format description
-                        const description = anime.summary || "Bu anime için açıklama bulunmamaktadır.";
+                        const description = anime.summary || "Bu animenin açıklaması bulunmamaktadır.";
                         
                         // Create anime card
                         container.append(`
@@ -168,7 +169,7 @@ $(document).ready(function() {
                                         <a href="https://openani.me/anime/${anime.slug}" target="_blank">${anime.english}</a>
                                     </h3>
                                     <div class="anime-meta">
-                                        <span class="seasons-info">${anime.numberOfSeasons || 0} Sezon</span>
+                                        <span class="seasons-info">${anime.numberOfSeasons || 0} Sezon ${anime.numberOfEpisodes || 0} Bölüm</span>
                                         <span class="release-year">${anime.firstAirDate ? anime.firstAirDate.split('.').pop() : 'N/A'}</span>
                                     </div>
                                     <div class="anime-description">${description}</div>
