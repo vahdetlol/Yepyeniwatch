@@ -213,7 +213,7 @@ $(document).ready(function () {
     $.getJSON("https://api.openani.me/anime/populars", function (data) {
         data.forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
-
+            const tmdbScore = episode.tmdbScore.toFixed(1);
             const sliderItem = `
                 <div class="list-series">
                     <div class="episode-box">

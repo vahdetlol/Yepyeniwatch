@@ -5040,7 +5040,6 @@ ul.sub-menu a i.fas.fa-caret-down {
 }
 
 .anime-poster img {
-    width: 100%;
     height: 100%;
     object-fit: cover;
     border-top-left-radius: 6px;
@@ -5048,26 +5047,38 @@ ul.sub-menu a i.fas.fa-caret-down {
 }
 
 .anime-info {
-    padding: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+
     width: 100%;
     position: relative;
 }
 
 .anime-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: "Funnel Display", arial, serif;
+  }
+
+.anime-title a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 16px;
 }
+
+
 
 .anime-meta {
     display: flex;
     justify-content: space-between;
     font-size: 13px;
     margin-bottom: 10px;
+    margin-top: 15px;
     color: #cdc2ff;
 }
 
