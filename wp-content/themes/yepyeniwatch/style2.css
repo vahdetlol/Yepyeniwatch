@@ -5186,14 +5186,14 @@ ul.sub-menu a i.fas.fa-caret-down {
 }
 
 .category-marker {
-    display: flex;
-    width: 100%;
-    height: 30px;
-    border: none;
-    vertical-align: middle;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    display: flex !important;
+    width: 100% !important;
+    height: 30px !important;
+    border: none !important;
+    vertical-align: middle !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .active .category-marker {
