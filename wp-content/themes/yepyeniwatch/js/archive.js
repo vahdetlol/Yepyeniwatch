@@ -148,8 +148,7 @@ $(document).ready(function() {
                         // Get genres
                         const genres = anime.genres || [];
                         const genreTags = genres.slice(0, 5).map(genre => 
-                            genreurl = genre.toLowerCase().replace(/ /g, '-')
-                            `<span class="anime-tag" href="https://openani.me/explore?page=1&keywords=${genreurl},&score=&date=">${genre}</span>`
+                            `<span class="anime-tag">${genre}</span>`
                         ).join('');
                         
                         // Format description
