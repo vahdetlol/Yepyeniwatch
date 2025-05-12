@@ -168,7 +168,7 @@ $(document).ready(function() {
                                         <a href="https://openani.me/anime/${anime.slug}" target="_blank">${anime.english}</a>
                                     </h3>
                                     <div class="anime-meta">
-                                        <span class="seasons-info">${anime.numberOfSeasons || 0} Sezon ${anime.numberOfEpisodes || 0} Bölüm</span>
+                                        <span class="seasons-info"> ${anime.numberOfSeasons ? `${anime.numberOfSeasons} Sezon ${anime.numberOfEpisodes} Bölüm` : "Film"}</span>
                                         <span class="release-year">${anime.firstAirDate ? anime.firstAirDate.split('.').pop() : 'N/A'}</span>
                                     </div>
                                     <div class="anime-description">${description}</div>
