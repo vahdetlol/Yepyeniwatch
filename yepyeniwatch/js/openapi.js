@@ -5,7 +5,7 @@ async function fetchMultipleAnimeData() {
         let localAnimeData;
         try {
             const localResponse = await $.ajax({
-                url: './yepyeniwatch/caches/guncel-anime-data.json',
+                url: 'https://yepyeniwatch.xyz/yepyeniwatch/caches/guncel-anime-data.json',
                 method: 'GET',
                 dataType: 'json'
             });
