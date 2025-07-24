@@ -112,7 +112,7 @@ $(document).ready(function() {
         if (releaseYearStart && releaseYearEnd) {
             apiUrl += `&date=${releaseYearStart},${releaseYearEnd}`;
         } else if (releaseYearStart) {
-            apiUrl += `&date=${releaseYearStart}`;
+            apiUrl += `&date=${releaseYearStart},2100`;
         } else if (releaseYearEnd) {
             apiUrl += `&date=1880,${releaseYearEnd}`;
         } else {
@@ -249,9 +249,7 @@ $(document).ready(function() {
             paginationContainer.append(`
                 <div class="page-link next-page">»</div>
             `);
-        }
-        
-        // Page click event
+        }            // Page click event
         $('.page-link').not('.disabled').click(function() {
             if ($(this).hasClass('prev-page')) {
                 currentPage--;
@@ -262,15 +260,16 @@ $(document).ready(function() {
             }
             
             loadAnimes();
-            // Scroll to top
-            $('html, body').animate({ scrollTop: $('#content').offset().top }, 300);
+            // Scroll to top of the page
+            $('html, body').animate({ scrollTop: 0 }, 300);
         });
     }
-    
-    // Event listeners
+      // Event listeners
     $('#apply-filters').click(function() {
         currentPage = 1;
         loadAnimes();
+        // Sayfa en üste kaydırılır
+        $('html, body').animate({ scrollTop: 0 }, 300);
     });
     
     $('#clear-filters').click(function() {
@@ -281,11 +280,12 @@ $(document).ready(function() {
         
         // Tüm kategorilerin seçimini kaldır
         $('.categories-table td').removeClass('active');
-        $('.category-marker').css('background-color', 'transparent');
-        activeCategories = [];
+        $('.category-marker').css('background-color', 'transparent');        activeCategories = [];
         
         currentPage = 1;
         loadAnimes();
+        // Sayfa en üste kaydırılır
+        $('html, body').animate({ scrollTop: 0 }, 300);
     });
     
     // Add Enter key handling for search

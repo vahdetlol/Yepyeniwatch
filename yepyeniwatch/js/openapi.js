@@ -1,24 +1,86 @@
+// Function to fetch anime data and match with local cache
+async function fetchMultipleAnimeData() {
+    try {
+        // Load local anime data from cache
+        let localAnimeData;
+        try {
+            const localResponse = await $.ajax({
+                url: './yepyeniwatch/caches/guncel-anime-data.json',
+                method: 'GET',
+                dataType: 'json'
+            });
+            localAnimeData = localResponse.episodes || [];
+        } catch (error) {
+            console.error("Failed to load local anime data:", error);
+            localAnimeData = [];
+        }
+        
+        // Create a map for quick lookup of local anime data by slug
+        const localAnimeMap = new Map();
+        localAnimeData.forEach(anime => {
+            if (anime.slug) {
+                localAnimeMap.set(anime.slug, anime);
+            }
+        });
+        
+        console.log(`Loaded ${localAnimeData.length} anime from local cache`);
+        
+        // Array to store matched episodes
+        const matchedEpisodes = [];
+        
+        // Fetch first 5 pages of latest episodes from API
+        for (let page = 1; page <= 5; page++) {
+            console.log(`Fetching latest episodes page ${page}...`);
+            
+            try {
+                const episodesResponse = await $.ajax({
+                    url: `https://api.openani.me/anime/episodes/latest?page=${page}`,
+                    method: 'GET',
+                    dataType: 'json'
+                });
+                
+                if (episodesResponse && episodesResponse.episodes) {
+                    episodesResponse.episodes.forEach(episode => {
+                        // Check if this episode's slug exists in our local cache
+                        if (episode.slug && localAnimeMap.has(episode.slug)) {
+                            const localAnime = localAnimeMap.get(episode.slug);
+                            
+                            // Create matched episode with data from both sources
+                            matchedEpisodes.push({
+                                slug: episode.slug,              // from API
+                                season: episode.season,          // from API
+                                episode: episode.episode,        // from API
+                                english: localAnime.english,     // from local JSON
+                                pictures: localAnime.pictures    // from local JSON
+                            });
+                        }
+                    });
+                } else {
+                    console.log(`No episodes found on page ${page}`);
+                }
+            } catch (error) {
+                console.error(`Failed to fetch page ${page}:`, error);
+                // Continue with next page even if one fails
+            }
+        }
+        
+        console.log(`Found ${matchedEpisodes.length} matching episodes`);
+        
+        // Return result in expected format
+        return {
+            data: matchedEpisodes
+        };
+    } catch (error) {
+        console.error("Error fetching anime data:", error);
+        return { data: [] };
+    }
+}
+
 $(document).ready(function () {
     const CACHE_TTL = 120 * 1000;
-    const guncelpopAnime = [
-        "one-piece",
-        "kijin-gentoushou",
-        "kusuriya-no-hitorigoto",
-        "witch-watch",
-        "aharen-san-wa-hakarenai",
-        "tu-bian-yingxiong-baba",
-        "tu-bian-yingxiong-x",
-        "isshun-de-chiryou-shiteita-noni-yakutatazu-to-tsuihou-sareta-tensai-chiyushi-yami-healer-toshite-tanoshiku-ikiru",
-        "saikyou-no-ousama-nidome-no-jinsei-wa-nani-wo-suru",
-        "slime-taoshite-300-nen-shiranai-uchi-ni-level-max-ni-nattemashita",
-        "wind-breaker",
-    ];
     
-    const animejson = `https://api.yepyeniwatch.xyz/latest-anime`;
-    
-    $.getJSON(animejson, function (data) {
-        data["data"].forEach(function (episode) {
-        if (guncelpopAnime.includes(episode.slug)) {
+    $.getJSON("https://api.openani.me/anime/episodes/latest/populars?limit=20", function (data) {
+        data["episodes"].forEach(function (episode) {
             
             const banner = episode.pictures && episode.pictures.banner 
             ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
@@ -49,13 +111,14 @@ $(document).ready(function () {
             `;
             
             $(".episodes.episode.popanims").append(episodeHtml);
-    }});
+    });
             
     
         });
     
 
-    $.getJSON("https://api.yepyeniwatch.xyz/latest-anime", function (data) {
+    // Use the new function that filters by nextEpisodeToAir
+    fetchMultipleAnimeData().then(function (data) {
         data["data"].forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}`;
 
@@ -86,13 +149,10 @@ $(document).ready(function () {
 
         $(".slider.guncelanim").trigger("refresh.owl.carousel");
 
-    }).fail(function () {
-        console.error("API'den veri çekilemedi.");
-    });
+    
 
 
 
-    $.getJSON("https://api.yepyeniwatch.xyz/latest-anime", function (data) {
         data["data"].forEach(function (episode) {
             
             const banner = episode.pictures && episode.pictures.banner 
@@ -127,6 +187,8 @@ $(document).ready(function () {
         });
         
 
+    }).catch(function () {
+        console.error("API'den veri çekilemedi.");
     });
         
 
@@ -218,7 +280,7 @@ $(document).ready(function () {
                 <div class="list-series">
                     <div class="episode-box">
                     <div class="episode-date">
-                        IMDb: ${episode.tmdbScore || "N/A"}
+                        IMDb: ${tmdbScore || "N/A"}
                     </div>
                     <div class="poster">
                         <div class="img">

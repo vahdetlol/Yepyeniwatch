@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Yorum Beslemesi"
         href="comments/feed/" />
-    <link rel="stylesheet" href="https://yepyeniwatch.xyz/yepyeniwatch/style2.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://yepyeniwatch.xyz/yepyeniwatch/style.css" type="text/css" media="all" />
     <link rel="shortcut icon" href="https://yepyeniwatch.xyz/yepyeniwatch/images/yepyeniwatch_dik.png" />
 
     <meta property="og:title" content="YepYeniWatch" />
@@ -30,9 +30,6 @@
     <meta name='robots' content='max-image-preview:large' />
 
     <style>
-        img:is([sizes="auto" i], [sizes^="auto," i]) {
-            contain-intrinsic-size: 3000px 1500px;
-        }
 
         @media only screen and (max-width: 1000px) {
             .body-clickable {
@@ -67,6 +64,42 @@
             background: #32373c;
             color: #fff;
             text-decoration: none;
+        }
+
+        /* Pagination Styles */
+        #pagination-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a, .pagination span {
+            color: #fff;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #32373c;
+            margin: 0 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination a:hover {
+            background-color: #555;
+        }
+
+        .pagination .current {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination .disabled {
+            background-color: #666;
+            cursor: not-allowed;
+            opacity: 0.5;
         }
     </style>
     <style id='global-styles-inline-css' type='text/css'>
@@ -153,58 +186,21 @@
                 </a>
             </nav>
         </div>
-        
-        <div id="content">
+        <div id="content" class="homepage">
             <div class="title">
-                <h1 class="title-border bd-purple">
-                    <i class="fas fa-archive"></i> Anime Arşivi <span id="anime-count"></span>
-                </h1>
-            </div>
-            
-            <div class="archive-container">
-                <div class="anime-list" id="anime-container">
-                    <div class="loading">Animeler yükleniyor...</div>
-                </div>
-                
-                <!-- Filter Sidebar (Right Side) -->
-                <div class="filter-sidebar">
-                    <div class="filter-section">
-                        <h2><i class="fas fa-filter"></i> Filtrele</h2>
-                        <div class="filter-item">
-                            <label>IMDb Puanına Göre</label>
-                            <div class="range-inputs">
-                                <input type="number" id="min-score-start" min="0" max="10" step="0.1" placeholder="Min. Puan">
-                                <span class="range-separator">-</span>
-                                <input type="number" id="min-score-end" min="0" max="10" step="0.1" placeholder="Max. Puan">
-                            </div>
-                        </div>
-                        
-                        <div class="filter-item">
-                            <label>Yapım Yılı</label>
-                            <div class="range-inputs">
-                                <input type="number" id="release-year-start" min="1880" max="2030" placeholder="Min: 1880">
-                                <span class="range-separator">-</span>
-                                <input type="number" id="release-year-end" min="1880" max="2030" placeholder="Bitiş">
-                            </div>
-                        </div>
-                        
-                        <div class="filter-item">
-                            <label>Kategori</label>
-                            <div id="categories-list">
-                                <!-- Categories will be loaded dynamically -->
-                            </div>
-                        </div>
-                        
-                        <button class="filter-button" id="apply-filters">Animeleri Getir</button>
-                        <button class="filter-button clear-filters" id="clear-filters">Filtreleri Temizle</button>
-                    </div>
+                <span class="title-border bd-green">
+                    <i class="fas fa-upload"></i> Son Eklenen Anime Bölümleri </span>
+                <div class="tumunugor">
+                    <a href="https://openani.me/episodes/latest/1"><i class="fas fa-arrow-right"></i> Tümünü Gör</a>
                 </div>
             </div>
-            
-            <!-- Pagination -->
-            <div class="pagination" id="pagination-container"></div>
+            <div class="episodes episode lastepisode">
+            </div>
+            <div id="pagination-container">
+                <div id="pagination" class="pagination">
+                </div>
+            </div>
         </div>
-        
         <div id="footer">
             <div class="footerleft">
                 Copyright &copy; 2025 <a
@@ -214,14 +210,22 @@
             </div>
         </div>
 
+        <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/ajax-register.js"
+            id="ajax-register-js"></script>
+        <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/pld.js"
+            id="pld-frontend-js"></script>
+        <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/cld.js"
+            id="cld-frontend-js"></script>
         <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/jquery.perfect-scrollbar.min.js"
             id="jquery-perfect-scrollbar-js"></script>
         <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/owl.carousel.min.js"
             id="owl-carousel-js"></script>
         <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/vpenanime.js"
             id="yepyeniwatch-functions-js"></script>
-        <script type="text/javascript" src="https://yepyeniwatch.xyz/yepyeniwatch/js/archive.js"
-            id="archive-js"></script>
+        <script type="text/javascript" src="/yepyeniwatch/js/openapi.js"
+        id="yepyeniwatch-api-js"></script>
+        <script type="text/javascript"src="/yepyeniwatch/js/feed.js"
+        id="feed-js"></script>
     </div>
 </body>
 
