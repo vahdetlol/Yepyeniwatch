@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Anime Arşivi - YepYeniWatch - Türkçe Anime İzle</title>
+    <title>YepYeniWatch - Türkçe Anime İzle</title>
     <meta name="description"
         content="Yeni diziwatch yani Yeniwatch. Yabancı dizi izle, anime izle, en popüler yabancı dizileri ve animeleri ücretsiz olarak yepyeniwatch.xyz'den izleyin." />
     <meta name="keywords"
@@ -19,14 +19,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Yorum Beslemesi"
         href="comments/feed/" />
-    <link rel="stylesheet" href="https://yepyeniwatch.xyz/yepyeniwatch/style2.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="yepyeniwatch/style2.css" type="text/css" media="all" />
     <link rel="shortcut icon" href="https://yepyeniwatch.xyz/yepyeniwatch/images/yepyeniwatch_dik.png" />
 
-    <meta property="og:title" content="Anime Arşivi - YepYeniWatch" />
+    <meta property="og:title" content="YepYeniWatch" />
     <meta property="og:site_name" content="YepYeniWatch" />
-    <meta property="og:url" content="https://yepyeniwatch.xyz/anime-arsivi" />
-    <meta property="og:description" content="YepYeniWatch anime arşivi - en popüler ve en çok izlenen animeleri keşfedin" />
-    <meta property="og:image" content="https://yepyeniwatch.xyz/yepyeniwatch/images/yepyeniwatch.png" />
+    <meta property="og:url" content="https://yepyeniwatch.xyz" />
+    <meta property="og:description" content="Yeni nesil, reklamsız anime izleme platformu" />
+    <meta property="og:image" content="https://media1.tenor.com/m/3TrUXi0fv0EAAAAd/kanye-staring-kanye-licking.gif" />
     <meta name='robots' content='max-image-preview:large' />
 
     <style>
@@ -51,6 +51,25 @@
             cursor: default;
             background-size: cover;
         }
+    </style>
+    <style id='classic-theme-styles-inline-css' type='text/css'>
+        .wp-block-button__link {
+            color: #fff;
+            background-color: #32373c;
+            border-radius: 9999px;
+            box-shadow: none;
+            text-decoration: none;
+            padding: calc(.667em + 2px) calc(1.333em + 2px);
+            font-size: 1.125em;
+        }
+
+        .wp-block-file__button {
+            background: #32373c;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+    <style id='global-styles-inline-css' type='text/css'>
     </style>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -119,6 +138,14 @@
                     </li>
                     <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19">
                         <a href="https://discord.gg/rhj9TJ82W7">İletişim</a>
+                    </li>
+                    <li>
+                        <form method="get" class="example" action="https://openani.me/" autocomplete="off">
+                            <input type="text" class="field" name="s" id="searchInput" onkeyup="fetchResults()"
+                                placeholder="bölüm veya anime arayın...">
+                            <button type="submit" title="Ara"><i class="fa fa-search"></i></button>
+                            <div id="datafetch"></div>
+                        </form>
                     </li>
                 </ul>
                 <a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
