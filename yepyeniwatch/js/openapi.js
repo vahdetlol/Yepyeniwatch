@@ -294,7 +294,7 @@ $(document).ready(function () {
                         <a href="${episodeLink}" target="_blank">${episode.english}</a>
                         </div>
                         <div class="episode-name">
-                        ${episode.numberOfSeasons} Sezon
+                        ${episode.numberOfSeasons ? `${episode.numberOfSeasons} Sezon` : "Film"}
                         </div>
                     </div>
                     </div>
@@ -305,6 +305,44 @@ $(document).ready(function () {
         });
 
         $(".slider.popanim").trigger("refresh.owl.carousel");
+
+    }).fail(function () {
+        console.error("API'den veri çekilemedi.");
+    });
+
+        $.getJSON("https://api.openani.me/anime/4k-releases", function (data) {
+        data["animes"].forEach(function (episode) {
+            const episodeLink = `https://openani.me/anime/${episode.slug}`;
+            const tmdbScore = episode.tmdbScore.toFixed(1);
+            const sliderItem = `
+                <div class="list-series">
+                    <div class="episode-box">
+                    <div class="episode-date">
+                        IMDb: ${tmdbScore || "N/A"}
+                    </div>
+                    <div class="poster">
+                        <div class="img">
+                        <a href="${episodeLink}" target="_blank">
+                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
+                        </a>
+                        </div>
+                    </div>
+                    <div class="episode-title">
+                        <div class="serie-name">
+                        <a href="${episodeLink}" target="_blank">${episode.english}</a>
+                        </div>
+                        <div class="episode-name">
+                        ${episode.numberOfSeasons ? `${episode.numberOfSeasons} Sezon` : "Film"}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                `;
+
+            $(".slider.4kanim").trigger("add.owl.carousel", [$(sliderItem)]);
+        });
+
+        $(".slider.4kanim").trigger("refresh.owl.carousel");
 
     }).fail(function () {
         console.error("API'den veri çekilemedi.");
