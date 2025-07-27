@@ -1,434 +1,436 @@
-[
-  {
-    "slug": "mattaku-saikin-no-tantei-to-kitara",
-    "english": "Detectives These Days Are Crazy!",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ezCNm0v2BBgZxUbKqOFjK4e0qbr.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/mKP4VWY38xTi7eRIbOAZoyYXYj4.jpg"
-    }
-  },
-  {
-    "slug": "bad-girl",
-    "english": "Bad Girl",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/eUJ7fudfrzIxx8PJoitNsmK74ce.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/ovE3txsuLdvpIPWpG4WodlkWXGi.jpg"
-    }
-  },
-  {
-    "slug": "jigoku-sensei-nube-2025",
-    "english": "Hell Teacher: Jigoku Sensei Nube",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/vdMoQCiHQNtrbjp7SmFGG2i76g0.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/rsytua5oKGyqzX2sdCZcq5Cck2l.jpg"
-    }
-  },
-  {
-    "slug": "seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai",
-    "english": "Rascal Does Not Dream of Bunny Girl Senpai",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ffvaWDSYLcIQRCLFLG1a3lC0xPX.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/r0td1J4kALobMwjPKLGe7RwJ07o.jpg"
+{
+  "episodes": [
+    {
+      "slug": "mattaku-saikin-no-tantei-to-kitara",
+      "english": "Detectives These Days Are Crazy!",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ezCNm0v2BBgZxUbKqOFjK4e0qbr.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/mKP4VWY38xTi7eRIbOAZoyYXYj4.jpg"
+      }
     },
-    "is4K": true
-  },
-  {
-    "slug": "kaoru-hana-wa-rin-to-saku",
-    "english": "The Fragrant Flower Blooms with Dignity",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/dl3pdT1NZiqRM4aDBwsD2TtO8x9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/fcAKLwLJf6G8QaoGdJyxrVCHBnY.jpg"
+    {
+      "slug": "bad-girl",
+      "english": "Bad Girl",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/eUJ7fudfrzIxx8PJoitNsmK74ce.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/ovE3txsuLdvpIPWpG4WodlkWXGi.jpg"
+      }
     },
-    "is4K": true
-  },
-  {
-    "slug": "anne-shirley",
-    "english": "Anne Shirley",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/hkn5Ak14LyZf7PeZPXYnSDWCaDO.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/jRbV0vcG1YsOWZXxdo65OoE4ti9.jpg"
-    }
-  },
-  {
-    "slug": "sono-bisque-doll-wa-koi-wo-suru",
-    "english": "My Dress-Up Darling",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/gWPK2RIVJ6i3myf7Xdw8DqlznT8.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/A6mxBwvvv63JXZm3xXKv4SugE0L.jpg"
+    {
+      "slug": "jigoku-sensei-nube-2025",
+      "english": "Hell Teacher: Jigoku Sensei Nube",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/vdMoQCiHQNtrbjp7SmFGG2i76g0.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/rsytua5oKGyqzX2sdCZcq5Cck2l.jpg"
+      }
     },
-    "is4K": true
-  },
-  {
-    "slug": "guimi-zhi-zhu-xiaochou-pian",
-    "english": "Lord of Mysteries",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/AdWWrcYKNXlpeWNJlmK4HCJ6Dj9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/c8fHePq3yTn3WvZd4hupkHwsjm5.jpg"
-    }
-  },
-  {
-    "slug": "long-zu",
-    "english": "Dragon Raja -The Blazing Dawn-",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/16oOT4iNCEnYXByMYhNGto5a32g.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/4OxjZt3Evt0UY65Ozr4C4S895CO.jpg"
-    }
-  },
-  {
-    "slug": "zutaboro-reijou-wa-ane-no-moto-konyakusha-ni-dekiai-sareru",
-    "english": "Betrothed to My Sister's Ex",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ez045FKilvSCDO7893bye6qmkJ7.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/o7oX9Ap3Rvgt3225mvuIBvk7vlW.jpg"
-    }
-  },
-  {
-    "slug": "takopii-no-genzai",
-    "english": "Takopi's Original Sin",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/6omimfVty4JD3LXzI5LHEGhXjwn.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/xPXDVhVKt0XM34ihoUVMHtLYTw8.jpg"
-    }
-  },
-  {
-    "slug": "yofukashi-no-uta",
-    "english": "Call of the Night",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ohgC4YPhYO4mjTW64JRK0abx6lQ.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/rDhwDG2ii8c3nCcfUNp6mogGQ93.jpg"
+    {
+      "slug": "seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai",
+      "english": "Rascal Does Not Dream of Bunny Girl Senpai",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ffvaWDSYLcIQRCLFLG1a3lC0xPX.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/r0td1J4kALobMwjPKLGe7RwJ07o.jpg"
+      },
+      "is4K": true
     },
-    "is4K": true
-  },
-  {
-    "slug": "silent-witch-chinmoku-no-majo-no-kakushigoto",
-    "english": "Secrets of the Silent Witch",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/6yC53NuAwy8KhbzsrZ7NDFsSg2p.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/oIpQQS53kzAMftZMmzHuVU8f98l.jpg"
-    }
-  },
-  {
-    "slug": "arknights-reimei-zensou",
-    "english": "Arknights",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/kJHEPw3itVz3RmVh4B2PwIVjn3b.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/bOHwf20OzBVBrhX31MyUdxQR0d2.jpg"
-    }
-  },
-  {
-    "slug": "tougen-anki",
-    "english": "Tougen Anki",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/sQhr9GDYiA56zZoaw25qjcGsFuE.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/vnasRNhwT5M3OvTAMzYn4i5fQcT.jpg"
-    }
-  },
-  {
-    "slug": "mizu-zokusei-no-mahoutsukai",
-    "english": "The Water Magician",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/uwWE59oPx5ph8qVJzr8mbzD60CA.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/9GWz3D9aBgtn6pMiu3DTZL3h5ua.jpg"
-    }
-  },
-  {
-    "slug": "mikadono-sanshimai-wa-angai-choroi",
-    "english": "Dealing with Mikadono Sisters Is a Breeze",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/yxCKl8PUUDmy0CTbWqBxfhHYRG6.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/7JMW8B6JqARUxc01h6mctKp1TFv.jpg"
-    }
-  },
-  {
-    "slug": "clevatess-majuu-no-ou-to-akago-to-shikabane-no-yuusha",
-    "english": "Clevatess",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/UErKAycnzSAJqGvJpSy0tw5auS.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/31I6eGFgYbbn5FMwzxOVlZfYETW.jpg"
-    }
-  },
-  {
-    "slug": "futari-solo-camp",
-    "english": "Solo Camping for Two",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/lPpKeKWD0dfHB8ZakfEavurVZ1T.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/56CNhDGIRe1G5wws0d4GDHsv6Th.jpg"
-    }
-  },
-  {
-    "slug": "dandadan",
-    "english": "Dan Da Dan",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/uNTrRKIOyKYISthoeizghtXPEOK.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/6qfZAOEUFIrbUH3JvePclx1nXzz.jpg"
-    }
-  },
-  {
-    "slug": "dr-stone",
-    "english": "Dr. STONE",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/lN13BPAEnc5iXmoxxBQHOZ1ScfZ.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/64DIVpWiGlvvJczMnyu8jojSYKm.jpg"
-    }
-  },
-  {
-    "slug": "new-panty-stocking-with-garterbelt",
-    "english": "New PANTY & STOCKING with GARTERBELT",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/fm54HqrfKS6MxP6lBt9PBOG1nAr.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/iCKyoA65JrbYytIC4esGQI27EyM.jpg"
-    }
-  },
-  {
-    "slug": "boku-no-hero-academia",
-    "english": "My Hero Academia",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/cH39aJg9VlEaYo6yY37Iah8RAaz.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/phuYuzqWW9ru8EA3HVjE9W2Rr3M.jpg"
-    }
-  },
-  {
-    "slug": "hotel-inhumans",
-    "english": "Hotel Inhumans",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/1Ik6i72QjVRNQ3N475uxiFxRrv9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/dMHgFwX2cRPcuMSZ0rsBNap01o6.jpg"
-    }
-  },
-  {
-    "slug": "tsuyokute-new-saga",
-    "english": "New Saga",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/u9p6IIYllP8gwZB2URx08jIYdvZ.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/dmZ74VyWi3I8ZqJ1m3Fmcc1etgp.jpg"
-    }
-  },
-  {
-    "slug": "tensei-shitara-dainana-ouji-datta-node-kimama-ni-majutsu-wo-kiwamemasu",
-    "english": "I Was Reincarnated as the 7th Prince so I Can Take My Time Perfecting My Magical Ability",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ed9Mgo1gBO9Za0zAyNIpTvtjTDU.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/2Z7EJXxf9kd9OvdbfqTZRFIhwvJ.jpg"
-    }
-  },
-  {
-    "slug": "tate-no-yuusha-no-nariagari",
-    "english": "The Rising of the Shield Hero",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/de6iC707SwuMsE3y2fo5OHCOsvj.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/yjq2n0agGJfmZQ9NpbYIhuBofcq.jpg"
-    }
-  },
-  {
-    "slug": "watashi-ga-koibito-ni-nareru-wake-nai-jan-muri-muri-muri-ja-nakatta",
-    "english": "There's No Freaking Way I'll Be Your Lover! Unless...",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/xMn1Fc4Go36WxZTgx4txH1Lkn3B.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/zb3FK85DijFCOlT7ghGtfcZCGOC.jpg"
+    {
+      "slug": "kaoru-hana-wa-rin-to-saku",
+      "english": "The Fragrant Flower Blooms with Dignity",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/dl3pdT1NZiqRM4aDBwsD2TtO8x9.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/fcAKLwLJf6G8QaoGdJyxrVCHBnY.jpg"
+      },
+      "is4K": true
     },
-    "is4K": true
-  },
-  {
-    "slug": "kakkou-no-iinazuke",
-    "english": "A Couple of Cuckoos",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/tC51lHaYqyMKUE1W4rcr2vhi9QG.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/tWDX9uDAzOJhsvunl6PabHdhFx0.jpg"
-    }
-  },
-  {
-    "slug": "kanojo-okarishimasu",
-    "english": "Rent-a-Girlfriend",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ullfy98STkno11rDGi44SK6llwx.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/6ZpDPUNtVw6UdJoStvVlRZ62yAi.jpg"
-    }
-  },
-  {
-    "slug": "nukitashi-the-animation",
-    "english": "Nukitashi the Animation",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/sKlF9YrVu84DYMDAUZEZDCvDxK2.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/zlybZJXfu4IpPnWXhnRtobl9BgZ.jpg"
-    }
-  },
-  {
-    "slug": "tu-bian-yingxiong-x",
-    "english": "TO BE HERO X",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/4b0oKiGtlwX19b0y6tQQC1ea0o5.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/7ynNG9lYS9HIR8cYMgawO19VPkg.jpg"
-    }
-  },
-  {
-    "slug": "grand-blue",
-    "english": "Grand Blue Dreaming",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/pJqAgDico7ZTMAfAXyzldYqj5ME.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/ii1yrluzWisy1rygSKz8lJkAkil.jpg"
-    }
-  },
-  {
-    "slug": "sakamoto-days",
-    "english": "SAKAMOTO DAYS",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/blSthAPRbEOJBowdxppeQqNPRh9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/wRpCqsJFyKNuh5FMegNPrhzp2NF.jpg"
-    }
-  },
-  {
-    "slug": "koupen-chan",
-    "english": "Koupen Chan",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/cWELfrOJoS7E4X4vFeC2cP5bOmN.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/3nm8laFJMcJ4QsGfqWmJtuVStLr.jpg"
-    }
-  },
-  {
-    "slug": "isekai-mokushiroku-mynoghra-hametsu-no-bunmei-de-hajimeru-sekai-seifuku",
-    "english": "Apocalypse Bringer Mynoghra: World Conquest Starts with the Civilization of Ruin",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/drINdRuh71M8MpoPWcxwpP9yDEU.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/cPVLebbkrh3H0yXba4NW5fdrPUp.jpg"
+    {
+      "slug": "anne-shirley",
+      "english": "Anne Shirley",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/hkn5Ak14LyZf7PeZPXYnSDWCaDO.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/jRbV0vcG1YsOWZXxdo65OoE4ti9.jpg"
+      }
     },
-    "is4K": true
-  },
-  {
-    "slug": "fermat-no-ryouri",
-    "english": "Fermat Kitchen",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/A0Cz7UgjDRR8dTJOjuNDuQytsGX.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/2CrSIqyoZIVk0UsbBPaJlMkCxcM.jpg"
-    }
-  },
-  {
-    "slug": "witch-watch",
-    "english": "Witch Watch",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/yTfaG7igCJa324DU0QaxCTzYBXF.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/48KKO5QHkowaCVsEpKLdvrzir3a.jpg"
-    }
-  },
-  {
-    "slug": "nyaight-of-the-living-cat",
-    "english": "Nyaight of the Living Cat",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/gdBQEXiG6X9SOgFLhGOnPJJ23BN.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/8RK3ejKdkw5KrUNzcURiwGpi9xO.jpg"
-    }
-  },
-  {
-    "slug": "city-the-animation",
-    "english": "CITY THE ANIMATION",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/3cIhByWeoj5atTAs1aSQwyrHASa.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/nmW8UEvhbSR5ANmfnC0hSG7lS88.jpg"
-    }
-  },
-  {
-    "slug": "jibaku-shounen-hanako-kun",
-    "english": "Toilet-Bound Hanako-kun",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ifJacgrENUweJF5Kq8h2NYfShzd.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/iehq6tSUylg5kFkOxndNYZWjzNu.jpg"
-    }
-  },
-  {
-    "slug": "private-tutor-to-the-dukes-daughter",
-    "english": "Private Tutor to the Duke's Daughter",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/jOOQ8JHCbgiPrTVGV3RnHEAIFQP.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/goM5LPOAKJDvf2BPWYqoPgbcb7B.jpg"
-    }
-  },
-  {
-    "slug": "ame-to-kimi-to",
-    "english": "With You and the Rain",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/qjxsSjx7AjdiHuPlT2iHnpcd5UA.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/phmWVK7rfTVI2IaPyMDAF4L5EPu.jpg"
-    }
-  },
-  {
-    "slug": "hikaru-ga-shinda-natsu",
-    "english": "The Summer Hikaru Died",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/jclmJcyV8twDtTtSNJiMVAg6Xyv.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/x0wiTO87UMiVCUe24nKaHlp7AIc.jpg"
+    {
+      "slug": "sono-bisque-doll-wa-koi-wo-suru",
+      "english": "My Dress-Up Darling",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/gWPK2RIVJ6i3myf7Xdw8DqlznT8.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/A6mxBwvvv63JXZm3xXKv4SugE0L.jpg"
+      },
+      "is4K": true
     },
-    "is4K": true
-  },
-  {
-    "slug": "kaijuu-8-gou",
-    "english": "Kaiju No. 8",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/9DrORnlwnjt5SeJKcuE5sqOoIdV.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/PDe8WZHxH6XxM6Buxoo99aQrgw.jpg"
-    }
-  },
-  {
-    "slug": "watari-kun-no-xx-ga-houkai-sunzen",
-    "english": "Watari-kun's ****** Is About to Collapse",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/wlDhjgzU1NnlZT3jd40OgnC2wL9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/lbg43t7mslXskfuWpLeMz1NEQGR.jpg"
-    }
-  },
-  {
-    "slug": "tsuihousha-shokudou-e-youkoso",
-    "english": "Welcome to the Outcast's Restaurant!",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/npitfwFysLOv93fypQrgWC7Y2tz.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/caWU2F1DSrrJgoJCSclpSoCWnge.jpg"
-    }
-  },
-  {
-    "slug": "ruri-no-houseki",
-    "english": "Ruri Rocks",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/em3nz6wj5vowGOs9HVDhn8z7Veq.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/gHI3fkZMR05PeiB1SN0JADZKfdj.jpg"
-    }
-  },
-  {
-    "slug": "kijin-gentoushou",
-    "english": "Sword of the Demon Hunter",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/7ylrebWFQZAHOW1TMGdhp9AfRp1.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/8BNGnDKMaDvpmkTd6z9pQL97Upe.jpg"
-    }
-  },
-  {
-    "slug": "summer-pockets",
-    "english": "Summer Pockets",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/yj0AlgpXjqFeORzpXCHF8g3aN1N.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/8WALipI4LbRa3POKJOfGPLrVemK.jpg"
-    }
-  },
-  {
-    "slug": "kun-tun-tianxia-zhi-zhang-men-guilai",
-    "english": "The All-Devouring Whale: Homecoming",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/qWT1hKlqF5rivsDqDxuV0jyGbyD.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/kJD5I0pvRCNhMvLTfI1rZHciCEf.jpg"
-    }
-  },
-  {
-    "slug": "gachiakuta",
-    "english": "Gachiakuta",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/mrapJp0qb6Fvo3IW9IrjCK9IgSo.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/lXAyZHGAh0YrAi8x7ekCnoquace.jpg"
+    {
+      "slug": "guimi-zhi-zhu-xiaochou-pian",
+      "english": "Lord of Mysteries",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/AdWWrcYKNXlpeWNJlmK4HCJ6Dj9.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/c8fHePq3yTn3WvZd4hupkHwsjm5.jpg"
+      }
     },
-    "is4K": true
-  },
-  {
-    "slug": "scooped-up-by-an-s-rank-adventurer",
-    "english": "Scooped Up by an S-Rank Adventurer!",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/oPiZmkOlew1IGJWJ5HBKmqekuvR.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/6eHbGa0m8kSVWF8ImDJ7U53CNzY.jpg"
+    {
+      "slug": "long-zu",
+      "english": "Dragon Raja -The Blazing Dawn-",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/16oOT4iNCEnYXByMYhNGto5a32g.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/4OxjZt3Evt0UY65Ozr4C4S895CO.jpg"
+      }
+    },
+    {
+      "slug": "zutaboro-reijou-wa-ane-no-moto-konyakusha-ni-dekiai-sareru",
+      "english": "Betrothed to My Sister's Ex",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ez045FKilvSCDO7893bye6qmkJ7.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/o7oX9Ap3Rvgt3225mvuIBvk7vlW.jpg"
+      }
+    },
+    {
+      "slug": "takopii-no-genzai",
+      "english": "Takopi's Original Sin",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/6omimfVty4JD3LXzI5LHEGhXjwn.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/xPXDVhVKt0XM34ihoUVMHtLYTw8.jpg"
+      }
+    },
+    {
+      "slug": "yofukashi-no-uta",
+      "english": "Call of the Night",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ohgC4YPhYO4mjTW64JRK0abx6lQ.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/rDhwDG2ii8c3nCcfUNp6mogGQ93.jpg"
+      },
+      "is4K": true
+    },
+    {
+      "slug": "silent-witch-chinmoku-no-majo-no-kakushigoto",
+      "english": "Secrets of the Silent Witch",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/6yC53NuAwy8KhbzsrZ7NDFsSg2p.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/oIpQQS53kzAMftZMmzHuVU8f98l.jpg"
+      }
+    },
+    {
+      "slug": "arknights-reimei-zensou",
+      "english": "Arknights",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/kJHEPw3itVz3RmVh4B2PwIVjn3b.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/bOHwf20OzBVBrhX31MyUdxQR0d2.jpg"
+      }
+    },
+    {
+      "slug": "tougen-anki",
+      "english": "Tougen Anki",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/sQhr9GDYiA56zZoaw25qjcGsFuE.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/vnasRNhwT5M3OvTAMzYn4i5fQcT.jpg"
+      }
+    },
+    {
+      "slug": "mizu-zokusei-no-mahoutsukai",
+      "english": "The Water Magician",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/uwWE59oPx5ph8qVJzr8mbzD60CA.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/9GWz3D9aBgtn6pMiu3DTZL3h5ua.jpg"
+      }
+    },
+    {
+      "slug": "mikadono-sanshimai-wa-angai-choroi",
+      "english": "Dealing with Mikadono Sisters Is a Breeze",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/yxCKl8PUUDmy0CTbWqBxfhHYRG6.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/7JMW8B6JqARUxc01h6mctKp1TFv.jpg"
+      }
+    },
+    {
+      "slug": "clevatess-majuu-no-ou-to-akago-to-shikabane-no-yuusha",
+      "english": "Clevatess",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/UErKAycnzSAJqGvJpSy0tw5auS.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/31I6eGFgYbbn5FMwzxOVlZfYETW.jpg"
+      }
+    },
+    {
+      "slug": "futari-solo-camp",
+      "english": "Solo Camping for Two",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/lPpKeKWD0dfHB8ZakfEavurVZ1T.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/56CNhDGIRe1G5wws0d4GDHsv6Th.jpg"
+      }
+    },
+    {
+      "slug": "dandadan",
+      "english": "Dan Da Dan",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/uNTrRKIOyKYISthoeizghtXPEOK.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/6qfZAOEUFIrbUH3JvePclx1nXzz.jpg"
+      }
+    },
+    {
+      "slug": "dr-stone",
+      "english": "Dr. STONE",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/lN13BPAEnc5iXmoxxBQHOZ1ScfZ.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/64DIVpWiGlvvJczMnyu8jojSYKm.jpg"
+      }
+    },
+    {
+      "slug": "new-panty-stocking-with-garterbelt",
+      "english": "New PANTY & STOCKING with GARTERBELT",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/fm54HqrfKS6MxP6lBt9PBOG1nAr.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/iCKyoA65JrbYytIC4esGQI27EyM.jpg"
+      }
+    },
+    {
+      "slug": "boku-no-hero-academia",
+      "english": "My Hero Academia",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/cH39aJg9VlEaYo6yY37Iah8RAaz.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/phuYuzqWW9ru8EA3HVjE9W2Rr3M.jpg"
+      }
+    },
+    {
+      "slug": "hotel-inhumans",
+      "english": "Hotel Inhumans",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/1Ik6i72QjVRNQ3N475uxiFxRrv9.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/dMHgFwX2cRPcuMSZ0rsBNap01o6.jpg"
+      }
+    },
+    {
+      "slug": "tsuyokute-new-saga",
+      "english": "New Saga",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/u9p6IIYllP8gwZB2URx08jIYdvZ.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/dmZ74VyWi3I8ZqJ1m3Fmcc1etgp.jpg"
+      }
+    },
+    {
+      "slug": "tensei-shitara-dainana-ouji-datta-node-kimama-ni-majutsu-wo-kiwamemasu",
+      "english": "I Was Reincarnated as the 7th Prince so I Can Take My Time Perfecting My Magical Ability",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ed9Mgo1gBO9Za0zAyNIpTvtjTDU.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/2Z7EJXxf9kd9OvdbfqTZRFIhwvJ.jpg"
+      }
+    },
+    {
+      "slug": "tate-no-yuusha-no-nariagari",
+      "english": "The Rising of the Shield Hero",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/de6iC707SwuMsE3y2fo5OHCOsvj.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/yjq2n0agGJfmZQ9NpbYIhuBofcq.jpg"
+      }
+    },
+    {
+      "slug": "watashi-ga-koibito-ni-nareru-wake-nai-jan-muri-muri-muri-ja-nakatta",
+      "english": "There's No Freaking Way I'll Be Your Lover! Unless...",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/xMn1Fc4Go36WxZTgx4txH1Lkn3B.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/zb3FK85DijFCOlT7ghGtfcZCGOC.jpg"
+      },
+      "is4K": true
+    },
+    {
+      "slug": "kakkou-no-iinazuke",
+      "english": "A Couple of Cuckoos",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/tC51lHaYqyMKUE1W4rcr2vhi9QG.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/tWDX9uDAzOJhsvunl6PabHdhFx0.jpg"
+      }
+    },
+    {
+      "slug": "kanojo-okarishimasu",
+      "english": "Rent-a-Girlfriend",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ullfy98STkno11rDGi44SK6llwx.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/6ZpDPUNtVw6UdJoStvVlRZ62yAi.jpg"
+      }
+    },
+    {
+      "slug": "nukitashi-the-animation",
+      "english": "Nukitashi the Animation",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/sKlF9YrVu84DYMDAUZEZDCvDxK2.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/zlybZJXfu4IpPnWXhnRtobl9BgZ.jpg"
+      }
+    },
+    {
+      "slug": "tu-bian-yingxiong-x",
+      "english": "TO BE HERO X",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/4b0oKiGtlwX19b0y6tQQC1ea0o5.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/7ynNG9lYS9HIR8cYMgawO19VPkg.jpg"
+      }
+    },
+    {
+      "slug": "grand-blue",
+      "english": "Grand Blue Dreaming",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/pJqAgDico7ZTMAfAXyzldYqj5ME.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/ii1yrluzWisy1rygSKz8lJkAkil.jpg"
+      }
+    },
+    {
+      "slug": "sakamoto-days",
+      "english": "SAKAMOTO DAYS",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/blSthAPRbEOJBowdxppeQqNPRh9.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/wRpCqsJFyKNuh5FMegNPrhzp2NF.jpg"
+      }
+    },
+    {
+      "slug": "koupen-chan",
+      "english": "Koupen Chan",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/cWELfrOJoS7E4X4vFeC2cP5bOmN.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/3nm8laFJMcJ4QsGfqWmJtuVStLr.jpg"
+      }
+    },
+    {
+      "slug": "isekai-mokushiroku-mynoghra-hametsu-no-bunmei-de-hajimeru-sekai-seifuku",
+      "english": "Apocalypse Bringer Mynoghra: World Conquest Starts with the Civilization of Ruin",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/drINdRuh71M8MpoPWcxwpP9yDEU.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/cPVLebbkrh3H0yXba4NW5fdrPUp.jpg"
+      },
+      "is4K": true
+    },
+    {
+      "slug": "fermat-no-ryouri",
+      "english": "Fermat Kitchen",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/A0Cz7UgjDRR8dTJOjuNDuQytsGX.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/2CrSIqyoZIVk0UsbBPaJlMkCxcM.jpg"
+      }
+    },
+    {
+      "slug": "witch-watch",
+      "english": "Witch Watch",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/yTfaG7igCJa324DU0QaxCTzYBXF.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/48KKO5QHkowaCVsEpKLdvrzir3a.jpg"
+      }
+    },
+    {
+      "slug": "nyaight-of-the-living-cat",
+      "english": "Nyaight of the Living Cat",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/gdBQEXiG6X9SOgFLhGOnPJJ23BN.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/8RK3ejKdkw5KrUNzcURiwGpi9xO.jpg"
+      }
+    },
+    {
+      "slug": "city-the-animation",
+      "english": "CITY THE ANIMATION",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/3cIhByWeoj5atTAs1aSQwyrHASa.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/nmW8UEvhbSR5ANmfnC0hSG7lS88.jpg"
+      }
+    },
+    {
+      "slug": "jibaku-shounen-hanako-kun",
+      "english": "Toilet-Bound Hanako-kun",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/ifJacgrENUweJF5Kq8h2NYfShzd.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/iehq6tSUylg5kFkOxndNYZWjzNu.jpg"
+      }
+    },
+    {
+      "slug": "private-tutor-to-the-dukes-daughter",
+      "english": "Private Tutor to the Duke's Daughter",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/jOOQ8JHCbgiPrTVGV3RnHEAIFQP.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/goM5LPOAKJDvf2BPWYqoPgbcb7B.jpg"
+      }
+    },
+    {
+      "slug": "ame-to-kimi-to",
+      "english": "With You and the Rain",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/qjxsSjx7AjdiHuPlT2iHnpcd5UA.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/phmWVK7rfTVI2IaPyMDAF4L5EPu.jpg"
+      }
+    },
+    {
+      "slug": "hikaru-ga-shinda-natsu",
+      "english": "The Summer Hikaru Died",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/jclmJcyV8twDtTtSNJiMVAg6Xyv.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/x0wiTO87UMiVCUe24nKaHlp7AIc.jpg"
+      },
+      "is4K": true
+    },
+    {
+      "slug": "kaijuu-8-gou",
+      "english": "Kaiju No. 8",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/9DrORnlwnjt5SeJKcuE5sqOoIdV.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/PDe8WZHxH6XxM6Buxoo99aQrgw.jpg"
+      }
+    },
+    {
+      "slug": "watari-kun-no-xx-ga-houkai-sunzen",
+      "english": "Watari-kun's ****** Is About to Collapse",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/wlDhjgzU1NnlZT3jd40OgnC2wL9.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/lbg43t7mslXskfuWpLeMz1NEQGR.jpg"
+      }
+    },
+    {
+      "slug": "tsuihousha-shokudou-e-youkoso",
+      "english": "Welcome to the Outcast's Restaurant!",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/npitfwFysLOv93fypQrgWC7Y2tz.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/caWU2F1DSrrJgoJCSclpSoCWnge.jpg"
+      }
+    },
+    {
+      "slug": "ruri-no-houseki",
+      "english": "Ruri Rocks",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/em3nz6wj5vowGOs9HVDhn8z7Veq.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/gHI3fkZMR05PeiB1SN0JADZKfdj.jpg"
+      }
+    },
+    {
+      "slug": "kijin-gentoushou",
+      "english": "Sword of the Demon Hunter",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/7ylrebWFQZAHOW1TMGdhp9AfRp1.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/8BNGnDKMaDvpmkTd6z9pQL97Upe.jpg"
+      }
+    },
+    {
+      "slug": "summer-pockets",
+      "english": "Summer Pockets",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/yj0AlgpXjqFeORzpXCHF8g3aN1N.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/8WALipI4LbRa3POKJOfGPLrVemK.jpg"
+      }
+    },
+    {
+      "slug": "kun-tun-tianxia-zhi-zhang-men-guilai",
+      "english": "The All-Devouring Whale: Homecoming",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/qWT1hKlqF5rivsDqDxuV0jyGbyD.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/kJD5I0pvRCNhMvLTfI1rZHciCEf.jpg"
+      }
+    },
+    {
+      "slug": "gachiakuta",
+      "english": "Gachiakuta",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/mrapJp0qb6Fvo3IW9IrjCK9IgSo.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/lXAyZHGAh0YrAi8x7ekCnoquace.jpg"
+      },
+      "is4K": true
+    },
+    {
+      "slug": "scooped-up-by-an-s-rank-adventurer",
+      "english": "Scooped Up by an S-Rank Adventurer!",
+      "pictures": {
+        "banner": "https://image.tmdb.org/t/p/original/oPiZmkOlew1IGJWJ5HBKmqekuvR.jpg",
+        "avatar": "https://image.tmdb.org/t/p/original/6eHbGa0m8kSVWF8ImDJ7U53CNzY.jpg"
+      }
     }
-  }
-]
+  ]
+}
