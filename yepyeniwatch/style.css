@@ -7160,7 +7160,13 @@ a.cld-twitter:hover {
   transition: opacity 0.2s ease;
   border-radius: 30px;
 }
-
+.fourk-logo {
+  position: absolute;
+  top: 5;
+  left: 5;
+  width: 35px !important;
+  background-size: contain;
+}
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
   background: #869791;

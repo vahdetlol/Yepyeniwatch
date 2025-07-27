@@ -1,5 +1,20 @@
-{
-  "episodes": [
+[
+  {
+    "slug": "mattaku-saikin-no-tantei-to-kitara",
+    "english": "Detectives These Days Are Crazy!",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/ezCNm0v2BBgZxUbKqOFjK4e0qbr.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/mKP4VWY38xTi7eRIbOAZoyYXYj4.jpg"
+    }
+  },
+  {
+    "slug": "bad-girl",
+    "english": "Bad Girl",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/eUJ7fudfrzIxx8PJoitNsmK74ce.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/ovE3txsuLdvpIPWpG4WodlkWXGi.jpg"
+    }
+  },
   {
     "slug": "jigoku-sensei-nube-2025",
     "english": "Hell Teacher: Jigoku Sensei Nube",
@@ -14,7 +29,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/ffvaWDSYLcIQRCLFLG1a3lC0xPX.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/r0td1J4kALobMwjPKLGe7RwJ07o.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "kaoru-hana-wa-rin-to-saku",
@@ -22,7 +38,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/dl3pdT1NZiqRM4aDBwsD2TtO8x9.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/fcAKLwLJf6G8QaoGdJyxrVCHBnY.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "anne-shirley",
@@ -38,7 +55,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/gWPK2RIVJ6i3myf7Xdw8DqlznT8.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/A6mxBwvvv63JXZm3xXKv4SugE0L.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "guimi-zhi-zhu-xiaochou-pian",
@@ -78,7 +96,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/ohgC4YPhYO4mjTW64JRK0abx6lQ.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/rDhwDG2ii8c3nCcfUNp6mogGQ93.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "silent-witch-chinmoku-no-majo-no-kakushigoto",
@@ -110,14 +129,6 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/uwWE59oPx5ph8qVJzr8mbzD60CA.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/9GWz3D9aBgtn6pMiu3DTZL3h5ua.jpg"
-    }
-  },
-  {
-    "slug": "mattaku-saikin-no-tantei-to-kitara",
-    "english": "Detectives These Days Are Crazy!",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ezCNm0v2BBgZxUbKqOFjK4e0qbr.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/mKP4VWY38xTi7eRIbOAZoyYXYj4.jpg"
     }
   },
   {
@@ -214,7 +225,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/xMn1Fc4Go36WxZTgx4txH1Lkn3B.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/zb3FK85DijFCOlT7ghGtfcZCGOC.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "kakkou-no-iinazuke",
@@ -278,7 +290,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/drINdRuh71M8MpoPWcxwpP9yDEU.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/cPVLebbkrh3H0yXba4NW5fdrPUp.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "fermat-no-ryouri",
@@ -313,14 +326,6 @@
     }
   },
   {
-    "slug": "bad-girl",
-    "english": "Bad Girl",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/eUJ7fudfrzIxx8PJoitNsmK74ce.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/ovE3txsuLdvpIPWpG4WodlkWXGi.jpg"
-    }
-  },
-  {
     "slug": "jibaku-shounen-hanako-kun",
     "english": "Toilet-Bound Hanako-kun",
     "pictures": {
@@ -350,7 +355,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/jclmJcyV8twDtTtSNJiMVAg6Xyv.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/x0wiTO87UMiVCUe24nKaHlp7AIc.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "kaijuu-8-gou",
@@ -414,7 +420,8 @@
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/mrapJp0qb6Fvo3IW9IrjCK9IgSo.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/lXAyZHGAh0YrAi8x7ekCnoquace.jpg"
-    }
+    },
+    "is4K": true
   },
   {
     "slug": "scooped-up-by-an-s-rank-adventurer",
@@ -425,4 +432,3 @@
     }
   }
 ]
-}

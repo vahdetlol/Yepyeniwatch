@@ -22,15 +22,8 @@ async function fetchMultipleAnimeData() {
                 localAnimeMap.set(anime.slug, anime);
             }
         });
-        
-        console.log(`Loaded ${localAnimeData.length} anime from local cache`);
-        
-        // Array to store matched episodes
         const matchedEpisodes = [];
-        
-        // Fetch first 5 pages of latest episodes from API
         for (let page = 1; page <= 5; page++) {
-            console.log(`Fetching latest episodes page ${page}...`);
             
             try {
                 const episodesResponse = await $.ajax({
@@ -51,27 +44,19 @@ async function fetchMultipleAnimeData() {
                                 season: episode.season,          // from API
                                 episode: episode.episode,        // from API
                                 english: localAnime.english,     // from local JSON
-                                pictures: localAnime.pictures    // from local JSON
+                                pictures: localAnime.pictures,    // from local JSON
+                                is4K: localAnime.is4K        // from local JSON
                             });
                         }
                     });
-                } else {
-                    console.log(`No episodes found on page ${page}`);
-                }
-            } catch (error) {
-                console.error(`Failed to fetch page ${page}:`, error);
-                // Continue with next page even if one fails
-            }
+                } 
+            } catch (error) {}
         }
-        
-        console.log(`Found ${matchedEpisodes.length} matching episodes`);
-        
-        // Return result in expected format
         return {
             data: matchedEpisodes
         };
     } catch (error) {
-        console.error("Error fetching anime data:", error);
+
         return { data: [] };
     }
 }
@@ -81,7 +66,6 @@ $(document).ready(function () {
     
     $.getJSON("https://api.openani.me/anime/episodes/latest/populars?limit=20", function (data) {
         data["episodes"].forEach(function (episode) {
-            
             const banner = episode.pictures && episode.pictures.banner 
             ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
             : 'https://openani.me/setsuki/chibi/crying.png';
@@ -116,12 +100,10 @@ $(document).ready(function () {
     
         });
     
-
-    // Use the new function that filters by nextEpisodeToAir
     fetchMultipleAnimeData().then(function (data) {
         data["data"].forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}`;
-
+            const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
             const sliderItem = `
                 <div class="list-series">
                     <div class="episode-box">
@@ -131,6 +113,7 @@ $(document).ready(function () {
                             <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
                         </a>
                         </div>
+                        <img src="${fourKlogo}" class="fourk-logo">
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
@@ -154,7 +137,7 @@ $(document).ready(function () {
 
 
         data["data"].forEach(function (episode) {
-            
+            const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
             const banner = episode.pictures && episode.pictures.banner 
             ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
             : 'https://openani.me/setsuki/chibi/crying.png';
@@ -170,6 +153,7 @@ $(document).ready(function () {
                                 <img width="250px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
                             </a>
                         </div>
+                        <img src="${fourKlogo}" class="fourk-logo">
                     </div>
                     <div class="episode-title">
                         <div class="serie-name" lang="en">
@@ -237,6 +221,7 @@ $(document).ready(function () {
             totalAnime.forEach(function (episode) {
                 const episodeLink = `https://openani.me/anime/${episode.slug}`;
                 const tmdbScore = episode.tmdbScore.toFixed(1);
+                const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
                 const sliderItem = `
                 <div class="list-series">
                     <div class="episode-box">
@@ -249,6 +234,7 @@ $(document).ready(function () {
                             <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
                         </a>
                         </div>
+                        <img src="${fourKlogo}" class="fourk-logo">                    
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
@@ -276,11 +262,12 @@ $(document).ready(function () {
         data.forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
             const tmdbScore = episode.tmdbScore.toFixed(1);
+            const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
             const sliderItem = `
                 <div class="list-series">
                     <div class="episode-box">
                     <div class="episode-date">
-                        IMDb: ${tmdbScore || "N/A"}
+                    <span>IMDb: ${tmdbScore || "N/A"}</span>
                     </div>
                     <div class="poster">
                         <div class="img">
@@ -288,6 +275,7 @@ $(document).ready(function () {
                             <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
                         </a>
                         </div>
+                        <img src="${fourKlogo}" class="fourk-logo">                    
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
@@ -314,11 +302,12 @@ $(document).ready(function () {
         data["animes"].forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
             const tmdbScore = episode.tmdbScore.toFixed(1);
+            const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
             const sliderItem = `
                 <div class="list-series">
                     <div class="episode-box">
                     <div class="episode-date">
-                        IMDb: ${tmdbScore || "N/A"}
+                    <span>IMDb: ${tmdbScore || "N/A"}</span>
                     </div>
                     <div class="poster">
                         <div class="img">
@@ -326,6 +315,7 @@ $(document).ready(function () {
                             <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
                         </a>
                         </div>
+                        <img src="${fourKlogo}" class="fourk-logo">                    
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
