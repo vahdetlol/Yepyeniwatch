@@ -64,43 +64,116 @@ async function fetchMultipleAnimeData() {
 $(document).ready(function () {
     const CACHE_TTL = 120 * 1000;
     
+    // Function to initialize carousel if not already initialized
+    function initCarousel(selector) {
+        if ($(selector).length > 0 && !$(selector).hasClass('owl-loaded')) {
+            $(selector).owlCarousel({
+                autoplay: true,
+                autoplaySpeed: 700,
+                autoplayTimeout: 10000,
+                autoplayHoverPause: false,
+                margin: 0,
+                nav: true,
+                dots: false,
+                loop: false,
+                rewind: true,
+                responsive: {
+                    0: { items: 2 },
+                    450: { items: 3 },
+                    600: { items: 5 },
+                    1000: { items: 6 },
+                    1440: { items: 7 },
+                },
+                navText: [
+                    "<i class='fas fa-angle-left'></i>",
+                    "<i class='fas fa-angle-right'></i>",
+                ],
+            });
+            return true;
+        }
+        return false;
+    }
+    
+    // Function to initialize episode carousel with different responsive settings for wider episode cards
+    function initEpisodeCarousel(selector) {
+        if ($(selector).length > 0 && !$(selector).hasClass('owl-loaded')) {
+            $(selector).owlCarousel({
+                autoplay: true,
+                autoplaySpeed: 700,
+                autoplayTimeout: 10000,
+                autoplayHoverPause: false,
+                margin: 15,
+                nav: true,
+                dots: false,
+                loop: false,
+                rewind: true,
+                responsive: {
+                    0: { items: 1, margin: 10 },
+                    450: { items: 2, margin: 12 },
+                    750: { items: 3, margin: 15 },
+                    1250: { items: 4, margin: 15 },
+                    1700: { items: 5, margin: 15 },
+                },
+                navText: [
+                    "<i class='fas fa-angle-left'></i>",
+                    "<i class='fas fa-angle-right'></i>",
+                ],
+            });
+            return true;
+        }
+        return false;
+    }
+    
     $.getJSON("https://api.openani.me/anime/episodes/latest/populars?limit=20", function (data) {
-        data["episodes"].forEach(function (episode) {
-            const banner = episode.pictures && episode.pictures.banner 
-            ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
-            : 'https://openani.me/setsuki/chibi/crying.png';
-        
-            const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
-            const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
-            const episodeHtml = `
-                <div class="list-episodes">
-                    <div class="episode-box">
-                        <div class="poster">
-                            <div class="img">
-                                <a href="${episodeLink}" target="_blank">
-                                    <img width="250px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
-                                </a>
+        setTimeout(function() {
+            // Clear placeholder
+            $(".slider.popanims").empty();
+            
+            data["episodes"].forEach(function (episode) {
+                const banner = episode.pictures && episode.pictures.banner 
+                ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
+                : 'https://openani.me/setsuki/chibi/crying.png';
+            
+                const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
+                const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
+                const sliderItem = `
+                    <div class="list-series">
+                        <div class="episode-box">
+                            <div class="poster">
+                                <div class="img">
+                                    <a href="${episodeLink}" target="_blank">
+                                        <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="episode-title">
-                            <div class="serie-name" lang="en">
-                                <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
-                            </div>
-                            <div class="episode-name">
-                                <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
+                            <div class="episode-title">
+                                <div class="serie-name" lang="en">
+                                    <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                                </div>
+                                <div class="episode-name">
+                                    <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
+                `;
+                
+                $(".slider.popanims").append(sliderItem);
+            });
             
-            $(".episodes.episode.popanims").append(episodeHtml);
+            // Destroy and reinitialize with episode carousel settings
+            if ($(".slider.popanims").hasClass('owl-loaded')) {
+                $(".slider.popanims").trigger('destroy.owl.carousel');
+                $(".slider.popanims").removeClass('owl-loaded owl-drag');
+            }
+            initEpisodeCarousel(".slider.popanims");
+        }, 500);
     });
-            
-    
-        });
     
     fetchMultipleAnimeData().then(function (data) {
+        // Initialize carousel first
+        initCarousel(".slider.guncelanim");
+        
         data["data"].forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}`;
             const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
@@ -132,43 +205,52 @@ $(document).ready(function () {
 
         $(".slider.guncelanim").trigger("refresh.owl.carousel");
 
-    
-
-
-
-        data["data"].forEach(function (episode) {
-            const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
-            const banner = episode.pictures && episode.pictures.banner 
-            ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
-            : 'https://openani.me/setsuki/chibi/crying.png';
-        
-        const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
-        const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
-        const episodeHtml = `
-            <div class="list-episodes">
-                <div class="episode-box">
-                    <div class="poster">
-                        <div class="img">
-                            <a href="${episodeLink}" target="_blank">
-                                <img width="250px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
-                            </a>
+        // Initialize carousel for episodes
+        setTimeout(function() {
+            // Clear placeholder
+            $(".slider.guncelepisodes").empty();
+            
+            data["data"].forEach(function (episode) {
+                const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
+                const banner = episode.pictures && episode.pictures.banner 
+                ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
+                : 'https://openani.me/setsuki/chibi/crying.png';
+            
+            const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
+            const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
+            const sliderItem = `
+                <div class="list-series">
+                    <div class="episode-box">
+                        <div class="poster">
+                            <div class="img">
+                                <a href="${episodeLink}" target="_blank">
+                                    <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
+                                </a>
+                            </div>
+                            <img src="${fourKlogo}" class="fourk-logo">
                         </div>
-                        <img src="${fourKlogo}" class="fourk-logo">
-                    </div>
-                    <div class="episode-title">
-                        <div class="serie-name" lang="en">
-                            <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
-                        </div>
-                        <div class="episode-name">
-                            <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
+                        <div class="episode-title">
+                            <div class="serie-name" lang="en">
+                                <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                            </div>
+                            <div class="episode-name">
+                                <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
-        
-        $(".episodes.episode.guncelepisodes").append(episodeHtml);
-        });
+            `;
+            
+            $(".slider.guncelepisodes").append(sliderItem);
+            });
+
+            // Destroy and reinitialize with episode carousel settings
+            if ($(".slider.guncelepisodes").hasClass('owl-loaded')) {
+                $(".slider.guncelepisodes").trigger('destroy.owl.carousel');
+                $(".slider.guncelepisodes").removeClass('owl-loaded owl-drag');
+            }
+            initEpisodeCarousel(".slider.guncelepisodes");
+        }, 1400);
         
 
     }).catch(function () {
@@ -178,33 +260,45 @@ $(document).ready(function () {
 
 
     $.getJSON("https://api.openani.me/anime/episodes/latest?limit=20", function (data) {
-        data["episodes"].forEach(function (episode) {
-            const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
-            const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
-            const episodeHtml = `
-                <div class="list-episodes">
-                <div class="episode-box">
-                <div class="poster">
-                    <div class="img">
-                    <a href="${episodeLink}" target="_blank">
-                        <img width="250px" height="141px" class="lazy" src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" data-src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" alt="${episode.english}">
-                    </a>
+        setTimeout(function() {
+            // Clear placeholder
+            $(".slider.lastepisode").empty();
+            
+            data["episodes"].forEach(function (episode) {
+                const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
+                const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
+                const sliderItem = `
+                    <div class="list-series">
+                    <div class="episode-box">
+                    <div class="poster">
+                        <div class="img">
+                        <a href="${episodeLink}" target="_blank">
+                            <img width="244px" height="141px" class="lazy" src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" data-src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" alt="${episode.english}">
+                        </a>
+                        </div>
                     </div>
-                </div>
-                <div class="episode-title">
-                    <div class="serie-name" lang="en">
-                    <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                    <div class="episode-title">
+                        <div class="serie-name" lang="en">
+                        <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                        </div>
+                        <div class="episode-name">
+                        <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
+                        </div>
                     </div>
-                    <div class="episode-name">
-                    <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
                     </div>
-                </div>
-                </div>
-                </div>
-            `;
+                    </div>
+                `;
 
-            $(".episodes.episode.lastepisode").append(episodeHtml);
-        });
+                $(".slider.lastepisode").append(sliderItem);
+            });
+
+            // Destroy and reinitialize with episode carousel settings
+            if ($(".slider.lastepisode").hasClass('owl-loaded')) {
+                $(".slider.lastepisode").trigger('destroy.owl.carousel');
+                $(".slider.lastepisode").removeClass('owl-loaded owl-drag');
+            }
+            initEpisodeCarousel(".slider.lastepisode");
+        }, 1600);
     }).fail(function () {
         console.error("API'den veri çekilemedi.");
     });
@@ -212,6 +306,9 @@ $(document).ready(function () {
     $.getJSON("https://api.openani.me/anime", function (data) {
         var totalAnime = [];
         $.getJSON(`https://api.openani.me/anime?page=${data["totalPages"]}`, async function (data) {
+            // Initialize carousel first
+            initCarousel(".slider.lastanim");
+            
             totalAnime = data["animes"].reverse();
             if (totalAnime.length < 20) {
                 const response = await $.getJSON(`https://api.openani.me/anime?page=${data["totalPages"] - 1}`);
@@ -259,6 +356,9 @@ $(document).ready(function () {
     });
 
     $.getJSON("https://api.openani.me/anime/populars", function (data) {
+        // Initialize carousel first
+        initCarousel(".slider.popanim");
+        
         data.forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
             const tmdbScore = episode.tmdbScore.toFixed(1);
@@ -299,6 +399,9 @@ $(document).ready(function () {
     });
 
         $.getJSON("https://api.openani.me/anime/4k-releases", function (data) {
+        // Initialize carousel first
+        initCarousel(".slider.4kanim");
+        
         data["animes"].forEach(function (episode) {
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
             const tmdbScore = episode.tmdbScore.toFixed(1);
@@ -337,8 +440,4 @@ $(document).ready(function () {
     }).fail(function () {
         console.error("API'den veri çekilemedi.");
     });
-
-    const responseData = { success: true, data: matchedAnime };
-    cache = { data: responseData, timestamp: now };
-    res.json(responseData);
 });

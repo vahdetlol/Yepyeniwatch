@@ -148,10 +148,41 @@ jQuery(document).ready(
         1440: { items: 7 },
       },
       navText: [
-        "<i class='fas fa-arrow-left'></i>",
-        "<i class='fas fa-arrow-right'></i>",
+        "<i class='fas fa-angle-left'></i>",
+        "<i class='fas fa-angle-right'></i>",
       ],
     });
+    
+    // Initialize specific sliders if not already initialized
+    setTimeout(function() {
+      $(".slider.guncelanim, .slider.guncelepisodes, .slider.popanim, .slider.4kanim, .slider.popanims, .slider.lastanim, .slider.lastepisode").each(function() {
+        if (!$(this).hasClass('owl-loaded')) {
+          $(this).owlCarousel({
+            autoplay: true,
+            autoplaySpeed: 700,
+            autoplayTimeout: 10000,
+            autoplayHoverPause: false,
+            margin: 0,
+            nav: true,
+            dots: false,
+            loop: false,
+            rewind: true,
+            responsive: {
+              0: { items: 2 },
+              450: { items: 3 },
+              600: { items: 5 },
+              1000: { items: 6 },
+              1440: { items: 7 },
+            },
+            navText: [
+              "<i class='fas fa-angle-left'></i>",
+              "<i class='fas fa-angle-right'></i>",
+            ],
+          });
+        }
+      });
+    }, 100);
+    
     $(".lazy").each(function () {
       $(this).attr("src", $(this).attr("data-src"));
     });
@@ -215,8 +246,8 @@ jQuery(document).ready(
             1440: { items: 7 },
           },
           navText: [
-            "<i class='fas fa-arrow-left'></i>",
-            "<i class='fas fa-arrow-right'></i>",
+            "<i class='fas fa-angle-left'></i>",
+            "<i class='fas fa-angle-right'></i>",
           ],
         });
       } else {
