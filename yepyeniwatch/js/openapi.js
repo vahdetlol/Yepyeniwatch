@@ -1,3 +1,4 @@
+
 // Function to fetch anime data and match with local cache
 async function fetchMultipleAnimeData() {
     try {
@@ -44,6 +45,7 @@ async function fetchMultipleAnimeData() {
                                 season: episode.season,          // from API
                                 episode: episode.episode,        // from API
                                 english: localAnime.english,     // from local JSON
+                                romaji: localAnime.romaji,       // from local JSON
                                 pictures: localAnime.pictures,    // from local JSON
                                 is4K: localAnime.is4K        // from local JSON
                             });
@@ -130,6 +132,7 @@ $(document).ready(function () {
             $(".slider.popanims").empty();
             
             data["episodes"].forEach(function (episode) {
+                const animename = episode.romaji || episode.english || "yok";
                 const banner = episode.pictures && episode.pictures.banner 
                 ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
                 : 'https://openani.me/setsuki/chibi/crying.png';
@@ -142,13 +145,13 @@ $(document).ready(function () {
                             <div class="poster">
                                 <div class="img">
                                     <a href="${episodeLink}" target="_blank">
-                                        <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
+                                        <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${animename}">
                                     </a>
                                 </div>
                             </div>
                             <div class="episode-title">
                                 <div class="serie-name" lang="en">
-                                    <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                                    <a href="${episodeLink}" title="${animename}">${animename}</a>
                                 </div>
                                 <div class="episode-name">
                                     <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
@@ -175,6 +178,7 @@ $(document).ready(function () {
         initCarousel(".slider.guncelanim");
         
         data["data"].forEach(function (episode) {
+            const animename = episode.romaji || episode.english || "yok";
             const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}`;
             const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
             const sliderItem = `
@@ -183,14 +187,14 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                         <a href="${episodeLink}" target="_blank">
-                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
+                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${animename}">
                         </a>
                         </div>
                         <img src="${fourKlogo}" class="fourk-logo">
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
-                        <a href="${episodeLink}" target="_blank">${episode.english}</a>
+                        <a href="${episodeLink}" target="_blank">${animename}</a>
                         </div>
                         <div class="episode-name">
                         ${episode.season}. Sezon
@@ -211,6 +215,7 @@ $(document).ready(function () {
             $(".slider.guncelepisodes").empty();
             
             data["data"].forEach(function (episode) {
+                const animename = episode.romaji || episode.english || "yok";
                 const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
                 const banner = episode.pictures && episode.pictures.banner 
                 ? episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')
@@ -224,14 +229,14 @@ $(document).ready(function () {
                         <div class="poster">
                             <div class="img">
                                 <a href="${episodeLink}" target="_blank">
-                                    <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${episode.english}">
+                                    <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${animename}">
                                 </a>
                             </div>
                             <img src="${fourKlogo}" class="fourk-logo">
                         </div>
                         <div class="episode-title">
                             <div class="serie-name" lang="en">
-                                <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                                <a href="${episodeLink}" title="${animename}">${animename}</a>
                             </div>
                             <div class="episode-name">
                                 <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
@@ -265,6 +270,7 @@ $(document).ready(function () {
             $(".slider.lastepisode").empty();
             
             data["episodes"].forEach(function (episode) {
+                const animename = episode.romaji || episode.english || "yok";
                 const episodeLink = `https://openani.me/anime/${episode.slug}/${episode.season}/${episode.episode}`;
                 const seasonEpisode = `${episode.season}. Sezon ${episode.episode}. Bölüm`;
                 const sliderItem = `
@@ -273,13 +279,13 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                         <a href="${episodeLink}" target="_blank">
-                            <img width="244px" height="141px" class="lazy" src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" data-src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" alt="${episode.english}">
+                            <img width="244px" height="141px" class="lazy" src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" data-src="${episode.pictures.banner.replace('image.tmdb.org', 'image.openanime.net')}" alt="${animename}">
                         </a>
                         </div>
                     </div>
                     <div class="episode-title">
                         <div class="serie-name" lang="en">
-                        <a href="${episodeLink}" title="${episode.english}">${episode.english}</a>
+                        <a href="${episodeLink}" title="${animename}">${animename}</a>
                         </div>
                         <div class="episode-name">
                         <a href="${episodeLink}" title="${seasonEpisode}">${seasonEpisode}</a>
@@ -316,6 +322,7 @@ $(document).ready(function () {
             }
          
             totalAnime.forEach(function (episode) {
+                const animename = episode.romaji || episode.english || "yok";
                 const episodeLink = `https://openani.me/anime/${episode.slug}`;
                 const tmdbScore = episode.tmdbScore.toFixed(1);
                 const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
@@ -328,14 +335,14 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                         <a href="${episodeLink}" target="_blank">
-                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
+                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${animename}">
                         </a>
                         </div>
                         <img src="${fourKlogo}" class="fourk-logo">                    
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
-                        <a href="${episodeLink}" target="_blank">${episode.english}</a>
+                        <a href="${episodeLink}" target="_blank">${animename}</a>
                         </div>
                         <div class="episode-name">
                         ${episode.numberOfSeasons ? `${episode.numberOfSeasons} Sezon` : "Film"}
@@ -360,6 +367,7 @@ $(document).ready(function () {
         initCarousel(".slider.popanim");
         
         data.forEach(function (episode) {
+            const animename = episode.romaji || episode.english || "yok";
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
             const tmdbScore = episode.tmdbScore.toFixed(1);
             const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
@@ -372,14 +380,14 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                         <a href="${episodeLink}" target="_blank">
-                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
+                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${animename}">
                         </a>
                         </div>
                         <img src="${fourKlogo}" class="fourk-logo">                    
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
-                        <a href="${episodeLink}" target="_blank">${episode.english}</a>
+                        <a href="${episodeLink}" target="_blank">${animename}</a>
                         </div>
                         <div class="episode-name">
                         ${episode.numberOfSeasons ? `${episode.numberOfSeasons} Sezon` : "Film"}
@@ -403,6 +411,7 @@ $(document).ready(function () {
         initCarousel(".slider.4kanim");
         
         data["animes"].forEach(function (episode) {
+            const animename = episode.romaji || episode.english || "yok";
             const episodeLink = `https://openani.me/anime/${episode.slug}`;
             const tmdbScore = episode.tmdbScore.toFixed(1);
             const fourKlogo = episode.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
@@ -415,14 +424,14 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                         <a href="${episodeLink}" target="_blank">
-                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${episode.english}">
+                            <img src="${episode.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" width="170px" height="255px" title="${animename}">
                         </a>
                         </div>
                         <img src="${fourKlogo}" class="fourk-logo">                    
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
-                        <a href="${episodeLink}" target="_blank">${episode.english}</a>
+                        <a href="${episodeLink}" target="_blank">${animename}</a>
                         </div>
                         <div class="episode-name">
                         ${episode.numberOfSeasons ? `${episode.numberOfSeasons} Sezon` : "Film"}

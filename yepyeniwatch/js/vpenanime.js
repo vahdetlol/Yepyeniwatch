@@ -1,4 +1,7 @@
 var $ = jQuery;
+// Debounced search state
+var searchDebounceTimer = null;
+var activeSearchRequest = null;
 function myFunctionyeni() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -58,43 +61,98 @@ function navmenufunc() {
     : (e.className = "topnav");
 }
 function fetchResults() {
-  var searchInputValue = document.getElementById("searchInput").value;
-  if (searchInputValue.length < 2) {
-    document.getElementById("datafetch").innerHTML = "";
-    document.getElementById("datafetch").style.display = "none";
+  var inputEl = document.getElementById("searchInput");
+  var boxEl = document.getElementById("datafetch");
+  var query = (inputEl ? inputEl.value : "").trim();
+
+  // reset pending timer
+  if (searchDebounceTimer) {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = null;
+  }
+
+  // short input => hide
+  if (query.length < 2) {
+    if (activeSearchRequest && activeSearchRequest.abort) {
+      try { activeSearchRequest.abort(); } catch (e) {}
+    }
+    if (boxEl) {
+      boxEl.innerHTML = "";
+      boxEl.style.display = "none";
+    }
     return;
   }
 
-  document.getElementById("datafetch").style.display = "block";
-  
-  // API araması için AJAX isteği
-  $.ajax({
-    url: "https://api.openani.me/anime/search?q=" + searchInputValue,
-    type: "GET",
-    success: function(data) {
-      var results = "";
-      if (data && data.animes && data.animes.length > 0) {
-        data.animes.slice(0, 5).forEach(function(anime) {
-          results += `<a href="https://openani.me/anime/${anime.slug}" target="_blank">
-                        <div class="search-item">
-                          <div class="search-item-image">
-                            <img src="${anime.pictures.avatar.replace('image.tmdb.org', 'image.openanime.net')}" alt="${anime.english}">
-                          </div>
-                          <div class="search-item-info">
-                            <div class="search-item-title">${anime.english}</div>
-                          </div>
-                        </div>
-                      </a>`;
-        });
-      } else {
-        results = "<div class='search-no-results'>Sonuç bulunamadı</div>";
-      }
-      document.getElementById("datafetch").innerHTML = results;
-    },
-    error: function() {
-      document.getElementById("datafetch").innerHTML = "<div class='search-no-results'>Arama sırasında bir hata oluştu</div>";
+  if (boxEl) {
+    boxEl.style.display = "block";
+    boxEl.innerHTML = "<div class='search-item'><div class='search-item-info'><div class='search-item-title'>Aranıyor...</div></div></div>";
+  }
+
+  searchDebounceTimer = setTimeout(function () {
+    if (activeSearchRequest && activeSearchRequest.abort) {
+      try { activeSearchRequest.abort(); } catch (e) {}
     }
-  });
+
+    activeSearchRequest = $.ajax({
+      url: "https://api.openani.me/anime/search?q=" + encodeURIComponent(query),
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        var list = [];
+        if (Array.isArray(data)) {
+          list = data;
+        } else if (data && Array.isArray(data.animes)) {
+          list = data.animes;
+        } else if (data && Array.isArray(data.results)) {
+          list = data.results;
+        }
+        if (Array.isArray(list) && list.length > 0 && Array.isArray(list[0])) {
+          list = list[0];
+        }
+
+        var html = "";
+        if (list.length > 0) {
+          html = list.slice(0, 6).map(function (anime) {
+            var slug = anime.slug || anime.id || "#";
+            var english = anime.english || anime.title || "İsimsiz";
+            var romaji = anime.romaji || "";
+            var summary = anime.summary || "";
+            var fourk = anime.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
+            var typeRaw = (anime.type || '').toString().toLowerCase();
+            var typeText = typeRaw === 'movie' ? 'Film' : (typeRaw === 'tv' ? 'Anime' : (anime.type || '').toString());
+            var avatar = anime.pictures.avatar;
+            if (avatar) avatar = avatar.replace('image.tmdb.org', 'image.openanime.net');
+
+            return (
+              `<a href="https://openani.me/anime/${slug}" target="_blank">` +
+              `  <div class="search-card">` +
+              (typeText ? `    <span class=\"search-card-type\">${typeText}</span>` : "") +
+              `    <div class="search-card-banner">` +
+              (avatar ? `      <img src="${avatar}" alt="${english}">` : "") +
+              `    </div>` +
+              `    <div class="search-card-content">` +
+              `      <div class="search-card-title">${english} <img class=\"search-card-4k\" src="${fourk}"></img></div> ` +
+              (romaji ? `      <div class=\"search-card-romaji\">${romaji}</div>` : "") +
+              (summary ? `      <div class=\"search-card-summary\">${summary}</div>` : "") +
+              `    </div>` +
+              `  </div>` +
+              `</a>`
+            );
+          }).join("");
+        } else {
+          html = "<div class='search-no-results'>Sonuç bulunamadı</div>";
+        }
+        if (boxEl) boxEl.innerHTML = html;
+      },
+      error: function (xhr, status) {
+        if (status === 'abort') return;
+        if (boxEl) boxEl.innerHTML = "<div class='search-no-results'>Arama sırasında bir hata oluştu</div>";
+      },
+      complete: function () {
+        activeSearchRequest = null;
+      }
+    });
+  }, 250);
 }
 
 // Açılan menüyü tıklamalar için kapatma

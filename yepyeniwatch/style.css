@@ -710,7 +710,6 @@ span.active {
   font-size: 15px;
   margin: 0 auto;
   text-align: left;
-  display: inline-block;
   margin-top: 0px;
   background-color: #1d1d1d;
   color: #fff;
@@ -763,7 +762,7 @@ span.active {
 .footeright {
   text-align: right;
   margin-top: 10px;
-  display: inherit;
+  float: right;
 }
 
 .footerleft {
@@ -1116,7 +1115,6 @@ img.centered {
   cursor: pointer;
   font-size: 14px;
   font-weight: normal;
-  display: inline-block;
   color: #fff;
   font-family: "Funnel Display", arial, serif;
   background: #ea0000;
@@ -1166,7 +1164,6 @@ img.centered {
   width: 100%;
   margin-top: -19px;
   background-color: #120e26;
-  display: inline-block;
   padding-top: 6px;
   height: 40px;
 }
@@ -1210,6 +1207,9 @@ img.centered {
 
 .tumunugor {
   float: right;
+  position: absolute;
+  top: 0;
+  right: 0px;
 }
 
 .tumunugor a {
@@ -1287,7 +1287,6 @@ p.textarea {
   width: auto;
   border-radius: 4px;
   margin-left: -5px;
-  display: inline-block;
   margin-top: 9px;
   font-family: "Funnel Display", arial, serif;
 }
@@ -1689,7 +1688,6 @@ p.textarea {
   font-family: "Funnel Display", arial, sans-serif;
   margin-top: 1px;
   color: rgba(255, 255, 255, 0.8);
-  display: inline-block;
 }
 
 .hatali:focus {
@@ -1767,7 +1765,6 @@ p.textarea {
   margin-top: 3px;
   color: #ccc;
   background-color: rgb(0 0 0 / 20%);
-  display: inline-block;
   margin-bottom: -2px;
 }
 
@@ -1965,7 +1962,6 @@ ul#menu-eskiler {
 
 .dropdown {
   position: relative;
-  display: inline-block;
   width: 1000px;
   padding: 8px 0px 8px 0px;
   margin-bottom: -4px;
@@ -2028,7 +2024,6 @@ ul#menu-eskiler {
   width: calc(100% - 20px);
   text-align: left;
   border-radius: 2px;
-  display: inline-block;
   margin-top: 12px;
   background-color: #241b52;
   background-color: #1d1e23;
@@ -2079,7 +2074,6 @@ ul#menu-eskiler {
   margin-top: 1px;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  display: inline-block;
 }
 
 .ac-kapa:focus {
@@ -2348,7 +2342,6 @@ textarea.form-control {
 
 #adduser {
   height: auto;
-  display: inline-block;
   width: 100%;
   margin-top: 0px;
   background-color: rgba(5, 1, 26, 0.88);
@@ -2468,7 +2461,6 @@ table.form-table {
 }
 
 .bolum-ismi {
-  display: inline-block;
   color: #fff;
   text-transform: uppercase;
   font-size: 13px;
@@ -2487,7 +2479,6 @@ table.form-table {
   position: relative;
   font-size: 12px;
   font-weight: normal;
-  display: inline-block;
   font-size: 13px;
   color: #fff;
   width: 100%;
@@ -2506,7 +2497,7 @@ table.form-table {
 }
 
 .nomob {
-  display: inline-block;
+  float: right; /* Browser will automatically treat this as display: block */
 }
 
 .comment_profile {
@@ -2576,6 +2567,7 @@ table.form-table {
   float: left;
   clear: both;
   margin-top: -9px;
+  /* Removed redundant display:block since float:left already makes this element display as block */
 }
 
 .comment_submit {
@@ -2593,7 +2585,6 @@ table.form-table {
   font-family: "Funnel Display", serif;
   margin-top: 1px;
   font-size: 12px;
-  display: inline-block;
 }
 
 span.pages {
@@ -2686,7 +2677,7 @@ span.pages {
 
 .listcontent {
   width: 100%;
-  min-height: auto;
+  min-height: 0;
   margin-bottom: 20px;
   float: left;
 }
@@ -2767,7 +2758,6 @@ a.all {
 
 .title .title-border {
   font-family: "Funnel Display", arial, serif !important;
-  display: inline-block;
   color: #fff;
   padding-bottom: 12px;
   padding-right: 5px;
@@ -2860,7 +2850,6 @@ textarea#up-about {
 }
 
 a#edit {
-  display: inline-block;
   font-size: 13px;
   float: right;
   color: #fff;
@@ -2982,7 +2971,6 @@ label.wpforms-error {
   border-bottom: 1px dashed rgba(205, 194, 255, 0.1);
   padding: 12px 0px 6px 0px;
   margin-bottom: 12px;
-  display: inline-block;
   width: 100%;
 }
 
@@ -3101,7 +3089,6 @@ span.page-numbers {
   color: #ccc;
   background-color: rgba(76, 77, 74, 0.5);
   margin-top: 5px;
-  display: inline-block;
 }
 
 a.page-numbers {
@@ -3116,7 +3103,6 @@ a.page-numbers {
   font-family: "Noto Sans", arial, serif;
   font-weight: 700;
   background-color: rgba(76, 77, 74, 0.9);
-  display: inline-block;
 }
 
 #respond .page-numbers {
@@ -3129,7 +3115,6 @@ a.page-numbers {
   padding-bottom: 8px;
   font-family: "Noto Sans", arial, serif;
   font-weight: 700;
-  display: inline-block;
   margin-bottom: 10px;
 }
 
@@ -3205,6 +3190,9 @@ form.example input[type="text"] {
   text-indent: 12px;
   color: #fff;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  appearance: none;
   border-radius: 0px;
 }
 
@@ -3219,6 +3207,7 @@ form.example button {
   background-color: rgba(0, 0, 0, 0.25);
   color: #ffffff;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 form.example input[type="text"]::placeholder {
@@ -3255,7 +3244,6 @@ input#register-me {
 
 #form-wrapper {
   margin-top: 10px;
-  display: inline-block;
   width: 100%;
   margin-bottom: -10px;
 }
@@ -3348,6 +3336,7 @@ li.success {
 
 button#trailerbutton {
   -webkit-appearance: none;
+  appearance: none;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -3380,7 +3369,6 @@ button#trailerbutton:focus {
   background-color: rgba(31, 17, 103, 0.5);
   word-break: break-word;
   margin-bottom: 8px;
-  display: inline-block;
   margin-left: -1px;
   margin-right: 5px;
 }
@@ -3397,7 +3385,6 @@ strong.on {
   font-weight: 700;
   word-break: break-word;
   margin-bottom: 8px;
-  display: inline-block;
   margin-left: -1px;
   margin-right: 5px;
   background-color: rgba(47, 10, 234, 0.5);
@@ -3412,7 +3399,6 @@ span.button-loader {
   width: 80px;
   overflow: hidden;
   color: #ffffff;
-  display: inline-block;
   line-height: 1;
   vertical-align: middle;
   position: absolute;
@@ -3460,7 +3446,6 @@ span.button-loader {
 }
 
 #alphabetical-category .alphabetical-category-link {
-  display: inline-block;
   font-size: 15px;
   text-decoration: none;
   font-weight: bold;
@@ -3492,7 +3477,6 @@ span.button-loader {
 
 .alphabetical-category-list li {
   width: 23.6%;
-  display: inline-block;
   float: left;
   overflow: hidden;
   white-space: nowrap;
@@ -3562,7 +3546,6 @@ span.imedebe {
   border-bottom: 1px dashed rgba(205, 194, 255, 0.1);
   padding: 12px 0px 6px 0px;
   margin-bottom: 12px;
-  display: inline-block;
   width: 100%;
 }
 
@@ -3588,7 +3571,6 @@ div#bulunamadi {
   color: #000;
   background-color: #ffd500;
   padding: 6px 11px;
-  display: inline-block;
   border: 0px solid transparent;
   box-shadow: none;
   border-radius: 3px;
@@ -3613,13 +3595,11 @@ form#filter {
 
 #filter label {
   margin-right: 6px;
-  display: inline-block;
   margin-bottom: 11px;
 }
 
 #filter input {
   padding: 6px;
-  display: inline-block;
   background-color: rgba(0, 0, 0, 0.25);
   border: 1px solid transparent;
   box-shadow: none;
@@ -3636,7 +3616,6 @@ select.nameclass:focus {
 
 select.nameclass {
   padding: 6px;
-  display: inline-block;
   background-color: rgba(0, 0, 0, 0.5);
   border: 0px solid transparent;
   box-shadow: none;
@@ -3688,7 +3667,6 @@ a.nav.next {
   font-family: "Noto Sans", arial, serif;
   font-weight: 700;
   background-color: rgba(31, 17, 103, 0.5);
-  display: inline-block;
   cursor: pointer;
 }
 
@@ -3705,7 +3683,6 @@ a.nav.prev {
   color: #ccc;
   background-color: rgba(31, 17, 103, 0.5);
   margin-top: 0px;
-  display: inline-block;
   margin-bottom: 6px;
   margin-right: 3px;
   cursor: pointer;
@@ -3729,7 +3706,6 @@ span.post-page-numbers.current {
 
 #likebox {
   margin-bottom: 15px;
-  display: inline-block;
   width: 100%;
   margin-top: 10px;
 }
@@ -3804,11 +3780,24 @@ span.post-page-numbers.current {
   border: 1px solid #373737;
   border-top: none;
   z-index: 999;
-  width: 100%;
   max-height: 400px;
   overflow-y: auto;
+  /* hide scrollbar (webkit below; Firefox via @supports) */
+  -ms-overflow-style: none; /* IE 10+ */
   display: none;
   border-radius: 0 0 5px 5px;
+}
+
+/* Chrome, Edge, Safari */
+#datafetch::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+/* Firefox */
+@supports (scrollbar-width: none) {
+  #datafetch {
+    scrollbar-width: none;
+  }
 }
 
 .search-item {
@@ -3848,6 +3837,74 @@ span.post-page-numbers.current {
   padding: 15px;
   text-align: center;
   color: #9e9e9e;
+}
+
+/* Typeahead card layout */
+.search-card {
+  position: relative;
+  background: rgba(25, 25, 25, 0.7);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #373737;
+  display: flex;
+}
+.search-card-type {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffd700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.search-card-4k {
+  height: 28px;
+  width: auto;
+  display: block !important;
+}
+.search-card-banner {
+  flex: 0 0 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-card-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.search-card-content {
+  padding: 10px 12px 12px 12px;
+  flex: 1;
+  min-width: 0;
+}
+.search-card-title {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+.search-card-romaji {
+  color: #cdc2ff;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.search-card-summary {
+  color: #ccc;
+  font-size: 13px;
+  line-height: 1.4;
+  max-height: 3.3em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 #searchInput:focus + #datafetch {
@@ -3940,7 +3997,6 @@ input#update-me {
 #filterseries button {
   color: #000;
   background-color: #ffd500;
-  display: inline-block;
   border: 0px solid transparent;
   box-shadow: none;
   border-radius: 3px;
@@ -3970,14 +4026,12 @@ form#filterseries {
 }
 
 #filterseries label {
-  display: inline-block;
   margin-bottom: 11px;
   width: 100%;
 }
 
 #filterseries input {
   padding: 6px;
-  display: inline-block;
   background-color: rgba(0, 0, 0, 0.25);
   border: 1px solid transparent;
   box-shadow: none;
@@ -4034,7 +4088,6 @@ span.totalseries {
 }
 
 span.filtertag {
-  display: inline-block;
   width: 100%;
   margin-bottom: 7px;
   font-size: 14px;
@@ -4096,7 +4149,6 @@ span.filtertag {
 
 .izlediklerim span.clearlist {
   position: relative;
-  display: inline-block;
   float: right;
   width: auto;
   font-size: 15px;
@@ -4168,7 +4220,6 @@ span.filtertag {
 }
 
 #lcwidget {
-  display: inline-block;
   margin-bottom: 7px;
   width: 100%;
 }
@@ -4259,7 +4310,6 @@ div#lastcommentcontent {
   float: right;
   margin-top: 1px;
   color: rgba(255, 255, 255, 0.8);
-  display: inline-block;
 }
 
 .wl_add:hover {
@@ -4319,6 +4369,7 @@ div#lastcommentcontent {
   position: relative;
   padding: 0;
   -webkit-appearance: none;
+  appearance: none;
   margin-left: -41px;
   margin-right: 15px;
   border: 0;
@@ -4375,17 +4426,11 @@ form#watch_list {
   margin: 4px 3.34px 16px 3.34px;
 }
 
-div#fav_series {
-}
-
 .sonrakiler .dizi-ismi {
   width: 81%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.sonrakiler {
 }
 
 .sonrakiler .listepisodes {
@@ -4629,7 +4674,6 @@ img.episode {
 
 .episode-box {
   width: calc(100% - 10px);
-  display: inline-block;
   float: left;
   margin-bottom: 10px;
 }
@@ -4660,6 +4704,7 @@ img.episode {
   float: left;
   background-size: 100%;
   border-radius: 5px;
+  object-fit: contain;
 }
 
 .episode-box .poster .img img:hover {
@@ -5009,6 +5054,7 @@ ul.sub-menu a i.fas.fa-caret-down {
     height: 100px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .titleortala {
@@ -5039,6 +5085,7 @@ ul.sub-menu a i.fas.fa-caret-down {
 
   select.nameclass {
     -webkit-appearance: listbox;
+    appearance: listbox;
   }
 
   .cat-title {
@@ -5368,6 +5415,7 @@ ul.sub-menu a i.fas.fa-caret-down {
 
   #commentform input {
     -webkit-appearance: none;
+    appearance: none;
     -webkit-border-radius: 0;
     border-radius: 0;
     width: 100%;
@@ -5428,6 +5476,7 @@ ul.sub-menu a i.fas.fa-caret-down {
     -webkit-box-sizing: border-box;
     height: 35px;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .dizigo {
@@ -5438,6 +5487,7 @@ ul.sub-menu a i.fas.fa-caret-down {
 
   #myInpu {
     -webkit-appearance: none;
+    appearance: none;
     -webkit-border-radius: 0;
     border-radius: 0;
   }
@@ -5449,6 +5499,7 @@ ul.sub-menu a i.fas.fa-caret-down {
   input[type="submit"],
   .input-checkbox {
     -webkit-appearance: none;
+    appearance: none;
   }
 
   .leftCC {
@@ -5509,9 +5560,6 @@ ul.sub-menu a i.fas.fa-caret-down {
     padding: 10px;
   }
 
-  .sonrakiler {
-  }
-
   .user-bas {
     margin: 0px;
     width: auto;
@@ -5530,9 +5578,6 @@ ul.sub-menu a i.fas.fa-caret-down {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .user-comment {
   }
 
   .user-comment ul {
@@ -5561,6 +5606,7 @@ ul.sub-menu a i.fas.fa-caret-down {
     height: 32px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   #description {
@@ -5807,6 +5853,7 @@ ul.sub-menu a i.fas.fa-caret-down {
   .filterselect {
     width: 100% !important;
     -webkit-appearance: none;
+    appearance: none;
   }
 
   #mobil-filter {
@@ -5918,9 +5965,6 @@ ul.sub-menu a i.fas.fa-caret-down {
 
   .serie ul.commentlist {
     width: calc(100% - 5px) !important;
-  }
-
-  .emptyList {
   }
 
   .list .emptyList {
@@ -6047,7 +6091,7 @@ ul.sub-menu a i.fas.fa-caret-down {
 
 @media only screen and (min-width: 1439px) {
   .searchelement {
-    width: 344px;
+    width: 35rem;
   }
 
   #header_sol {
@@ -6183,9 +6227,6 @@ ul.sub-menu a i.fas.fa-caret-down {
     width: 1040px;
   }
 
-  .sonrakiler {
-  }
-
   .user-comment {
     width: 1178px;
   }
@@ -6220,9 +6261,6 @@ ul.sub-menu a i.fas.fa-caret-down {
 
   .sonrakiler .list-series-main {
     margin: 4px 3.65px 16px 3.65px;
-  }
-
-  #icerikcatright {
   }
 
   .page textarea#comment {
@@ -6274,7 +6312,7 @@ ul.sub-menu a i.fas.fa-caret-down {
   }
 
   form.example input[type="text"] {
-    width: 283px;
+    width: 25rem;
     float: right;
     height: 18px;
     border-top-right-radius: 2px;
@@ -6293,9 +6331,6 @@ ul.sub-menu a i.fas.fa-caret-down {
 
   #navbarright {
     margin-top: 65px;
-  }
-
-  div#watch_list {
   }
 
   .page .comment_content {
@@ -6425,6 +6460,8 @@ ul.sub-menu a i.fas.fa-caret-down {
   margin-right: 3px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
+
   background: #fff;
   font-family: "Funnel Display", arial, serif;
 }
@@ -6506,12 +6543,10 @@ ul.sub-menu a i.fas.fa-caret-down {
 
 /* Style For PLD */
 .pld-like-dislike-wrap {
-  display: inline-block;
   margin-bottom: 20px;
 }
 
 .pld-common-wrap {
-  display: inline-block;
   min-width: 50px;
 }
 
@@ -6527,7 +6562,6 @@ ul.sub-menu a i.fas.fa-caret-down {
 }
 
 .pld-share-wrap {
-  display: inline-block;
   margin-left: 50px;
 }
 
@@ -6540,7 +6574,6 @@ ul.sub-menu a i.fas.fa-caret-down {
 a.pld-facebook {
   background: #3b5998 !important;
   color: #fff !important;
-  display: inline-block;
   text-align: center;
   padding: 5px 10px;
 }
@@ -6548,7 +6581,6 @@ a.pld-facebook {
 a.pld-twitter {
   background: #55acee !important;
   color: #fff !important;
-  display: inline-block;
   text-align: center;
   padding: 5px 7px;
 }
@@ -6583,7 +6615,6 @@ a.pld-twitter:hover {
 
 .pld-like-dislike-wrap.pld-custom img {
   max-width: 30px;
-  display: inline-block;
   vertical-align: top;
 }
 
@@ -6633,14 +6664,9 @@ a.pld-twitter:hover {
 
 /* Style For CLD */
 .cld-like-dislike-wrap {
-  display: inline-block;
   float: right;
   margin-top: 5px;
   margin-right: 3px;
-}
-
-.cld-common-wrap {
-  display: inline-block;
 }
 
 .cld-common-wrap > a.cld-like-dislike-trigger {
@@ -6654,7 +6680,6 @@ a.pld-twitter:hover {
 }
 
 .cld-share-wrap {
-  display: inline-block;
   margin-left: 50px;
 }
 
@@ -6667,7 +6692,6 @@ a.pld-twitter:hover {
 a.cld-facebook {
   background: #3b5998 !important;
   color: #fff !important;
-  display: inline-block;
   text-align: center;
   padding: 5px 10px;
 }
@@ -6675,7 +6699,6 @@ a.cld-facebook {
 a.cld-twitter {
   background: #55acee !important;
   color: #fff !important;
-  display: inline-block;
   text-align: center;
   padding: 5px 7px;
 }
@@ -6710,7 +6733,6 @@ a.cld-twitter:hover {
 
 .cld-like-dislike-wrap.cld-custom img {
   max-width: 30px;
-  display: inline-block;
   vertical-align: top;
 }
 
@@ -6927,6 +6949,9 @@ a.cld-twitter:hover {
   position: relative;
   overflow: hidden;
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .owl-carousel .owl-item,
@@ -6937,6 +6962,8 @@ a.cld-twitter:hover {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .owl-carousel .owl-item {
@@ -6944,6 +6971,7 @@ a.cld-twitter:hover {
   float: left;
   -webkit-backface-visibility: hidden;
   -webkit-touch-callout: none;
+  backface-visibility: hidden;
 }
 
 .owl-carousel .owl-item img {
@@ -7081,6 +7109,7 @@ a.cld-twitter:hover {
   z-index: 1;
   -webkit-backface-visibility: hidden;
   transition: transform 0.1s ease;
+  backface-visibility: hidden;
 }
 
 .owl-carousel .owl-video-play-icon:hover {
@@ -7125,7 +7154,6 @@ a.cld-twitter:hover {
   margin: 5px;
   padding: 4px 7px;
   background: #d6d6d6;
-  display: inline-block;
   cursor: pointer;
   border-radius: 3px;
 }
@@ -7146,7 +7174,6 @@ a.cld-twitter:hover {
 }
 
 .owl-theme .owl-dots .owl-dot {
-  display: inline-block;
   zoom: 1;
 }
 
@@ -7159,6 +7186,7 @@ a.cld-twitter:hover {
   -webkit-backface-visibility: visible;
   transition: opacity 0.2s ease;
   border-radius: 30px;
+  backface-visibility: hidden;
 }
 .fourk-logo {
   position: absolute;
@@ -7263,7 +7291,7 @@ a.cld-twitter:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   color: white;
   padding: 15px 0px 3px;
   margin: 0;
@@ -7298,7 +7326,7 @@ a.cld-twitter:hover {
 
 /* Hover efektleri */
 .episode-slider .episode-box:hover .episode-title {
-  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
 }
 
 .episode-slider .episode-box:hover .episode-title .serie-name a {
@@ -7310,32 +7338,32 @@ a.cld-twitter:hover {
   .episode-slider.owl-carousel .owl-item {
     width: 210px !important;
   }
-  
+
   .episode-slider .episode-box {
     width: 210px !important;
     height: 118px !important;
   }
-  
+
   .episode-slider .episode-box .poster {
     width: 210px !important;
     height: 118px !important;
   }
-  
+
   .episode-slider .episode-box .poster .img {
     width: 210px !important;
     height: 118px !important;
   }
-  
+
   .episode-slider .episode-box .poster .img img {
     width: 210px !important;
     height: 118px !important;
   }
-  
+
   .episode-slider .episode-title {
     min-height: 45px;
     padding: 12px 8px 6px;
   }
-  
+
   .episode-slider .episode-title .serie-name {
     font-size: 12px;
   }
@@ -7345,37 +7373,138 @@ a.cld-twitter:hover {
   .episode-slider.owl-carousel .owl-item {
     width: 170px !important;
   }
-  
+
   .episode-slider .episode-box {
     width: 170px !important;
     height: 96px !important;
   }
-  
+
   .episode-slider .episode-box .poster {
     width: 170px !important;
     height: 96px !important;
   }
-  
+
   .episode-slider .episode-box .poster .img {
     width: 170px !important;
     height: 96px !important;
   }
-  
+
   .episode-slider .episode-box .poster .img img {
     width: 170px !important;
     height: 96px !important;
   }
-  
+
   .episode-slider .episode-title {
     min-height: 40px;
     padding: 10px 6px 5px;
   }
-  
+
   .episode-slider .episode-title .serie-name {
     font-size: 11px;
   }
-  
+
   .episode-slider .episode-title .episode-name {
     font-size: 10px;
   }
+}
+
+.anime-card {
+  width: 100%;
+  margin-bottom: 15px;
+  background: rgba(25, 25, 25, 0.7);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+}
+
+.anime-poster {
+  width: 120px;
+  min-width: 120px;
+  height: 180px;
+  overflow: hidden;
+}
+
+.anime-poster img {
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.anime-info {
+  padding-right: 15px;
+  padding-left: 15px;
+
+  width: 100%;
+  position: relative;
+}
+
+.anime-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Funnel Display", arial, serif;
+}
+
+.anime-title a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+.anime-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  color: #cdc2ff;
+}
+
+.anime-description {
+  font-size: 14px;
+  line-height: 1.4;
+  max-height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.anime-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.anime-tag {
+  background: rgba(82, 41, 204, 0.3);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.imdb-score {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffd700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
 }
