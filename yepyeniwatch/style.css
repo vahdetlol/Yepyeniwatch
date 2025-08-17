@@ -6312,7 +6312,7 @@ ul.sub-menu a i.fas.fa-caret-down {
   }
 
   form.example input[type="text"] {
-    width: 25rem;
+    width: 25rem !important;
     float: right;
     height: 18px;
     border-top-right-radius: 2px;
