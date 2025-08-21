@@ -7452,6 +7452,8 @@ a.cld-twitter:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: "Funnel Display", arial, serif;
+  display: flex;
+  align-items: center;
 }
 
 .anime-title a {
