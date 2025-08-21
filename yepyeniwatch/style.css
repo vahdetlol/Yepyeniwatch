@@ -7508,3 +7508,239 @@ a.cld-twitter:hover {
   font-size: 14px;
   font-weight: bold;
 }
+
+/* ==========================
+   Merged unique rules from style2.css
+   ========================== */
+/* Background overlay clickable area */
+.body-clickable {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: url("images/background.jpg") no-repeat fixed center 0 #000000;
+  cursor: default;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 1000px) {
+  .body-clickable {
+    display: none;
+  }
+}
+
+/* Search page tweaks */
+.search-page #results-count {
+  font-size: 14px;
+  color: #cdc2ff;
+  margin-left: 8px;
+}
+
+.search-page .anime-list {
+  width: 100%;
+}
+
+/* Archive layout */
+.archive-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.anime-list {
+  width: 70%;
+}
+
+.filter-sidebar {
+  width: 30%;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.filter-section {
+  background: rgba(25, 25, 25, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-section h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Funnel Display", arial, serif;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(205, 194, 255, 0.1);
+}
+
+.filter-item {
+  margin-bottom: 15px;
+}
+
+.filter-item label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cdc2ff;
+}
+
+.filter-item input,
+.filter-item select {
+  width: 100%;
+  padding: 8px 12px;
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(82, 41, 204, 0.5);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.range-inputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.range-separator {
+  color: #fff;
+}
+
+.filter-button {
+  width: 100%;
+  padding: 10px;
+  background: rgb(82, 41, 204);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-button:hover {
+  background: rgb(102, 61, 224);
+}
+
+.filter-button.clear-filters {
+  background: rgba(255, 0, 0, 0.7);
+}
+
+.filter-button.clear-filters:hover {
+  background: rgba(255, 0, 0, 0.9);
+}
+
+/* Categories table */
+.categories-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.categories-table tr {
+  border-bottom: 1px solid rgba(80, 80, 80, 0.3);
+}
+
+.categories-table td {
+  padding: 12px 5px;
+  width: 50%;
+  color: #8e8ec2;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.categories-table td:hover {
+  color: #c5c5ff;
+}
+
+.categories-table td.active {
+  color: #ffffff;
+}
+
+.category-marker {
+  display: flex !important;
+  width: 100% !important;
+  height: 30px !important;
+  border: none !important;
+  vertical-align: middle !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.active .category-marker {
+  background-color: #8e8ec2;
+}
+
+.deactive .category-marker {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.page-link {
+  padding: 8px 15px;
+  background: rgba(82, 41, 204, 0.5);
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.page-link:hover,
+.page-link.active {
+  background: rgb(82, 41, 204);
+}
+
+/* Title underline helper */
+.title-border.bd-purple {
+  border-bottom: 2px solid #9b51e0;
+  padding-bottom: 10px;
+}
+
+/* Loading helper */
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #cdc2ff;
+}
+
+@media (max-width: 768px) {
+  .archive-container {
+    flex-direction: column;
+  }
+
+  .anime-list,
+  .filter-sidebar {
+    width: 100%;
+  }
+
+  .filter-sidebar {
+    order: -1;
+    margin-bottom: 20px;
+  }
+}
+
+/* Additional helpers */
+.anime-meta-2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  color: #cdc2ff;
+}
+
+.page-link.disabled {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
