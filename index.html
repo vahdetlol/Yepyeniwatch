@@ -138,19 +138,18 @@
                         <a href="https://discord.gg/r4XdBxbdCb">İletişim</a>
                     </li>
                     <li>
-                        <form method="get" class="example" action="https://openani.me/" autocomplete="off">
-                            <input type="text" class="field" name="s" id="searchInput" onkeyup="fetchResults()"
-                                placeholder="bölüm veya anime arayın...">
-                            <button type="submit" title="Ara"><i class="fa fa-search"></i></button>
-                            <div id="datafetch"></div>
-                        </form>
-                    </li>
-                </ul>
-                <a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
-                    <i class="fas fa-bars"></i>
-                </a>
-            </nav>
-        </div>
+							<form method="get" class="example" action="search" autocomplete="off">
+								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
+								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
+								<div id="datafetch"></div>
+							</form>
+						</li>
+					</ul>
+					<a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
+						<i class="fas fa-bars"></i>
+					</a>
+				</nav>
+			</div>
         <div id="content" class="homepage">
             <div class="title">
                 <span class="title-border">

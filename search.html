@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Arama Sonuçları - YepYeniWatch</title>
+		<meta name="description" content="YepYeniWatch arama sonuçları" />
+		<meta name="google" content="notranslate" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+		<link rel="stylesheet" href="yepyeniwatch/style.css" type="text/css" media="all" />
+		<link rel="shortcut icon" href="yepyeniwatch/images/yepyeniwatch_dik.png" />
+		<meta property="og:title" content="YepYeniWatch - Arama" />
+		<meta property="og:site_name" content="YepYeniWatch" />
+		<meta property="og:description" content="Arama sonuçları" />
+		<meta name='robots' content='max-image-preview:large' />
+        <base href="http://yepyeniwatch.xyz/" target="_self">
+	</head>
+	<body>
+		<div class="body-clickable"></div>
+		<div id="wrap">
+			<div id="header">
+				<div class="headerleft">
+					<a href="/">
+						<img src="yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
+					</a>
+				</div>
+				<div class="headerright">
+					<a class="small-button mobil-diziler" title="Mobil Diziler">
+						<i class="fa fa-hashtag"></i>
+					</a>
+					<a href="https://openani.me/" class="small-button" title="Üye Ol">
+						<i class="fas fa-user-plus"></i>
+						<div class="nomob">Üye Ol</div>
+					</a>
+					<a class="simplemodal-login small-button" href="https://openani.me/" title="Üye Girişi">
+						<i class="fas fa-sign-in-alt"></i>
+						<div class="nomob">Üye Girişi</div>
+					</a>
+				</div>
+				<nav>
+					<ul class="topnav" id="myTopnav">
+						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
+							<a href="">Anasayfa</a>
+						</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page">
+										<a href="https://openani.me/calendar" target="_blank" rel="noopener">Takvim</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page">
+							<a href="anime-arsivi">Anime Arşivi</a>
+						</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page">
+										<a href="https://androidoyun.club/apks" target="_blank" rel="noopener">Mobil Uygulama</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page">
+							<a href="feed">Yeni Bölümler</a>
+						</li>
+									<li class="menu-item menu-item-type-custom menu-item-object-custom">
+										<a href="https://discord.gg/r4XdBxbdCb" target="_blank" rel="noopener">Discord</a>
+						</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page">
+										<a href="https://discord.gg/r4XdBxbdCb" target="_blank" rel="noopener">İletişim</a>
+						</li>
+						<li>
+							<form method="get" class="example" action="#" autocomplete="off">
+								<input type="text" class="field" name="s" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
+								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
+								<div id="datafetch"></div>
+							</form>
+						</li>
+					</ul>
+					<a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
+						<i class="fas fa-bars"></i>
+					</a>
+				</nav>
+			</div>
+
+			<div id="content" class="homepage search-page">
+				<div class="title">
+					<h1 class="title-border bd-purple">
+									<i class="fas fa-search"></i> Arama Sonuçları
+									<span id="results-count"></span>
+					</h1>
+				</div>
+
+				<div class="archive-container">
+								<div class="anime-list">
+						<div id="search-summary" class="loading">Aranıyor...</div>
+						<div id="anime-container"></div>
+						<div id="pagination-container" class="pagination"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="footer">
+				<div class="footerleft">
+					Copyright &copy; 2025
+					<a href="https://openani.me/profile/7149634466816724993/">YepYeniWatch</a>
+					</br>
+					<span>Tüm Hakları Saklıdır</span>
+					<a href="https://openani.me/profile/7149634466816724993/">vahdetlol</a>
+				</div>
+			</div>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+			<script src="yepyeniwatch/js/jquery.perfect-scrollbar.min.js"></script>
+			<script src="yepyeniwatch/js/owl.carousel.min.js"></script>
+			<script src="yepyeniwatch/js/vpenanime.js"></script>
+			<script src="yepyeniwatch/js/openapi.js"></script>
+			<script src="yepyeniwatch/js/search-page.js"></script>
+		</div>
+	</body>
+	</html>

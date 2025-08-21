@@ -535,6 +535,30 @@ $(document).ready(function () {
       $("#scrollbar-container").css({ "max-height": "", width: "" });
   });
 });
+
+// Global search redirect (Enter or submit) to search results page
+$(document).on('submit', 'form.example', function (e) {
+  try {
+    var $input = $('#searchInput');
+    var q = ($input.val() || '').trim();
+    if (q.length > 0) {
+      e.preventDefault();
+      window.location.href = 'search?q=' + encodeURIComponent(q);
+      return false;
+    }
+  } catch (err) {}
+});
+
+$(document).on('keydown', '#searchInput', function (e) {
+  if (e.key === 'Enter') {
+    var q = ($(this).val() || '').trim();
+    if (q.length > 0) {
+      e.preventDefault();
+      window.location.href = 'search?q=' + encodeURIComponent(q);
+      return false;
+    }
+  }
+});
 $("#trd").click(function () {
   $(".dil").hide();
   $('[dil="trd"]').css("display", "inline-block");
