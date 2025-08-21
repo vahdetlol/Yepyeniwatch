@@ -9,6 +9,8 @@ $(document).ready(function() {
     let activeCategories = [];
     let totalAnimeCount = 0;
     let categories = [];
+    const PAGE_SIZE = 25; // Openani.me pagination size
+    let latestFiltersKey = ""; // To avoid race conditions when updating total count
     
     // Initialize
     loadCategories();
@@ -82,43 +84,43 @@ $(document).ready(function() {
         const releaseYearStart = $('#release-year-start').val();
         const releaseYearEnd = $('#release-year-end').val();
         
-        // Build URL
-        let apiUrl = `https://api.openani.me/anime?page=${currentPage}`;
+        // Build filter query string once to reuse (and a key to detect changes)
+        const { filtersQS, filtersKey } = (function buildFiltersQS() {
+            // Kategorileri ve anahtar kelimeleri birleştir
+            let keywordsArray = [];
+            if (activeCategories.length > 0) {
+                keywordsArray = [...activeCategories];
+            }
+            const keywordsParam = `&keywords=${encodeURIComponent(keywordsArray.join(',').toLowerCase())}`;
+            
+            // Puan aralığı
+            let scoreParam = '&score=';
+            if (minScoreStart && minScoreEnd) {
+                scoreParam = `&score=${minScoreStart},${minScoreEnd}`;
+            } else if (minScoreStart) {
+                scoreParam = `&score=${minScoreStart},10`;
+            } else if (minScoreEnd) {
+                scoreParam = `&score=0,${minScoreEnd}`;
+            }
+            
+            // Tarih aralığı
+            let dateParam = '&date=';
+            if (releaseYearStart && releaseYearEnd) {
+                dateParam = `&date=${releaseYearStart},${releaseYearEnd}`;
+            } else if (releaseYearStart) {
+                dateParam = `&date=${releaseYearStart},2100`;
+            } else if (releaseYearEnd) {
+                dateParam = `&date=1880,${releaseYearEnd}`;
+            }
+            
+            const qs = `${keywordsParam}${scoreParam}${dateParam}`;
+            const key = `kw=${keywordsArray.join(',').toLowerCase()}|${scoreParam}|${dateParam}`;
+            return { filtersQS: qs, filtersKey: key };
+        })();
+        latestFiltersKey = filtersKey;
         
-        // Kategorileri ve anahtar kelimeleri birleştir
-        let keywordsArray = [];
-        
-        // Seçilen kategorileri ekle
-        if (activeCategories.length > 0) {
-            keywordsArray = [...activeCategories];
-        }
-        
-        // Keywords parametresini oluştur
-        apiUrl += `&keywords=${encodeURIComponent(keywordsArray.join(',').toLowerCase())}`;
-        
-        // Puan aralığı için API formatına uygun parametre oluştur
-        if (minScoreStart && minScoreEnd) {
-            apiUrl += `&score=${minScoreStart},${minScoreEnd}`;
-        } else if (minScoreStart) {
-            apiUrl += `&score=${minScoreStart}`;
-        } else if (minScoreEnd) {
-            apiUrl += `&score=0,${minScoreEnd}`;
-        } else {
-            // Puan alanları boş olsa bile parametre eklenir
-            apiUrl += `&score=`;
-        }
-        
-        // Tarih aralığı için API formatına uygun parametre oluştur
-        if (releaseYearStart && releaseYearEnd) {
-            apiUrl += `&date=${releaseYearStart},${releaseYearEnd}`;
-        } else if (releaseYearStart) {
-            apiUrl += `&date=${releaseYearStart},2100`;
-        } else if (releaseYearEnd) {
-            apiUrl += `&date=1880,${releaseYearEnd}`;
-        } else {
-            // Tarih alanları boş olsa bile parametre eklenir
-            apiUrl += `&date=`;
-        }
+        // Build URL for current page
+        const apiUrl = `https://api.openani.me/anime?page=${currentPage}${filtersQS}`;
         
         // Fetch data
         $.ajax({
@@ -130,10 +132,40 @@ $(document).ready(function() {
                 if (response && response.animes && response.animes.length > 0) {
                     const animes = response.animes;
                     totalPages = response.totalPages;
-                    totalAnimeCount = response.totalCount || animes.length;
                     
-                    // Update total anime count
-                    $("#anime-count").text(`(${totalAnimeCount} anime)`);
+                    // Calculate total count accurately based on pagination if API doesn't send totalCount
+                    const hasTotal = typeof response.totalCount === 'number' && isFinite(response.totalCount);
+                    if (hasTotal) {
+                        totalAnimeCount = response.totalCount;
+                        $("#anime-count").text(`(${totalAnimeCount} anime)`);
+                    } else {
+                        // If only one page, it's the current count
+                        if (!totalPages || totalPages <= 1) {
+                            totalAnimeCount = animes.length;
+                            $("#anime-count").text(`(${totalAnimeCount} anime)`);
+                        } else if (currentPage === totalPages) {
+                            // We are on the last page, so we can compute directly
+                            totalAnimeCount = (totalPages - 1) * PAGE_SIZE + animes.length;
+                            $("#anime-count").text(`(${totalAnimeCount} anime)`);
+                        } else {
+                            // Fetch the last page to get its item count
+                            const lastPageUrl = `https://api.openani.me/anime?page=${totalPages}${filtersQS}`;
+                            const requestKey = filtersKey; // capture key for this request
+                            $.ajax({
+                                url: lastPageUrl,
+                                method: 'GET'
+                            }).done(function(lastResp) {
+                                if (requestKey !== latestFiltersKey) return; // filters changed; ignore
+                                const lastCount = (lastResp && lastResp.animes) ? lastResp.animes.length : 0;
+                                totalAnimeCount = (totalPages - 1) * PAGE_SIZE + lastCount;
+                                $("#anime-count").text(`(${totalAnimeCount} anime)`);
+                            }).fail(function() {
+                                if (requestKey !== latestFiltersKey) return;
+                                // Fallback approximation if last page fetch fails
+                                $("#anime-count").text(`(~${totalPages * PAGE_SIZE} anime)`);
+                            });
+                        }
+                    }
                     
                     // Render animes
                     animes.forEach(anime => {
