@@ -1,132 +1,71 @@
-{
-  "episodes": [
+[
   {
-    "slug": "kaoru-hana-wa-rin-to-saku",
-    "english": "The Fragrant Flower Blooms with Dignity",
-    "romaji": "Kaoru Hana wa Rin to Saku",
+    "slug": "kao-ni-denai-kashiwada-san-to-kao-ni-deru-oota-kun",
+    "english": "Inexpressive Kashiwada and Expressive Oota",
+    "romaji": "Kao ni Denai Kashiwada-san to Kao ni Deru Oota-kun",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/dl3pdT1NZiqRM4aDBwsD2TtO8x9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/g1sYAQt0OeCxzyfagSEqxUlsLnt.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "zutaboro-reijou-wa-ane-no-moto-konyakusha-ni-dekiai-sareru",
-    "english": "Betrothed to My Sister's Ex",
-    "romaji": "Zutaboro Reijou wa Ane no Moto Konyakusha ni Dekiai sareru",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/hyODXbjqZeGS2WMCw0nkcMiGTdO.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/o7oX9Ap3Rvgt3225mvuIBvk7vlW.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/hpiDAC5M0Gc8JSVgan2Ip5Zt9zK.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/ve5crOg8lV3DrCb7j0LaQkVhvDp.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "guimi-zhi-zhu-xiaochou-pian",
-    "english": "Lord of Mysteries",
-    "romaji": "Guimi Zhi Zhu: Xiaochou Pian",
+    "slug": "gnosia",
+    "english": "GNOSIA",
+    "romaji": "Gnosia",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/AdWWrcYKNXlpeWNJlmK4HCJ6Dj9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/c8fHePq3yTn3WvZd4hupkHwsjm5.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/4QwxPBOohSQX3nPFN6pb6uBosMd.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/ixYq5H7fGjsUbbgDckkgIY9hkbH.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "long-zu",
-    "english": "Dragon Raja -The Blazing Dawn-",
-    "romaji": "Long Zu",
+    "slug": "spy-x-family",
+    "english": "SPY x FAMILY",
+    "romaji": "Spy x Family",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/16oOT4iNCEnYXByMYhNGto5a32g.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/4OxjZt3Evt0UY65Ozr4C4S895CO.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/lysUnU6V0VfcthDbviuVlIqgHOR.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/7NAvPYPAu7MeHwP8E9sn81PqsRh.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "jibaku-shounen-hanako-kun",
-    "english": "Toilet-Bound Hanako-kun",
-    "romaji": "Jibaku Shounen Hanako-kun",
+    "slug": "boku-no-hero-academia",
+    "english": "My Hero Academia",
+    "romaji": "Boku no Hero Academia",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ifJacgrENUweJF5Kq8h2NYfShzd.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/iehq6tSUylg5kFkOxndNYZWjzNu.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/cH39aJg9VlEaYo6yY37Iah8RAaz.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/phuYuzqWW9ru8EA3HVjE9W2Rr3M.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "silent-witch-chinmoku-no-majo-no-kakushigoto",
-    "english": "Secrets of the Silent Witch",
-    "romaji": "Silent Witch: Chinmoku no Majo no Kakushigoto",
+    "slug": "sanda",
+    "english": "SANDA",
+    "romaji": "Sanda",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/6yC53NuAwy8KhbzsrZ7NDFsSg2p.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/oIpQQS53kzAMftZMmzHuVU8f98l.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/7gphZmKk3BVAeIK4AdN8GLmtoZ2.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/uPMJU0u3kOk9ITrsJnHpBFvEK0H.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "yofukashi-no-uta",
-    "english": "Call of the Night",
-    "romaji": "Yofukashi no Uta",
+    "slug": "saigo-ni-hitotsu-dake-onegai-shitemo-yoroshii-deshou-ka",
+    "english": "May I Ask for One Final Thing?",
+    "romaji": "Saigo ni Hitotsu dake Onegai shitemo Yoroshii deshou ka",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ohgC4YPhYO4mjTW64JRK0abx6lQ.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/rDhwDG2ii8c3nCcfUNp6mogGQ93.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "tougen-anki",
-    "english": "Tougen Anki",
-    "romaji": "Tougen Anki",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/sQhr9GDYiA56zZoaw25qjcGsFuE.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/vnasRNhwT5M3OvTAMzYn4i5fQcT.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/cSAVRsNxzpuf51wpwbju1udVgsz.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/u5kCaEFoDX30k68RwP4F6bsYQbb.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "jigoku-sensei-nube-2025",
-    "english": "Hell Teacher: Jigoku Sensei Nube",
-    "romaji": "Jigoku Sensei Nube (2025)",
+    "slug": "bukiyou-na-senpai",
+    "english": "My Awkward Senpai",
+    "romaji": "Bukiyou na Senpai.",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/vdMoQCiHQNtrbjp7SmFGG2i76g0.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/rsytua5oKGyqzX2sdCZcq5Cck2l.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "mizu-zokusei-no-mahoutsukai",
-    "english": "The Water Magician",
-    "romaji": "Mizu Zokusei no Mahoutsukai",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/uwWE59oPx5ph8qVJzr8mbzD60CA.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/9GWz3D9aBgtn6pMiu3DTZL3h5ua.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "summer-pockets",
-    "english": "Summer Pockets",
-    "romaji": "Summer Pockets",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/yj0AlgpXjqFeORzpXCHF8g3aN1N.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/8WALipI4LbRa3POKJOfGPLrVemK.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "kanojo-okarishimasu",
-    "english": "Rent-a-Girlfriend",
-    "romaji": "Kanojo, Okarishimasu",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ullfy98STkno11rDGi44SK6llwx.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/6ZpDPUNtVw6UdJoStvVlRZ62yAi.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "mikadono-sanshimai-wa-angai-choroi",
-    "english": "Dealing with Mikadono Sisters Is a Breeze",
-    "romaji": "Mikadono Sanshimai wa Angai, Choroi.",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/yxCKl8PUUDmy0CTbWqBxfhHYRG6.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/7JMW8B6JqARUxc01h6mctKp1TFv.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/m0D68XFTc046tQGruDkdYTX38oa.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/lBaLxzsfYxoNuPtGHj32D2652Nm.jpg"
     },
     "is4K": false
   },
@@ -141,74 +80,194 @@
     "is4K": false
   },
   {
-    "slug": "city-the-animation",
-    "english": "CITY THE ANIMATION",
-    "romaji": "City The Animation",
+    "slug": "watashi-wo-tabetai-hitodenashi",
+    "english": "This Monster Wants to Eat Me",
+    "romaji": "Watashi wo Tabetai, Hitodenashi",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/3cIhByWeoj5atTAs1aSQwyrHASa.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/nmW8UEvhbSR5ANmfnC0hSG7lS88.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/vDpjG0xmgZ4fJhFW0ZHx0Hzclk.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/wWeX98utJGCTvLKPUYnlg8Euw2o.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "new-panty-stocking-with-garterbelt",
-    "english": "New PANTY & STOCKING with GARTERBELT",
-    "romaji": "New Panty & Stocking with Garterbelt",
+    "slug": "yano-kun-no-futsuu-no-hibi",
+    "english": "Yano-kun's Ordinary Days",
+    "romaji": "Yano-kun no Futsuu no Hibi",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/eXxgT33OitzfmYol1kbTy7TKNOR.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/iCKyoA65JrbYytIC4esGQI27EyM.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/aoMIEFp2U1rCuGIRmcRdYHq532O.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/jzj8HxW4PPabkzaACIBYjiCgp38.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "tsuyokute-new-saga",
-    "english": "New Saga",
-    "romaji": "Tsuyokute New Saga",
+    "slug": "tondemo-skill-de-isekai-hourou-meshi",
+    "english": "Campfire Cooking in Another World with My Absurd Skill",
+    "romaji": "Tondemo Skill de Isekai Hourou Meshi",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/u9p6IIYllP8gwZB2URx08jIYdvZ.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/dmZ74VyWi3I8ZqJ1m3Fmcc1etgp.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/4A74F9J4HBQYDcudi1tyb3Mz0zS.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/i9dL4Prs5UImh3YpCgN2DbjYoCg.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "watashi-ga-koibito-ni-nareru-wake-nai-jan-muri-muri-muri-ja-nakatta",
-    "english": "There's No Freaking Way I'll Be Your Lover! Unless...",
-    "romaji": "Watashi ga Koibito ni Nareru Wake Nai jan, Muri Muri! (※Muri ja Nakatta!?)",
+    "slug": "towa-no-yuugure",
+    "english": "Dusk Beyond the End of the World",
+    "romaji": "Towa no Yuugure",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/xMn1Fc4Go36WxZTgx4txH1Lkn3B.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/zb3FK85DijFCOlT7ghGtfcZCGOC.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/nV2vZlXsbU8cUdLAmTsPVGmySb9.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/xfCA7LKaIE6JbswEVUITSrl6FiH.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "egao-no-taenai-shokuba-desu",
+    "english": "A Mangaka's Weirdly Wonderful Workplace",
+    "romaji": "Egao no Taenai Shokuba desu.",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/h24anZ9ualhifTtdmGs5yVzMOyi.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/cKfneBPtrcOnvpNwQgrhELKERwl.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "tomodachi-no-imouto-ga-ore-ni-dake-uzai",
+    "english": "My Friend's Little Sister Has It In for Me!",
+    "romaji": null,
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/rdIZOzYMcG0GZhgzQ1oBmWlsjNd.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/kp6CHTu9a5SqDvfa6FsEAqMQRIv.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "3-nen-z-gumi-ginpachi-sensei",
+    "english": "GINTAMA - Mr. Ginpachi's Zany Class",
+    "romaji": "3-nen Z-gumi Ginpachi-sensei",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/p3z41RTX1Y9qmb9LwOiZY0Qrs1j.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/nx7eCCvOWR9m9dw6LPOGMvFkoZO.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga",
+    "english": "My Status as an Assassin Obviously Exceeds the Hero's",
+    "romaji": "Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/etOD8HsDL6PCJwcuSvReaZmLypE.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/oQk3aXYEa4TMd9rAYgzDpAYTU8P.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "digimon-beatbreak",
+    "english": "Digimon Beatbreak",
+    "romaji": "Digimon Beatbreak",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/2krbDnJegFENpe8Wp30AsRXazbM.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/qcy74ZdijvhaIyiPKFVZJZZrpJt.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "mofa-gongzhu-de-xiao-fannao",
+    "english": "The Fated Magical Princess: Who Made Me a Princess",
+    "romaji": "Mofa Gongzhu de Xiao Fannao",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/bo2DaVKFagKsodUk6GWMov9vxV1.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/wOOkVZQTmTGXBJ0VPeP02YZl84m.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "si-vis-the-sound-of-heroes",
+    "english": "SI-VIS: The Sound of Heroes",
+    "romaji": "SI-VIS: The Sound of Heroes",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/zRn0ydXKhAg8Me9WMndyDfRgpGk.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/kEju7ai3eWcq6aNDl2uJkucOcDk.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "one-punch-man",
+    "english": "One-Punch Man",
+    "romaji": "One Punch Man",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/3AXLSxMuqyZt8HyrKKfrcJtkswD.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/dT10AxJIXVvRwFAew4tt2RhzJrD.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "gachiakuta",
+    "english": "Gachiakuta",
+    "romaji": "Gachiakuta",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/mrapJp0qb6Fvo3IW9IrjCK9IgSo.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/lXAyZHGAh0YrAi8x7ekCnoquace.jpg"
     },
     "is4K": true
   },
   {
-    "slug": "turkey",
-    "english": "Turkey! Time to Strike",
-    "romaji": "Turkey!",
+    "slug": "kikaijikake-no-marie",
+    "english": "Mechanical Marie",
+    "romaji": "Kikaijikake no Marie",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/5CeqnZEe2CpIitrV9edxKpYmHGk.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/sM34otxT9zSBcCHpJuRHulDQqLQ.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/hyynVgGCfc0qG7ooiRIhQfIw9RN.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/1uBvmTta9mVjHpO7K5mQm9B09ng.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "clevatess-majuu-no-ou-to-akago-to-shikabane-no-yuusha",
-    "english": "Clevatess",
-    "romaji": "Clevatess: Majuu no Ou to Akago to Shikabane no Yuusha",
+    "slug": "kingdom",
+    "english": "Kingdom",
+    "romaji": "Kingdom",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/UErKAycnzSAJqGvJpSy0tw5auS.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/1Pcp1QJS83KY25nTnL2UvJHWUVQ.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/5CGM0vQpq0QBcslUXqoo0unlGPZ.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/dehuJJkKo50nYvCYppigrWejqLe.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "tate-no-yuusha-no-nariagari",
-    "english": "The Rising of the Shield Hero",
-    "romaji": "Tate no Yuusha no Nariagari",
+    "slug": "uma-musume-cinderella-gray",
+    "english": "Umamusume: Cinderella Gray",
+    "romaji": "Uma Musume: Cinderella Gray",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/de6iC707SwuMsE3y2fo5OHCOsvj.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/yjq2n0agGJfmZQ9NpbYIhuBofcq.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/kCqOvdTazSJYorYTZMJUrbzcdxW.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/ncq5uKIcifVITPIYT2G1KpUPMoW.jpg"
     },
-    "is4K": true
+    "is4K": false
+  },
+  {
+    "slug": "fumetsu-no-anata-e",
+    "english": "To Your Eternity",
+    "romaji": "Fumetsu no Anata e",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/qmeC99iX9YPbxi3Dwsw5VvxIbCC.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/lA2jRBubr2OLOlbkJXuBXYqv4A9.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "mikata-ga-yowasugite-hojo-mahou-ni-tesshiteita-kyuutei-mahoushi-tsuihou-sarete-saikyou-wo-mezashimasu",
+    "english": "The Banished Court Magician Aims to Become the Strongest",
+    "romaji": "Mikata ga Yowasugite Hojo Mahou ni Tesshiteita Kyuutei Mahoushi, Tsuihou sarete Saikyou wo Mezashimasu",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/xmw3Ozf1wFslq9F9H2SWaDIYlKT.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/tmGjjRN9dRFzybRLSecgxNo46IE.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "long-zu",
+    "english": "Dragon Raja -The Blazing Dawn-",
+    "romaji": "Long Zu",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/16oOT4iNCEnYXByMYhNGto5a32g.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/4OxjZt3Evt0UY65Ozr4C4S895CO.jpg"
+    },
+    "is4K": false
   },
   {
     "slug": "kakkou-no-iinazuke",
@@ -221,22 +280,112 @@
     "is4K": false
   },
   {
-    "slug": "nukitashi-the-animation",
-    "english": "Nukitashi the Animation",
-    "romaji": "Nukitashi the Animation",
+    "slug": "tensei-akujo-no-kuro-rekishi",
+    "english": "The Dark History of the Reincarnated Villainess",
+    "romaji": "Tensei Akujo no Kuro Rekishi",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/sKlF9YrVu84DYMDAUZEZDCvDxK2.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/zlybZJXfu4IpPnWXhnRtobl9BgZ.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/kxR0LaIF27D6RiyeSdTx0LHRmGA.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/yrAx1DmfnZjTs2NKsljqd60Kg9X.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "one-piece",
-    "english": "One Piece",
-    "romaji": "One Piece",
+    "slug": "tougen-anki",
+    "english": "Tougen Anki",
+    "romaji": "Tougen Anki",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/6fRwRD7GdCfg6owzmCT3VgQtowl.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/cMD9Ygz11zjJzAovURpO75Qg7rT.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/k7h9p81H6X6TGV70TgOp4TmjXco.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/vnasRNhwT5M3OvTAMzYn4i5fQcT.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "i-saved-myself-with-a-potion-life-in-another-world",
+    "english": "I Saved Myself with a Potion!: Life in Another World",
+    "romaji": null,
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/ckQDcmK6yj1lHHC8p1J7mzeXxy0.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/9gGvYKJbfvgBDy6yW9yzWMwc1GG.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "shinjiteita-nakama-tachi-ni-dungeon-okuchi-de-korosarekaketa-ga-gift-mugen-gacha-de-level-9999-no-nakama-tachi-wo-te-ni-irete-moto-party-member-to-sekai-ni-fukushuu-zamaa-shimasu",
+    "english": "My Gift Lvl 9999 Unlimited Gacha: Backstabbed in a Backwater Dungeon, I'm Out for Revenge!",
+    "romaji": "Shinjiteita Nakama-tachi ni Dungeon Okuchi de Korosarekaketa ga Gift \"Mugen Gacha\" de Level 9999 no Nakama-tachi wo Te ni Irete Moto Party Member to Sekai ni Fukushuu & \"Zamaa!\" Shimasu!",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/vnTrREtP0qBSmZHEEZR515FAXXB.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/pGNBYEae87H8iLRF3AoztonnZkp.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "mushoku-no-eiyuu-betsu-ni-skill-nanka-iranakatta-n-da-ga",
+    "english": "Hero Without a Class: Who Even Needs Skills?!",
+    "romaji": "Mushoku no Eiyuu: Betsu ni Skill Nanka Iranakatta n da ga",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/lkzrT7Vpnd2OZ2bpKXjWsb9KFc0.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/wEJKnnOIl8PhVhkgghMiMRTc5tL.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "witch-watch",
+    "english": "Witch Watch",
+    "romaji": "Witch Watch",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/yTfaG7igCJa324DU0QaxCTzYBXF.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/48KKO5QHkowaCVsEpKLdvrzir3a.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "chichi-wa-eiyuu-haha-wa-seirei-musume-no-watashi-wa-tenseisha",
+    "english": "Dad Is a Hero, Mom Is a Spirit, I'm a Reincarnator",
+    "romaji": "Chichi wa Eiyuu, Haha wa Seirei, Musume no Watashi wa Tenseisha.",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/mjliPI4Zh9zcPMoQdL3XqVVOVnv.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/6JMQ3DJMudsCgErn21Bv0NchmE6.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "akujiki-reijou-to-kyouketsu-koushaku",
+    "english": "Pass the Monster Meat, Milady!",
+    "romaji": "Akujiki Reijou to Kyouketsu Koushaku",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/w1HbeProIahk07Ksj5Y2OVo5Zxx.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/mIjksDgTYm2SRGEHT2HhCkSOM5d.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "silent-witch-chinmoku-no-majo-no-kakushigoto",
+    "english": "Secrets of the Silent Witch",
+    "romaji": "Silent Witch: Chinmoku no Majo no Kakushigoto",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/6yC53NuAwy8KhbzsrZ7NDFsSg2p.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/oIpQQS53kzAMftZMmzHuVU8f98l.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "yasei-no-last-boss-ga-arawareta",
+    "english": "A Wild Last Boss Appeared!",
+    "romaji": "Yasei no Last Boss ga Arawareta!",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/gNYmU3RUlCb6dVqkiPCT7vglMfg.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/sDb5USp0nknvs3mHmyurgH8y3z6.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "watari-kun-no-xx-ga-houkai-sunzen",
+    "english": "Watari-kun's ****** Is About to Collapse",
+    "romaji": "Watari-kun no xx ga Houkai Sunzen",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/wlDhjgzU1NnlZT3jd40OgnC2wL9.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/lbg43t7mslXskfuWpLeMz1NEQGR.jpg"
     },
     "is4K": false
   },
@@ -251,22 +400,122 @@
     "is4K": false
   },
   {
-    "slug": "grand-blue",
-    "english": "Grand Blue Dreaming",
-    "romaji": "Grand Blue",
+    "slug": "summer-pockets",
+    "english": "Summer Pockets",
+    "romaji": "Summer Pockets",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/pJqAgDico7ZTMAfAXyzldYqj5ME.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/pzX1uUpyjpX7tHcol1IAVvDRwIw.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/yj0AlgpXjqFeORzpXCHF8g3aN1N.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/8WALipI4LbRa3POKJOfGPLrVemK.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "koupen-chan",
-    "english": "Koupen Chan",
-    "romaji": "Koupen-chan",
+    "slug": "mattaku-saikin-no-tantei-to-kitara",
+    "english": "Detectives These Days Are Crazy!",
+    "romaji": "Mattaku Saikin no Tantei to Kitara",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/cWELfrOJoS7E4X4vFeC2cP5bOmN.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/3nm8laFJMcJ4QsGfqWmJtuVStLr.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/38H5MJX53fSi8W03YiMStLBmj6D.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/mKP4VWY38xTi7eRIbOAZoyYXYj4.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "one-piece",
+    "english": "One Piece",
+    "romaji": "One Piece",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/4Mt7WHox67uJ1yErwTBFcV8KWgG.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/cMD9Ygz11zjJzAovURpO75Qg7rT.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "hikaru-ga-shinda-natsu",
+    "english": "The Summer Hikaru Died",
+    "romaji": "Hikaru ga Shinda Natsu",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/jclmJcyV8twDtTtSNJiMVAg6Xyv.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/x0wiTO87UMiVCUe24nKaHlp7AIc.jpg"
+    },
+    "is4K": true
+  },
+  {
+    "slug": "anne-shirley",
+    "english": "Anne Shirley",
+    "romaji": "Anne Shirley",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/hkn5Ak14LyZf7PeZPXYnSDWCaDO.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/jRbV0vcG1YsOWZXxdo65OoE4ti9.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "mizu-zokusei-no-mahoutsukai",
+    "english": "The Water Magician",
+    "romaji": "Mizu Zokusei no Mahoutsukai",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/s7LgF8NmL0Qi9fWAeZvOBx9s2jy.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/9GWz3D9aBgtn6pMiu3DTZL3h5ua.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "new-panty-stocking-with-garterbelt",
+    "english": "New PANTY & STOCKING with GARTERBELT",
+    "romaji": "New Panty & Stocking with Garterbelt",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/eXxgT33OitzfmYol1kbTy7TKNOR.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/4BreeBRj2yJpqwlMtIlFhd8NI50.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "kanojo-okarishimasu",
+    "english": "Rent-a-Girlfriend",
+    "romaji": "Kanojo, Okarishimasu",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/ullfy98STkno11rDGi44SK6llwx.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/6ZpDPUNtVw6UdJoStvVlRZ62yAi.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "ame-to-kimi-to",
+    "english": "With You and the Rain",
+    "romaji": "Ame to Kimi to",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/ldLp94vNVvs2N5IixzT1VkWbTI.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/phmWVK7rfTVI2IaPyMDAF4L5EPu.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "tsuihousha-shokudou-e-youkoso",
+    "english": "Welcome to the Outcast's Restaurant!",
+    "romaji": "Tsuihousha Shokudou e Youkoso!",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/npitfwFysLOv93fypQrgWC7Y2tz.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/caWU2F1DSrrJgoJCSclpSoCWnge.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "zutaboro-reijou-wa-ane-no-moto-konyakusha-ni-dekiai-sareru",
+    "english": "Betrothed to My Sister's Ex",
+    "romaji": "Zutaboro Reijou wa Ane no Moto Konyakusha ni Dekiai sareru",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/hyODXbjqZeGS2WMCw0nkcMiGTdO.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/o7oX9Ap3Rvgt3225mvuIBvk7vlW.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "muchuu-sa-kimi-ni",
+    "english": "Captivated, by You",
+    "romaji": "Muchuu sa, Kimi ni.",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/ozQYyPKdN9rNNsGuZ0mJVLr31cE.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/AvcZ1SGxKMJFK6obLBT4Hy5yvLj.jpg"
     },
     "is4K": false
   },
@@ -291,44 +540,64 @@
     "is4K": false
   },
   {
-    "slug": "isekai-mokushiroku-mynoghra-hametsu-no-bunmei-de-hajimeru-sekai-seifuku",
-    "english": "Apocalypse Bringer Mynoghra: World Conquest Starts with the Civilization of Ruin",
-    "romaji": "Isekai Mokushiroku Mynoghra: Hametsu no Bunmei de Hajimeru Sekai Seifuku",
+    "slug": "dandadan",
+    "english": "Dan Da Dan",
+    "romaji": "Dandadan",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/drINdRuh71M8MpoPWcxwpP9yDEU.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/cPVLebbkrh3H0yXba4NW5fdrPUp.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "private-tutor-to-the-dukes-daughter",
-    "english": "Private Tutor to the Duke's Daughter",
-    "romaji": "Koujo Denka no Kateikyoushi",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/jOOQ8JHCbgiPrTVGV3RnHEAIFQP.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/goM5LPOAKJDvf2BPWYqoPgbcb7B.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/uNTrRKIOyKYISthoeizghtXPEOK.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/6qfZAOEUFIrbUH3JvePclx1nXzz.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "ame-to-kimi-to",
-    "english": "With You and the Rain",
-    "romaji": "Ame to Kimi to",
+    "slug": "mikadono-sanshimai-wa-angai-choroi",
+    "english": "Dealing with Mikadono Sisters Is a Breeze",
+    "romaji": "Mikadono Sanshimai wa Angai, Choroi.",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/qjxsSjx7AjdiHuPlT2iHnpcd5UA.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/phmWVK7rfTVI2IaPyMDAF4L5EPu.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/yxCKl8PUUDmy0CTbWqBxfhHYRG6.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/7JMW8B6JqARUxc01h6mctKp1TFv.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "gachiakuta",
-    "english": "Gachiakuta",
-    "romaji": "Gachiakuta",
+    "slug": "tsuyokute-new-saga",
+    "english": "New Saga",
+    "romaji": "Tsuyokute New Saga",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/mrapJp0qb6Fvo3IW9IrjCK9IgSo.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/oU2SBv5VQCdOHfw3Aw8B0UeAsim.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/u9p6IIYllP8gwZB2URx08jIYdvZ.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/dmZ74VyWi3I8ZqJ1m3Fmcc1etgp.jpg"
     },
-    "is4K": true
+    "is4K": false
+  },
+  {
+    "slug": "clevatess-majuu-no-ou-to-akago-to-shikabane-no-yuusha",
+    "english": "Clevatess",
+    "romaji": "Clevatess: Majuu no Ou to Akago to Shikabane no Yuusha",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/5nmg2cEZxA09VyDvioAuqd5jOW0.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/1Pcp1QJS83KY25nTnL2UvJHWUVQ.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "sakamoto-days",
+    "english": "SAKAMOTO DAYS",
+    "romaji": "Sakamoto Days",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/blSthAPRbEOJBowdxppeQqNPRh9.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/wRpCqsJFyKNuh5FMegNPrhzp2NF.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "grand-blue",
+    "english": "Grand Blue Dreaming",
+    "romaji": "Grand Blue",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/pJqAgDico7ZTMAfAXyzldYqj5ME.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/pzX1uUpyjpX7tHcol1IAVvDRwIw.jpg"
+    },
+    "is4K": false
   },
   {
     "slug": "tu-bian-yingxiong-x",
@@ -346,207 +615,17 @@
     "romaji": "Bad Girl",
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/eUJ7fudfrzIxx8PJoitNsmK74ce.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/ovE3txsuLdvpIPWpG4WodlkWXGi.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "seishun-buta-yarou-wa-bunny-girl-senpai-no-yume-wo-minai",
-    "english": "Rascal Does Not Dream of Bunny Girl Senpai",
-    "romaji": "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ffvaWDSYLcIQRCLFLG1a3lC0xPX.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/kVFszsNX8f7LnajQSNJqlTOdy0y.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "sono-bisque-doll-wa-koi-wo-suru",
-    "english": "My Dress-Up Darling",
-    "romaji": "Sono Bisque Doll wa Koi wo Suru",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/gWPK2RIVJ6i3myf7Xdw8DqlznT8.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/A6mxBwvvv63JXZm3xXKv4SugE0L.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "kaijuu-8-gou",
-    "english": "Kaiju No. 8",
-    "romaji": "Kaijuu 8-gou",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/9DrORnlwnjt5SeJKcuE5sqOoIdV.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/bJxGs0w5RAhaX4fIUQu511rvm0S.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "boku-no-hero-academia",
-    "english": "My Hero Academia",
-    "romaji": "Boku no Hero Academia",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/cH39aJg9VlEaYo6yY37Iah8RAaz.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/phuYuzqWW9ru8EA3HVjE9W2Rr3M.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "arknights-reimei-zensou",
-    "english": "Arknights",
-    "romaji": "Arknights: Prelude to Dawn",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/kJHEPw3itVz3RmVh4B2PwIVjn3b.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/bOHwf20OzBVBrhX31MyUdxQR0d2.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "mr-osomatsu",
-    "english": "Mr. Osomatsu",
-    "romaji": null,
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/kdTRIa25We8UDRNuBC9fhXRlHGY.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/vEsmh6m9fUhJzGfLxUpliT3vqdh.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "dandadan",
-    "english": "Dan Da Dan",
-    "romaji": "Dandadan",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/uNTrRKIOyKYISthoeizghtXPEOK.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/6qfZAOEUFIrbUH3JvePclx1nXzz.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "dr-stone",
-    "english": "Dr. STONE",
-    "romaji": "Dr. Stone",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/lN13BPAEnc5iXmoxxBQHOZ1ScfZ.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/64DIVpWiGlvvJczMnyu8jojSYKm.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "onmyou-kaiten-re-birth",
-    "english": "Onmyo Kaiten Re:Birth Verse",
-    "romaji": "Onmyou Kaiten Re:Birth",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/fGrAejjSIi8VNEEvtuepyHjz83o.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/r5DnBhyW5BtTQH1k2sx2BSwCWxM.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "tsuihousha-shokudou-e-youkoso",
-    "english": "Welcome to the Outcast's Restaurant!",
-    "romaji": "Tsuihousha Shokudou e Youkoso!",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/npitfwFysLOv93fypQrgWC7Y2tz.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/caWU2F1DSrrJgoJCSclpSoCWnge.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "tensei-shitara-dainana-ouji-datta-node-kimama-ni-majutsu-wo-kiwamemasu",
-    "english": "I Was Reincarnated as the 7th Prince so I Can Take My Time Perfecting My Magical Ability",
-    "romaji": "Tensei shitara Dainana Ouji Datta node, Kimama ni Majutsu wo Kiwamemasu",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/ed9Mgo1gBO9Za0zAyNIpTvtjTDU.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/2Z7EJXxf9kd9OvdbfqTZRFIhwvJ.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "ruri-no-houseki",
-    "english": "Ruri Rocks",
-    "romaji": "Ruri no Houseki",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/em3nz6wj5vowGOs9HVDhn8z7Veq.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/gHI3fkZMR05PeiB1SN0JADZKfdj.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "sakamoto-days",
-    "english": "SAKAMOTO DAYS",
-    "romaji": "Sakamoto Days",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/blSthAPRbEOJBowdxppeQqNPRh9.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/wRpCqsJFyKNuh5FMegNPrhzp2NF.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "hikaru-ga-shinda-natsu",
-    "english": "The Summer Hikaru Died",
-    "romaji": "Hikaru ga Shinda Natsu",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/jclmJcyV8twDtTtSNJiMVAg6Xyv.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/x0wiTO87UMiVCUe24nKaHlp7AIc.jpg"
-    },
-    "is4K": true
-  },
-  {
-    "slug": "anne-shirley",
-    "english": "Anne Shirley",
-    "romaji": "Anne Shirley",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/hkn5Ak14LyZf7PeZPXYnSDWCaDO.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/jRbV0vcG1YsOWZXxdo65OoE4ti9.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "game-center-shoujo-to-ibunka-kouryuu",
-    "english": "Cultural Exchange with a Game Centre Girl",
-    "romaji": "Game Center Shoujo to Ibunka Kouryuu",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/rKczG8rAEhKamhByGn8OJiKVY1H.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/qXJN0P8X4Sggb3GNnkYGC4l2RbL.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "scooped-up-by-an-s-rank-adventurer",
-    "english": "Scooped Up by an S-Rank Adventurer!",
-    "romaji": null,
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/oPiZmkOlew1IGJWJ5HBKmqekuvR.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/6eHbGa0m8kSVWF8ImDJ7U53CNzY.jpg"
+      "avatar": "https://image.tmdb.org/t/p/original/6dylXKMisH5rO9Ggp54igozVr8V.jpg"
     },
     "is4K": false
   },
   {
     "slug": "fermat-no-ryouri",
     "english": "Fermat Kitchen",
-    "romaji": null,
+    "romaji": "Fermat no Ryouri",
     "pictures": {
       "banner": "https://image.tmdb.org/t/p/original/A0Cz7UgjDRR8dTJOjuNDuQytsGX.jpg",
       "avatar": "https://image.tmdb.org/t/p/original/2CrSIqyoZIVk0UsbBPaJlMkCxcM.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "mattaku-saikin-no-tantei-to-kitara",
-    "english": "Detectives These Days Are Crazy!",
-    "romaji": "Mattaku Saikin no Tantei to Kitara",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/38H5MJX53fSi8W03YiMStLBmj6D.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/mKP4VWY38xTi7eRIbOAZoyYXYj4.jpg"
-    },
-    "is4K": false
-  },
-  {
-    "slug": "witch-watch",
-    "english": "Witch Watch",
-    "romaji": "Witch Watch",
-    "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/yTfaG7igCJa324DU0QaxCTzYBXF.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/48KKO5QHkowaCVsEpKLdvrzir3a.jpg"
     },
     "is4K": false
   },
@@ -561,24 +640,63 @@
     "is4K": false
   },
   {
-    "slug": "kun-tun-tianxia-zhi-zhang-men-guilai",
-    "english": "The All-Devouring Whale: Homecoming",
-    "romaji": "Kun Tun Tianxia Zhi Zhang Men Guilai",
+    "slug": "jibaku-shounen-hanako-kun",
+    "english": "Toilet-Bound Hanako-kun",
+    "romaji": "Jibaku Shounen Hanako-kun",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/qWT1hKlqF5rivsDqDxuV0jyGbyD.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/kJD5I0pvRCNhMvLTfI1rZHciCEf.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/ifJacgrENUweJF5Kq8h2NYfShzd.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/iehq6tSUylg5kFkOxndNYZWjzNu.jpg"
     },
     "is4K": false
   },
   {
-    "slug": "tu-bian-yingxiong-baba",
-    "english": "To Be Hero",
-    "romaji": "Tu Bian Yingxiong Baba",
+    "slug": "watashi-ga-koibito-ni-nareru-wake-nai-jan-muri-muri-muri-ja-nakatta",
+    "english": "There's No Freaking Way I'll Be Your Lover! Unless...",
+    "romaji": "Watashi ga Koibito ni Nareru Wake Nai jan, Muri Muri! (※Muri ja Nakatta!?)",
     "pictures": {
-      "banner": "https://image.tmdb.org/t/p/original/jUFFkOfGpnPZGLpkepCTmxJeSQv.jpg",
-      "avatar": "https://image.tmdb.org/t/p/original/1vTLG5TM8LMBB3a5LEbFSoxP4IR.jpg"
+      "banner": "https://image.tmdb.org/t/p/original/xMn1Fc4Go36WxZTgx4txH1Lkn3B.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/zb3FK85DijFCOlT7ghGtfcZCGOC.jpg"
+    },
+    "is4K": true
+  },
+  {
+    "slug": "koupen-chan",
+    "english": "Koupen Chan",
+    "romaji": "Koupen-chan",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/cWELfrOJoS7E4X4vFeC2cP5bOmN.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/3nm8laFJMcJ4QsGfqWmJtuVStLr.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "city-the-animation",
+    "english": "CITY THE ANIMATION",
+    "romaji": "City The Animation",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/1rxLKPOIHdJ9aFUwmzQ9gagZkUc.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/nmW8UEvhbSR5ANmfnC0hSG7lS88.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "ruri-no-houseki",
+    "english": "Ruri Rocks",
+    "romaji": "Ruri no Houseki",
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/iXgmcbk3f17xNFDGmdku1iKp6Ug.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/gHI3fkZMR05PeiB1SN0JADZKfdj.jpg"
+    },
+    "is4K": false
+  },
+  {
+    "slug": "mr-osomatsu",
+    "english": "Mr. Osomatsu",
+    "romaji": null,
+    "pictures": {
+      "banner": "https://image.tmdb.org/t/p/original/kdTRIa25We8UDRNuBC9fhXRlHGY.jpg",
+      "avatar": "https://image.tmdb.org/t/p/original/vEsmh6m9fUhJzGfLxUpliT3vqdh.jpg"
     },
     "is4K": false
   }
 ]
-}
