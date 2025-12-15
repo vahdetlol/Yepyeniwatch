@@ -15,12 +15,12 @@
     <meta name="location" content="türkiye, tr, turkey" />
     <meta name="google" content="notranslate" />
 
-    <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Beslemesi" href="feed/" />
+    <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Beslemesi" href="/feed" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Yorum Beslemesi"
-        href="comments/feed/" />
-    <link rel="stylesheet" href="yepyeniwatch/style.css" type="text/css" media="all" />
-    <link rel="shortcut icon" href="yepyeniwatch/images/yepyeniwatch_dik.png" />
+        href="/comments/feed" />
+    <link rel="stylesheet" href="/yepyeniwatch/style.css" type="text/css" media="all" />
+    <link rel="shortcut icon" href="/yepyeniwatch/images/yepyeniwatch_dik.png" />
 
     <meta property="og:title" content="YepYeniWatch" />
     <meta property="og:site_name" content="YepYeniWatch" />
@@ -28,7 +28,6 @@
     <meta property="og:description" content="Yeni nesil, reklamsız anime izleme platformu" />
     <meta property="og:image" content="https://media1.tenor.com/m/3TrUXi0fv0EAAAAd/kanye-staring-kanye-licking.gif" />
     <meta name='robots' content='max-image-preview:large' />
-    <base href="https://yepyeniwatch.xyz/" target="_self">
     <style>
 
         @media only screen and (max-width: 1000px) {
@@ -44,7 +43,7 @@
             z-index: 1;
             height: 100%;
             width: 100%;
-            background: url('yepyeniwatch/images/background.jpg') no-repeat fixed center 0px #000000;
+            background: url('/yepyeniwatch/images/background.jpg') no-repeat fixed center 0px #000000;
             cursor: default;
             background-size: cover;
         }
@@ -116,6 +115,16 @@
 </head>
 
 <body>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MTXCP52G2K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MTXCP52G2K');
+</script>
+
     <div class="body-clickable"></div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -128,8 +137,8 @@
     <div id="wrap">
         <div id="header">
             <div class="headerleft">
-                <a href="https://openani.me/profile/7149634466816724993/">
-                    <img src="yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
+                <a href="/">
+                    <img src="/yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
                 </a>
             </div>
             <div class="headerright">
@@ -149,31 +158,31 @@
                 <ul class="topnav" id="myTopnav">
                     <li id="menu-item-16"
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-16">
-                        <a href="">Anasayfa</a>
+                        <a href="/">Anasayfa</a>
                     </li>
                     <li id="menu-item-2994"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2994">
                         <a href="https://openani.me/calendar">Takvim</a>
                     </li>
-                    <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item menu-item-17">
-                        <a href="anime-arsivi/">Anime Arşivi</a>
+                    <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17">
+                        <a href="/anime-arsivi">Anime Arşivi</a>
                     </li>
                     <li id="menu-item-1138"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1138">
                         <a href="https://androidoyun.club/apks">Mobil Uygulama</a>
                     </li>
-                    <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28">
-                        <a href="#">Yeni Bölümler</a>
+                    <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item menu-item-28">
+                        <a href="/feed">Yeni Bölümler</a>
                     </li>
                     <li id="menu-item-2034"
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2034">
-                        <a href="https://discord.gg/r4XdBxbdCb">Discord</a>
+                        <a href="https://discord.gg/openanime">Discord</a>
                     </li>
                     <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19">
-                        <a href="https://discord.gg/r4XdBxbdCb">İletişim</a>
+                        <a href="https://discord.gg/openanime">İletişim</a>
                     </li>
                     <li>
-							<form method="get" class="example" action="search" autocomplete="off">
+							<form method="get" class="example" action="/search" autocomplete="off">
 								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
 								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
 								<div id="datafetch"></div>
@@ -209,22 +218,16 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="yepyeniwatch/js/ajax-register.js"
-            id="ajax-register-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/pld.js"
-            id="pld-frontend-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/cld.js"
-            id="cld-frontend-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/jquery.perfect-scrollbar.min.js"
+        <script type="text/javascript" src="/yepyeniwatch/js/jquery.perfect-scrollbar.min.js"
             id="jquery-perfect-scrollbar-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/owl.carousel.min.js"
+        <script type="text/javascript" src="/yepyeniwatch/js/owl.carousel.min.js"
             id="owl-carousel-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/vpenanime.js"
+        <script type="text/javascript" src="/yepyeniwatch/js/vpenanime.js"
             id="yepyeniwatch-functions-js"></script>
-        <script type="text/javascript" src="/yepyeniwatch/js/openapi.js"
-        id="yepyeniwatch-api-js"></script>
-        <script type="text/javascript"src="/yepyeniwatch/js/feed.js"
-        id="feed-js"></script>
+        <script type="text/javascript" src="/yepyeniwatch/js/api-client.js"
+            id="api-client-js"></script>
+        <script type="text/javascript" src="/yepyeniwatch/js/feed-new.js"
+            id="feed-js"></script>
     </div>
 </body>
 

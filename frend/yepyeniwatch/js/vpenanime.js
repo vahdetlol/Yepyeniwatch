@@ -93,10 +93,14 @@ function fetchResults() {
       try { activeSearchRequest.abort(); } catch (e) {}
     }
 
+    // Backend API'ye istek at (OpenAnime'e değil)
     activeSearchRequest = $.ajax({
-      url: "https://api.openani.me/anime/search?q=" + encodeURIComponent(query),
+      url: "/api/search?q=" + encodeURIComponent(query),
       type: "GET",
       dataType: "json",
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      },
       success: function (data) {
         var list = [];
         if (Array.isArray(data)) {
@@ -120,11 +124,12 @@ function fetchResults() {
             var fourk = anime.is4K ? 'https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png' : '';
             var typeRaw = (anime.type || '').toString().toLowerCase();
             var typeText = typeRaw === 'movie' ? 'Film' : (typeRaw === 'tv' ? 'Anime' : (anime.type || '').toString());
-            var avatar = anime.pictures.avatar;
+            var avatar = anime.pictures && anime.pictures.avatar ? anime.pictures.avatar : '';
             if (avatar) avatar = avatar.replace('image.tmdb.org', 'image.openanime.net');
 
+            // Yerel anime sayfasına yönlendir (OpenAnime'e değil)
             return (
-              `<a href="https://openani.me/anime/${slug}" target="_blank">` +
+              `<a href="/anime/${slug}">` +
               `  <div class="search-card">` +
               (typeText ? `    <span class=\"search-card-type\">${typeText}</span>` : "") +
               `    <div class="search-card-banner">` +

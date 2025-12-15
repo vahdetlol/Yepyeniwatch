@@ -15,12 +15,12 @@
     <meta name="location" content="türkiye, tr, turkey" />
     <meta name="google" content="notranslate" />
 
-    <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Beslemesi" href="feed/" />
+    <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Beslemesi" href="/feed" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="YepYeniWatch &raquo; Yorum Beslemesi"
-        href="comments/feed/" />
-    <link rel="stylesheet" href="yepyeniwatch/style.css" type="text/css" media="all" />
-    <link rel="shortcut icon" href="yepyeniwatch/images/yepyeniwatch_dik.png" />
+        href="/comments/feed" />
+    <link rel="stylesheet" href="/yepyeniwatch/style.css" type="text/css" media="all" />
+    <link rel="shortcut icon" href="/yepyeniwatch/images/yepyeniwatch_dik.png" />
 
     <meta property="og:title" content="YepYeniWatch" />
     <meta property="og:site_name" content="YepYeniWatch" />
@@ -28,9 +28,7 @@
     <meta property="og:description" content="Yeni nesil, reklamsız anime izleme platformu" />
     <meta property="og:image" content="https://media1.tenor.com/m/3TrUXi0fv0EAAAAd/kanye-staring-kanye-licking.gif" />
     <meta name='robots' content='max-image-preview:large' />
-    <base href="https://yepyeniwatch.xyz/" target="_self">    
     <style>
-
 
         @media only screen and (max-width: 1000px) {
             .body-clickable {
@@ -45,7 +43,7 @@
             z-index: 1;
             height: 100%;
             width: 100%;
-            background: url('yepyeniwatch/images/background.jpg') no-repeat fixed center 0px #000000;
+            background: url('/yepyeniwatch/images/background.jpg') no-repeat fixed center 0px #000000;
             cursor: default;
             background-size: cover;
         }
@@ -89,12 +87,22 @@
                 e.stopPropagation();
             });
         });
+        
     </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MTXCP52G2K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MTXCP52G2K');
+</script>
+
     <div id="wrap">
         <div id="header">
             <div class="headerleft">
-                <a href="https://openani.me/profile/7149634466816724993/">
-                    <img src="yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
+                <a href="/">
+                    <img src="/yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
                 </a>
             </div>
             <div class="headerright">
@@ -114,31 +122,31 @@
                 <ul class="topnav" id="myTopnav">
                     <li id="menu-item-16"
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-16">
-                        <a href="">Anasayfa</a>
+                        <a href="/">Anasayfa</a>
                     </li>
                     <li id="menu-item-2994"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2994">
                         <a href="https://openani.me/calendar">Takvim</a>
                     </li>
                     <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item menu-item-17">
-                        <a href="anime-arsivi/">Anime Arşivi</a>
+                        <a href="/anime-arsivi">Anime Arşivi</a>
                     </li>
                     <li id="menu-item-1138"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1138">
                         <a href="https://androidoyun.club/apks">Mobil Uygulama</a>
                     </li>
                     <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28">
-                        <a href="feed/">Yeni Bölümler</a>
+                        <a href="/feed">Yeni Bölümler</a>
                     </li>
                     <li id="menu-item-2034"
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2034">
-                        <a href="https://discord.gg/r4XdBxbdCb">Discord</a>
+                        <a href="https://discord.gg/openanime">Discord</a>
                     </li>
                     <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19">
-                        <a href="https://discord.gg/r4XdBxbdCb">İletişim</a>
+                        <a href="https://discord.gg/openanime">İletişim</a>
                     </li>
                     <li>
-							<form method="get" class="example" action="search" autocomplete="off">
+							<form method="get" class="example" action="/search" autocomplete="off">
 								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
 								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
 								<div id="datafetch"></div>
@@ -150,77 +158,58 @@
 					</a>
 				</nav>
 			</div>
-        <div id="content" class="homepage">
-            <div class="title">
-                <span class="title-border">
-                    <i class="fas fa-flag"></i> Öne Çıkan Animeler </span>
-            </div>
-            
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme popanim">
-                </div>
-            </div>
-            <div class="title">
-                <span class="title-border">
-                    <i class="fas fa-fire"></i> 4K Animeler </span>
-            </div>
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme 4kanim">
-                </div>
-            </div>
-            <div class="title">
-                <span class="title-border bd-blue">
-                    <i class="fas fa-star"></i> Popüler Animelerden Son Bölümler </span>
-                </div>
-            
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme popanims episode-slider">
-                    <div class="loading-placeholder">Yükleniyor...</div>
-                </div>
-            </div>
-            <div class="title">
-                <span class="title-border">
-                   <i class="fas fa-lightbulb"></i> Güncel Animeler </span>
-            </div>
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme guncelanim">
-                </div>
-            </div>
-            <div class="title">
-                <span class="title-border bd-blue">
-                    <i class="fas fa-calendar-check"></i> Güncel Animelerden Son Bölümler </span>
-            </div>
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme guncelepisodes episode-slider">
-                    <div class="loading-placeholder">Yükleniyor...</div>
-                </div>
-            </div>
-
+        
+        <div id="content">
             <div class="title">
                 <h1 class="title-border bd-purple">
-                    <i class="fas fa-upload"></i> Son Eklenen Animeler
+                    <i class="fas fa-archive"></i> Anime Arşivi <span id="anime-count"></span>
                 </h1>
-                <div class="tumunugor">
-                    <a href="https://openani.me/explore"><i class="fas fa-angle-right"></i> Tümünü Gör</a>
+            </div>
+            
+            <div class="archive-container">
+                <div class="anime-list" id="anime-container">
+                    <div class="loading">Animeler yükleniyor...</div>
+                </div>
+                
+                <!-- Filter Sidebar (Right Side) -->
+                <div class="filter-sidebar">
+                    <div class="filter-section">
+                        <h2><i class="fas fa-filter"></i> Filtrele</h2>
+                        <div class="filter-item">
+                            <label>IMDb Puanına Göre</label>
+                            <div class="range-inputs">
+                                <input type="number" id="min-score-start" min="0" max="10" step="0.1" placeholder="Min. Puan">
+                                <span class="range-separator">-</span>
+                                <input type="number" id="min-score-end" min="0" max="10" step="0.1" placeholder="Max. Puan">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-item">
+                            <label>Yapım Yılı</label>
+                            <div class="range-inputs">
+                                <input type="number" id="release-year-start" min="1880" max="2030" placeholder="Min: 1880">
+                                <span class="range-separator">-</span>
+                                <input type="number" id="release-year-end" min="1880" max="2030" placeholder="Bitiş">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-item">
+                            <label>Kategori</label>
+                            <div id="categories-list">
+                                <!-- Categories will be loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <button class="filter-button" id="apply-filters">Animeleri Getir</button>
+                        <button class="filter-button clear-filters" id="clear-filters">Filtreleri Temizle</button>
+                    </div>
                 </div>
             </div>
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme lastanim">
-                </div>
-            </div>
-            <div class="title">
-                <span class="title-border bd-green">
-                    <i class="fas fa-chess-queen"></i> Son Eklenen Anime Bölümleri </span>
-                <div class="tumunugor">
-                    <a href="https://openani.me/episodes/latest/1"><i class="fas fa-angle-right"></i> Tümünü Gör</a>
-                </div>
-            </div>
-            <div class="diziler">
-                <div class="slider owl-carousel owl-theme lastepisode episode-slider">
-                    <div class="loading-placeholder">Yükleniyor...</div>
-                </div>
-            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination-container"></div>
         </div>
+        
         <div id="footer">
             <div class="footerleft">
                 Copyright &copy; 2025 <a
@@ -230,20 +219,16 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="yepyeniwatch/js/ajax-register.js"
-            id="ajax-register-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/pld.js"
-            id="pld-frontend-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/cld.js"
-            id="cld-frontend-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/jquery.perfect-scrollbar.min.js"
+        <script type="text/javascript" src="/yepyeniwatch/js/jquery.perfect-scrollbar.min.js"
             id="jquery-perfect-scrollbar-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/owl.carousel.min.js"
+        <script type="text/javascript" src="/yepyeniwatch/js/owl.carousel.min.js"
             id="owl-carousel-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/vpenanime.js"
+        <script type="text/javascript" src="/yepyeniwatch/js/vpenanime.js"
             id="yepyeniwatch-functions-js"></script>
-        <script type="text/javascript" src="yepyeniwatch/js/openapi.js"
-        id="yepyeniwatch-api-js"></script>
+        <script type="text/javascript" src="/yepyeniwatch/js/api-client.js"
+            id="api-client-js"></script>
+        <script type="text/javascript" src="/yepyeniwatch/js/archive-new.js"
+            id="archive-js"></script>
     </div>
 </body>
 

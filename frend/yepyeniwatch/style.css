@@ -1760,7 +1760,7 @@ p.textarea {
   position: relative;
   width: 940px;
   font-family: "Noto Sans", arial, serif;
-  font-size: 14px;
+  font-size: 16px;
   padding: 10px;
   margin-top: 3px;
   color: #ccc;
@@ -1793,8 +1793,8 @@ p.textarea {
   font-family: noto sans, arial, serif;
   background: #000;
   font-weight: normal;
-  padding-top: 10px;
-  background-color: rgba(75, 62, 140, 0.1);
+  padding-top: 10px;    
+  background-color: rgb(43 40 59 / 33%);
   border-bottom: 1px dashed rgba(205, 194, 255, 0.1);
 }
 
@@ -1841,7 +1841,7 @@ p.textarea {
   margin: 0 auto;
   margin-top: 10px;
   width: 100%;
-  background-color: #f40303;
+  background-color: #0909099c;
   font-family: "Funnel Display", arial, serif !important;
 }
 
@@ -1862,7 +1862,7 @@ p.textarea {
 }
 
 .bolumust:hover {
-  background: rgb(0 0 0 / 70%);
+  background: rgba(0, 0, 0, 0.39);
 }
 
 ul#myUL::-webkit-scrollbar {
@@ -2748,6 +2748,8 @@ a.all {
 }
 
 .title {
+  display: flex;
+  align-items: center;
   width: 100%;
   border-bottom: 2px solid rgba(205, 194, 255, 0.1);
   position: relative;
@@ -4450,6 +4452,8 @@ form#watch_list {
 #butonlar {
   width: calc(100% - 150px);
   margin-bottom: -8px;
+     display: flex;
+    justify-content: center;
 }
 
 .grtext {
@@ -4514,6 +4518,8 @@ form#watch_list {
 }
 
 #myBtnContainer {
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
   margin-bottom: 12px;
 }
@@ -7195,6 +7201,13 @@ a.cld-twitter:hover {
   width: 50px !important;
   background-size: contain;
 }
+
+.fourk-logoo {
+  top: 5;
+  left: 5;
+  width: 50px !important;
+  background-size: contain;
+}
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
   background: #869791;
@@ -7510,7 +7523,17 @@ a.cld-twitter:hover {
   font-size: 14px;
   font-weight: bold;
 }
-
+.imdb-score2 {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffd700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
 /* ==========================
    Merged unique rules from style2.css
    ========================== */

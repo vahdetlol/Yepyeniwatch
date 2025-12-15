@@ -7,21 +7,29 @@
 		<meta name="description" content="YepYeniWatch arama sonuçları" />
 		<meta name="google" content="notranslate" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-		<link rel="stylesheet" href="yepyeniwatch/style.css" type="text/css" media="all" />
-		<link rel="shortcut icon" href="yepyeniwatch/images/yepyeniwatch_dik.png" />
+		<link rel="stylesheet" href="/yepyeniwatch/style.css" type="text/css" media="all" />
+		<link rel="shortcut icon" href="/yepyeniwatch/images/yepyeniwatch_dik.png" />
 		<meta property="og:title" content="YepYeniWatch - Arama" />
 		<meta property="og:site_name" content="YepYeniWatch" />
 		<meta property="og:description" content="Arama sonuçları" />
 		<meta name='robots' content='max-image-preview:large' />
-        <base href="http://yepyeniwatch.xyz/" target="_self">
 	</head>
 	<body>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MTXCP52G2K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MTXCP52G2K');
+</script>
 		<div class="body-clickable"></div>
 		<div id="wrap">
 			<div id="header">
 				<div class="headerleft">
 					<a href="/">
-						<img src="yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
+						<img src="/yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
 					</a>
 				</div>
 				<div class="headerright">
@@ -40,29 +48,29 @@
 				<nav>
 					<ul class="topnav" id="myTopnav">
 						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
-							<a href="">Anasayfa</a>
-						</li>
-									<li class="menu-item menu-item-type-post_type menu-item-object-page">
-										<a href="https://openani.me/calendar" target="_blank" rel="noopener">Takvim</a>
+							<a href="/">Anasayfa</a>
 						</li>
 						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="anime-arsivi">Anime Arşivi</a>
-						</li>
-									<li class="menu-item menu-item-type-post_type menu-item-object-page">
-										<a href="https://androidoyun.club/apks" target="_blank" rel="noopener">Mobil Uygulama</a>
+							<a href="https://openani.me/calendar" target="_blank" rel="noopener">Takvim</a>
 						</li>
 						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="feed">Yeni Bölümler</a>
+							<a href="/anime-arsivi">Anime Arşivi</a>
 						</li>
-									<li class="menu-item menu-item-type-custom menu-item-object-custom">
-										<a href="https://discord.gg/r4XdBxbdCb" target="_blank" rel="noopener">Discord</a>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page">
+							<a href="https://androidoyun.club/apks" target="_blank" rel="noopener">Mobil Uygulama</a>
 						</li>
-									<li class="menu-item menu-item-type-post_type menu-item-object-page">
-										<a href="https://discord.gg/r4XdBxbdCb" target="_blank" rel="noopener">İletişim</a>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page">
+							<a href="/feed">Yeni Bölümler</a>
+						</li>
+						<li class="menu-item menu-item-type-custom menu-item-object-custom">
+							<a href="https://discord.gg/openanime" target="_blank" rel="noopener">Discord</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page">
+							<a href="https://discord.gg/openanime" target="_blank" rel="noopener">İletişim</a>
 						</li>
 						<li>
-							<form method="get" class="example" action="#" autocomplete="off">
-								<input type="text" class="field" name="s" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
+							<form method="get" class="example" action="/search" autocomplete="off">
+								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
 								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
 								<div id="datafetch"></div>
 							</form>
@@ -104,11 +112,11 @@
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-			<script src="yepyeniwatch/js/jquery.perfect-scrollbar.min.js"></script>
-			<script src="yepyeniwatch/js/owl.carousel.min.js"></script>
-			<script src="yepyeniwatch/js/vpenanime.js"></script>
-			<script src="yepyeniwatch/js/openapi.js"></script>
-			<script src="yepyeniwatch/js/search-page.js"></script>
+			<script src="/yepyeniwatch/js/jquery.perfect-scrollbar.min.js"></script>
+			<script src="/yepyeniwatch/js/owl.carousel.min.js"></script>
+			<script src="/yepyeniwatch/js/vpenanime.js"></script>
+			<script src="/yepyeniwatch/js/api-client.js"></script>
+			<script src="/yepyeniwatch/js/search-page-new.js"></script>
 		</div>
 	</body>
 	</html>
