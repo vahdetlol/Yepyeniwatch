@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yepyeniwatch",
+  "main": "worker/src/index.js",
+  "compatibility_date": "2025-12-16",
+  "assets": {
+    "directory": "./frend",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "ENVIRONMENT": "production"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "yepyeniwatch-cache",
+      "preview_id": "yepyeniwatch-cache-preview"
+    }
+  ]
+}
