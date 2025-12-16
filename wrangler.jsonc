@@ -9,12 +9,5 @@
   },
   "vars": {
     "ENVIRONMENT": "production"
-  },
-  "kv_namespaces": [
-    {
-      "binding": "CACHE",
-      "id": "yepyeniwatch-cache",
-      "preview_id": "yepyeniwatch-cache-preview"
-    }
-  ]
+  }
 }
