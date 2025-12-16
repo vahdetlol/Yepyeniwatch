@@ -76,71 +76,20 @@ async function getGuncelAnimeData(env) {
     }
   }
 
-  // Cache'de yoksa veya süresi dolmuşsa, API'den çek
+  // Cache'de yoksa, basit bir veri döndür
+  // Not: Çok fazla istek yapılmasını önlemek için sadece ilk sayfayı çekiyoruz
   console.log("Güncel anime verileri API'den çekiliyor...");
   
   try {
-    const allSlugs = new Set();
-    const animeData = [];
+    const episodesResponse = await fetchFromOpenAnime("/anime/episodes/latest?limit=50", env);
     
-    // Son 15 sayfadaki bölümlerden unique slug'ları topla
-    for (let page = 1; page <= 15; page++) {
-      try {
-        const episodesResponse = await fetchFromOpenAnime(`/anime/episodes/latest?page=${page}`, env);
-        
-        if (episodesResponse.ok) {
-          const data = await episodesResponse.json();
-          if (data && data.episodes) {
-            data.episodes.forEach(episode => {
-              if (episode.slug) {
-                allSlugs.add(episode.slug);
-              }
-            });
-          }
-        }
-        
-        // Rate limiting için bekle
-        await new Promise(resolve => setTimeout(resolve, 100));
-      } catch (error) {
-        console.error(`Sayfa ${page} çekilemedi:`, error.message);
-      }
+    let episodes = [];
+    if (episodesResponse.ok) {
+      const data = await episodesResponse.json();
+      episodes = data.episodes || [];
     }
     
-    console.log(`${allSlugs.size} unique anime slug bulundu`);
-    
-    // Her anime için detay bilgilerini çek
-    const slugArray = Array.from(allSlugs);
-    for (const slug of slugArray) {
-      try {
-        const animeDetails = await fetchFromOpenAnime(`/anime/${slug}`, env);
-        
-        if (animeDetails.ok) {
-          const details = await animeDetails.json();
-          
-          // nextEpisodeToAir null olanları atla (bitmiş animeler)
-          if (details.nextEpisodeToAir === null) {
-            continue;
-          }
-          
-          animeData.push({
-            slug: details.slug,
-            season: details.season,
-            episode: details.episode,
-            english: details.english,
-            romaji: details.romaji,
-            pictures: details.pictures,
-            is4K: details.is4K || false,
-          });
-        }
-        
-        // Rate limiting için bekle
-        await new Promise(resolve => setTimeout(resolve, 50));
-      } catch (error) {
-        console.error(`Anime ${slug} çekilemedi:`, error.message);
-      }
-    }
-    
-    const result = { episodes: animeData, lastUpdated: Date.now() };
+    const result = { episodes: episodes, lastUpdated: Date.now() };
     
     // KV cache'e kaydet (24 saat TTL ile)
     if (env.CACHE) {
@@ -156,8 +105,8 @@ async function getGuncelAnimeData(env) {
     
     return result;
   } catch (error) {
-    console.error("Güncel anime verisi çekme hatası:", error);
-    return { episodes: [] };
+    console.error("Güncel anime verileri çekilemedi:", error.message);
+    return { episodes: [], lastUpdated: Date.now() };
   }
 }
 
@@ -226,23 +175,20 @@ async function handleAPIRequest(request, env, path) {
  */
 async function handleHomeAPI(env) {
   try {
-    // Paralel olarak tüm verileri çek
+    // Paralel olarak temel verileri çek (sadece 4 istek)
     const [
       popularEpisodesRes,
       latestEpisodesRes,
       popularsRes,
       fourKRes,
-      guncelData,
-      totalPagesRes,
     ] = await Promise.all([
       fetchFromOpenAnime("/anime/episodes/latest/populars?limit=20", env),
       fetchFromOpenAnime("/anime/episodes/latest?limit=20", env),
       fetchFromOpenAnime("/anime/populars", env),
       fetchFromOpenAnime("/anime/4k-releases", env),
-      getGuncelAnimeData(env),
-      fetchFromOpenAnime("/anime", env),
     ]);
 
+    // Her response'un body'sini oku
     const popularEpisodes = popularEpisodesRes.ok
       ? await popularEpisodesRes.json()
       : { episodes: [] };
@@ -251,61 +197,22 @@ async function handleHomeAPI(env) {
       : { episodes: [] };
     const populars = popularsRes.ok ? await popularsRes.json() : [];
     const fourK = fourKRes.ok ? await fourKRes.json() : { animes: [] };
+
+    // Son eklenen animeleri ayrı çek
+    const totalPagesRes = await fetchFromOpenAnime("/anime", env);
     const totalPagesData = totalPagesRes.ok
       ? await totalPagesRes.json()
       : { totalPages: 1 };
 
-    // Güncel animeleri eşleştir
-    const localAnimeMap = new Map();
-    (guncelData.episodes || []).forEach((anime) => {
-      if (anime.slug) localAnimeMap.set(anime.slug, anime);
-    });
-
-    // Son eklenen animeleri çek (son sayfa)
-    const lastPageRes = await fetchFromOpenAnime(
-      `/anime?page=${totalPagesData.totalPages}`,
-      env
-    );
     let lastAnimes = [];
-    if (lastPageRes.ok) {
-      const lastPageData = await lastPageRes.json();
-      lastAnimes = (lastPageData.animes || []).reverse();
-
-      if (lastAnimes.length < 20 && totalPagesData.totalPages > 1) {
-        const prevPageRes = await fetchFromOpenAnime(
-          `/anime?page=${totalPagesData.totalPages - 1}`,
-          env
-        );
-        if (prevPageRes.ok) {
-          const prevPageData = await prevPageRes.json();
-          lastAnimes = lastAnimes.concat((prevPageData.animes || []).reverse());
-        }
-      }
-    }
-
-    // Güncel anime bölümlerini eşleştir
-    const matchedEpisodes = [];
-    for (let page = 1; page <= 5; page++) {
-      const episodesRes = await fetchFromOpenAnime(
-        `/anime/episodes/latest?page=${page}`,
+    if (totalPagesData.totalPages > 0) {
+      const lastPageRes = await fetchFromOpenAnime(
+        `/anime?page=${totalPagesData.totalPages}`,
         env
       );
-      if (episodesRes.ok) {
-        const episodesData = await episodesRes.json();
-        (episodesData.episodes || []).forEach((episode) => {
-          if (episode.slug && localAnimeMap.has(episode.slug)) {
-            const localAnime = localAnimeMap.get(episode.slug);
-            matchedEpisodes.push({
-              slug: episode.slug,
-              season: episode.season,
-              episode: episode.episode,
-              english: localAnime.english,
-              romaji: localAnime.romaji,
-              pictures: localAnime.pictures,
-              is4K: localAnime.is4K,
-            });
-          }
-        });
+      if (lastPageRes.ok) {
+        const lastPageData = await lastPageRes.json();
+        lastAnimes = (lastPageData.animes || []).reverse().slice(0, 20);
       }
     }
 
@@ -315,8 +222,8 @@ async function handleHomeAPI(env) {
         latestEpisodes: latestEpisodes.episodes || [],
         populars: Array.isArray(populars) ? populars : [],
         fourK: fourK.animes || [],
-        lastAnimes: lastAnimes.slice(0, 20),
-        guncelAnimes: matchedEpisodes,
+        lastAnimes: lastAnimes,
+        guncelAnimes: latestEpisodes.episodes || [], // latestEpisodes'u kullan
       }),
       {
         headers: { "Content-Type": "application/json", ...corsHeaders },
