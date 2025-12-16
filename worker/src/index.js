@@ -61,6 +61,7 @@ async function fetchFromOpenAnime(path, env) {
 /**
  * Güncel anime verilerini OpenAnime API'den çeker ve cache'e kaydeder
  * 24 saat boyunca cache'den döner, sonra yeniler
+ * Sadece nextEpisodeToAir değeri dolu olan (devam eden) animeleri döndürür
  */
 async function getGuncelAnimeData(env) {
   // KV cache'den kontrol et
@@ -76,20 +77,38 @@ async function getGuncelAnimeData(env) {
     }
   }
 
-  // Cache'de yoksa, basit bir veri döndür
-  // Not: Çok fazla istek yapılmasını önlemek için sadece ilk sayfayı çekiyoruz
   console.log("Güncel anime verileri API'den çekiliyor...");
   
   try {
-    const episodesResponse = await fetchFromOpenAnime("/anime/episodes/latest?limit=50", env);
+    const ongoingAnimes = [];
     
-    let episodes = [];
-    if (episodesResponse.ok) {
-      const data = await episodesResponse.json();
-      episodes = data.episodes || [];
+    // İlk 3 sayfadan devam eden animeleri topla (sıralı istekler - deadlock önleme)
+    for (let page = 1; page <= 3; page++) {
+      const response = await fetchFromOpenAnime(`/anime?page=${page}`, env);
+      
+      if (response.ok) {
+        const data = await response.json();
+        const animes = data.animes || [];
+        
+        // nextEpisodeToAir değeri dolu olanları filtrele
+        animes.forEach(anime => {
+          if (anime.nextEpisodeToAir && anime.slug) {
+            ongoingAnimes.push({
+              slug: anime.slug,
+              english: anime.english,
+              romaji: anime.romaji,
+              pictures: anime.pictures,
+              is4K: anime.is4K || false,
+              nextEpisodeToAir: anime.nextEpisodeToAir,
+            });
+          }
+        });
+      }
     }
     
-    const result = { episodes: episodes, lastUpdated: Date.now() };
+    console.log(`${ongoingAnimes.length} devam eden anime bulundu`);
+    
+    const result = { episodes: ongoingAnimes, lastUpdated: Date.now() };
     
     // KV cache'e kaydet (24 saat TTL ile)
     if (env.CACHE) {
