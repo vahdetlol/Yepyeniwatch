@@ -9,5 +9,12 @@
   },
   "vars": {
     "ENVIRONMENT": "production"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "16bdfdf826f647288b6e7c3d21247b0d"
+    }
+  ]
 }
+
