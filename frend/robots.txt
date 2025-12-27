@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://yepyeniwatch.xyz/sitemap.xml
+Sitemap: https://www.yepyeniwatch.xyz/sitemap.xml
+Sitemap: https://www.yepyeniwatch.xyz/sitemap_index.xml
+Crawl-delay: 1

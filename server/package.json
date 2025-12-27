@@ -1,0 +1,19 @@
+{
+  "name": "yepyeniwatch-server",
+  "version": "1.0.0",
+  "description": "YepYeniWatch Node.js Server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "cross-env PORT=4001 node --watch index.js"
+  },
+  "dependencies": {
+    "cloudflared": "^0.7.1",
+    "express": "^4.21.0",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

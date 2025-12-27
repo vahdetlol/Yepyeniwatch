@@ -200,7 +200,7 @@ $(document).ready(function () {
             
             // Güncel Animeler
             initCarousel(".slider.guncelanim");
-            (data.guncelAnimes || []).forEach(function(episode) {
+            (data.guncelAnimes.episodes || []).forEach(function(episode) {
                 const card = createGuncelAnimeCard(episode);
                 $(".slider.guncelanim").trigger("add.owl.carousel", [$(card)]);
             });
@@ -209,7 +209,7 @@ $(document).ready(function () {
             // Güncel Animelerden Son Bölümler
             setTimeout(function() {
                 $(".slider.guncelepisodes").empty();
-                (data.guncelAnimes || []).forEach(function(episode) {
+                (data.guncelAnimes.episodes || []).forEach(function(episode) {
                     const card = createEpisodeCard(episode, true);
                     $(".slider.guncelepisodes").append(card);
                 });

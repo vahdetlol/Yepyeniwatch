@@ -1,59 +1,83 @@
 function formatDate(dateStr) {
-  if (!dateStr) return '';
-  
+  if (!dateStr) return "";
+
   try {
     const date = new Date(dateStr);
-    const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 
-                    'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
-    
-    return `${date.getDate().toString().padStart(2, '0')} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    const months = [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık",
+    ];
+
+    return `${date.getDate().toString().padStart(2, "0")} ${
+      months[date.getMonth()]
+    } ${date.getFullYear()}`;
   } catch (e) {
     return dateStr;
   }
 }
+
 export function getAnimePageHTML(anime, seasons, slug) {
-  const title = anime.english || anime.romaji || 'Anime';
-  const romaji = anime.romaji || '';
-  const summary = anime.summary || 'Bu animenin açıklaması bulunmamaktadır.';
+  const title = anime.english || anime.romaji || "Anime";
+  const romaji = anime.romaji || "";
+  const summary = anime.summary || "Bu animenin açıklaması bulunmamaktadır.";
   const genres = anime.genres || [];
-  const avatar = anime.pictures?.avatar?.replace('image.tmdb.org', 'image.openanime.net') || '';
-  const banner = anime.pictures?.banner?.replace('image.tmdb.org', 'image.openanime.net') || '';
-  const tmdbScore = anime.tmdbScore ? parseFloat(anime.tmdbScore).toFixed(1) : 'N/A';
-  const trailer = typeof anime.trailer === 'string' ? anime.trailer : '';
+  const avatar =
+    anime.pictures?.avatar?.replace("image.tmdb.org", "image.openanime.net") ||
+    "";
+  const banner =
+    anime.pictures?.banner?.replace("image.tmdb.org", "image.openanime.net") ||
+    "";
+  const tmdbScore = anime.tmdbScore
+    ? parseFloat(anime.tmdbScore).toFixed(1)
+    : "N/A";
+  const trailer = typeof anime.trailer === "string" ? anime.trailer : "";
   const numberOfSeasons = anime.numberOfSeasons || 0;
   const numberOfEpisodes = anime.numberOfEpisodes || 0;
-  const firstAirDate = anime.firstAirDate || '';
-  const year = firstAirDate ? firstAirDate.split('.').pop() : '';
+  const firstAirDate = anime.firstAirDate || "";
+  const year = firstAirDate ? firstAirDate.split(".").pop() : "";
   const fourK = anime.is4K;
-  
-  // Debug: seasons verisini konsola yaz
-  // console.log('Seasons data:', JSON.stringify(seasons, null, 2));
-  
-  // Sezon butonlarını oluştur (bölümler dinamik olarak yüklenecek)
-  let seasonButtons = '';
+  const type = anime.type;
+  const isTV = type === "tv";
+
+
+  let seasonButtons = "";
   let firstSeasonNum = 1;
-  
-  if (Array.isArray(seasons) && seasons.length > 0) {
+
+  if (isTV && Array.isArray(seasons) && seasons.length > 0) {
     // Sadece bölüm içeren sezonları filtrele
-    const validSeasons = seasons.filter(s => s.hasEpisode !== false && s.episode_count > 0);
-    
+    const validSeasons = seasons.filter(
+      (s) => s.hasEpisode !== false && s.episode_count > 0
+    );
+
     if (validSeasons.length > 0) {
-      firstSeasonNum = validSeasons[0].season_number !== undefined ? validSeasons[0].season_number : 1;
+      firstSeasonNum =
+        validSeasons[0].season_number !== undefined
+          ? validSeasons[0].season_number
+          : 1;
     }
-    
+
     validSeasons.forEach((season, index) => {
-      const seasonNum = season.season_number !== undefined ? season.season_number : (index + 1);
-      const activeClass = index === 0 ? 'active' : '';
+      const seasonNum =
+        season.season_number !== undefined ? season.season_number : index + 1;
+      const activeClass = index === 0 ? "active" : "";
       const seasonName = season.name || `${seasonNum}. Sezon`;
       seasonButtons += `<button class="btn ${activeClass}" data-season="${seasonNum}">${seasonName}</button>`;
     });
   }
 
-
-  // Genre tags
-  const genreTags = genres.map(g => 
-    `<div class="genres"><a href="/anime-arsivi?tur=${encodeURIComponent(g)}">${g}</a></div>`
-  ).join('');
+  const genreTags = genres
+    .map((g) => `<div class="genres"><a href="/anime-arsivi">${g}</a></div>`)
+    .join("");
 
   return `<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
@@ -85,7 +109,9 @@ export function getAnimePageHTML(anime, seasons, slug) {
       z-index: 1;
       height: 100%;
       width: 100%;
-      background: url('${banner || "/yepyeniwatch/images/background.jpg"}') no-repeat fixed center 0px #000000;
+      background: url('${
+        "" || "/yepyeniwatch/images/background.jpg"
+      }') no-repeat fixed center 0px #000000;
       cursor: default;
       background-size: cover;
     }
@@ -161,23 +187,27 @@ export function getAnimePageHTML(anime, seasons, slug) {
                         <a href="https://discord.gg/openanime">İletişim</a>
                     </li>
                     <li>
-							<form method="get" class="example" action="/search" autocomplete="off">
-								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
-								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
-								<div id="datafetch"></div>
-							</form>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
-						<i class="fas fa-bars"></i>
-					</a>
-				</nav>
-			</div>
+              <form method="get" class="example" action="/search" autocomplete="off">
+                <input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
+                <button type="submit" title="Ara"><i class="fa fa-search"></i></button>
+                <div id="datafetch"></div>
+              </form>
+            </li>
+          </ul>
+          <a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
+            <i class="fas fa-bars"></i>
+          </a>
+        </nav>
+      </div>
     
     <div id="content" class="page serie">
       <div class="incontentx">
         <div class="title">
-        ${fourK ? `<img src="https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png" class="fourk-logoo far fa-dot-circle">` : '<i class="fourk-logoo far fa-dot-circle"></i>'}
+        ${
+          fourK
+            ? `<img src="https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png" class="fourk-logoo far fa-dot-circle">`
+            : '<i class="fourk-logoo far fa-dot-circle"></i>'
+        }
           <div class="title-border bd-purple">
              <div class= "anime-title">${title} </div> 
           </div>
@@ -192,8 +222,12 @@ export function getAnimePageHTML(anime, seasons, slug) {
           
           <div id="icerikcatleft">
             <div class="category_image">
-              ${avatar ? `<img src="${avatar}" alt="${title}">` : ''}
-              ${trailer ? `<button id="trailerbutton" onclick="openTrailer()"><i class="fas fa-video"></i> Fragmanı izle</button>` : ''}
+              ${avatar ? `<img src="${avatar}" alt="${title}">` : ""}
+              ${
+                trailer
+                  ? `<button id="trailerbutton" onclick="openTrailer()"><i class="fas fa-video"></i> Fragmanı izle</button>`
+                  : ""
+              }
             </div>
 
           
@@ -204,7 +238,9 @@ export function getAnimePageHTML(anime, seasons, slug) {
             <div id="icerikcat2">
               ${genreTags}
 
-              ${trailer ? `
+              ${
+                trailer
+                  ? `
               <div id="trailer" class="modaltrailer" style="display:none;">
                 <div class="modal-content-trailer">
                   <span class="trailerclose" onclick="closeTrailer()">×</span>
@@ -213,11 +249,16 @@ export function getAnimePageHTML(anime, seasons, slug) {
                   </div>
                 </div>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
             </div>
           </div>
         </div>
         </div>
+        ${
+          isTV
+            ? `
         <div id="myBtnContainer">
           <div id="butonlar">
             ${seasonButtons}
@@ -238,6 +279,29 @@ export function getAnimePageHTML(anime, seasons, slug) {
             <div class="loading-episodes">Bölümler yükleniyor...</div>
           </div>
         </div>
+        `
+            : `
+        <div class="listhead">
+          <div class="baslik2">
+            <i class="fa fa-play"></i> Film Adı
+          </div>
+          <div class="tarih">
+            <i class="fa fa-calendar"></i> Yayınlanma Tarihi
+          </div>
+        </div>
+        
+        <div id="scrollbar-container" class="custom-scrollbar">
+          <div class="container" id="episodes-container">
+            <div class="bolumust show">
+              <a href="/anime/${slug}/1/1">
+                <div class="baslik">${title}</div>
+                <div class="tarih">${formatDate(year)}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        `
+        }
       </div>
     </div>
     
@@ -275,20 +339,18 @@ export function getAnimePageHTML(anime, seasons, slug) {
       }
       
       container.innerHTML = '<div class="loading-episodes">Bölümler yükleniyor...</div>';
-      
       try {
-        var response = await fetch('https://api.openani.me/anime/' + animeSlug + '/season/' + seasonNum, {
-          headers: {
-            'Accept': 'application/json',
-            'Referer': 'https://openani.me/'
-          }
-        });
+        var response = await fetch('/api/anime/' + animeSlug + '/season/' + seasonNum);
         
         if (!response.ok) {
           throw new Error('API hatası');
         }
         
         var data = await response.json();
+        console.log('Season data:', data);      
+
+
+
         var episodes = data.season && data.season.episodes ? data.season.episodes : [];
         
         if (episodes.length === 0) {
@@ -324,8 +386,13 @@ export function getAnimePageHTML(anime, seasons, slug) {
         console.error('Bölümler yüklenirken hata:', error);
         container.innerHTML = '<div class="no-episodes">Bölümler yüklenirken bir hata oluştu.</div>';
       }
+
+      
     }
     
+    ${
+      isTV
+        ? `
     document.querySelectorAll('#butonlar .btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         document.querySelectorAll('#butonlar .btn').forEach(b => b.classList.remove('active'));
@@ -340,18 +407,29 @@ export function getAnimePageHTML(anime, seasons, slug) {
     document.addEventListener('DOMContentLoaded', function() {
       loadSeasonEpisodes(currentSeason);
     });
+    `
+        : ""
+    }
     
-    ${trailer ? `
+    ${
+      trailer
+        ? `
     function openTrailer() {
       document.getElementById('trailer').style.display = 'flex';
-      document.getElementById('trailerFrame').src = '${trailer && trailer.includes('youtube') ? trailer.replace('watch?v=', 'embed/') : trailer}';
+      document.getElementById('trailerFrame').src = '${
+        trailer && trailer.includes("youtube")
+          ? trailer.replace("watch?v=", "embed/")
+          : trailer
+      }';
     }
     
     function closeTrailer() {
       document.getElementById('trailer').style.display = 'none';
       document.getElementById('trailerFrame').src = '';
     }
-    ` : ''}
+    `
+        : ""
+    }
     
   </script>
   
