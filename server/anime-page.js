@@ -31,24 +31,23 @@ export function getAnimePageHTML(anime, seasons, slug) {
   const romaji = anime.romaji || "";
   const summary = anime.summary || "Bu animenin açıklaması bulunmamaktadır.";
   const genres = anime.genres || [];
-  const avatar =
+  const vravatar =
     anime.pictures?.avatar?.replace("image.tmdb.org", "image.openanime.net") ||
     "";
-  const banner =
+  const avatar = "https://wsrv.nl/?url=" + vravatar;
+  const vrbanner =
     anime.pictures?.banner?.replace("image.tmdb.org", "image.openanime.net") ||
     "";
+  const banner = "https://wsrv.nl/?url=" + vrbanner;
   const tmdbScore = anime.tmdbScore
     ? parseFloat(anime.tmdbScore).toFixed(1)
     : "N/A";
   const trailer = typeof anime.trailer === "string" ? anime.trailer : "";
-  const numberOfSeasons = anime.numberOfSeasons || 0;
-  const numberOfEpisodes = anime.numberOfEpisodes || 0;
   const firstAirDate = anime.firstAirDate || "";
   const year = firstAirDate ? firstAirDate.split(".").pop() : "";
   const fourK = anime.is4K;
   const type = anime.type;
   const isTV = type === "tv";
-
 
   let seasonButtons = "";
   let firstSeasonNum = 1;
@@ -214,7 +213,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
 
         </div>
 
-        <div id="icerikcat">
+        <div id="icerikcat" style="background-image: linear-gradient(to bottom,hsla(0, 0%, 0%, 70%), hsla(0, 0%, 0%, 30%)),url('${banner}'); background-size: cover; background-position: top; background-repeat: no-repeat;">
           <div class="imdb-score2">
               ${tmdbScore}
               <i class="fas fa-star"></i>
@@ -303,8 +302,51 @@ export function getAnimePageHTML(anime, seasons, slug) {
         `
         }
       </div>
+      
+    <div class="commentcontent">
+  <div class="title">
+    <span class="title-border bd-purple">
+      <i class="fas fa-comments"></i> Yorumlar		</span>
+    <span class="countcom" id="comment-count">
+      0 Yorum		</span>   
+  </div>
+      <div id="respond">
+        <form href="https://openani.me/profile/7149634466816724993/" id="commentform" novalidate="novalidate">
+      <div class="comment_owner_info">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tbody>
+            <tr>
+              <td class="yborder" align="left" valign="top">
+                <input placeholder="Adınız" name="author" id="name" value="" size="50" tabindex="1" type="text" required="">
+              </td>
+            </tr>
+            <tr>
+              <td class="yborder" align="left" valign="top">
+                <input placeholder="E-mail Adresiniz" name="email" id="email" value="" size="50" tabindex="2" type="email" required="">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comment_content">
+        <p>
+          <textarea placeholder="Yorumunuz ipucu/detay içeriyorsa spoiler butonunu kullanınız." name="comment" id="comment" cols="40" rows="3" tabindex="4" required=""></textarea>
+        </p>
+              </div>
+      <div class="comment_submit">
+        <button type="button" class="comment_spoiler" tabindex="5">
+          <span><i class="fas fa-exclamation-circle"></i></span> Spoiler Ekle				</button>
+        <button herf="https://openani.me/profile/7149634466816724993/"name="yorum" type="submit" class="comment_send" tabindex="5">
+          <span><i class="fas fa-paper-plane"></i></span> Yorumu Gönder				</button>
+      </div>
+    </form>
+        <div class="comment_list">
+      <ul class="commentlist" id="comments-container">
+        <div class="loading-episodes">Yorumlar yükleniyor...</div>
+      </ul>
+    </div>  
     </div>
-    
+    </div>
     <div id="footer">
       <div class="footerleft">
         Copyright &copy; 2025 <a href="https://openani.me/profile/7149634466816724993/">YepYeniWatch</a><br>
@@ -313,7 +355,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
       </div>
     </div>
   </div>
-  
+    </div>
   <script>
     var animeSlug = '${slug}';
     var currentSeason = ${firstSeasonNum};
@@ -347,9 +389,6 @@ export function getAnimePageHTML(anime, seasons, slug) {
         }
         
         var data = await response.json();
-        console.log('Season data:', data);      
-
-
 
         var episodes = data.season && data.season.episodes ? data.season.episodes : [];
         
@@ -374,6 +413,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
             html += ' — ' + epTitle + '';
           }
           html += '    </div>';
+          
           html += '    <div class="tarih">' + airDate + '</div>';
           html += '  </a>';
           html += '</div>';
@@ -406,9 +446,14 @@ export function getAnimePageHTML(anime, seasons, slug) {
     
     document.addEventListener('DOMContentLoaded', function() {
       loadSeasonEpisodes(currentSeason);
+      loadAllComments();
     });
     `
-        : ""
+        : `
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAllComments();
+    });
+    `
     }
     
     ${
@@ -416,11 +461,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
         ? `
     function openTrailer() {
       document.getElementById('trailer').style.display = 'flex';
-      document.getElementById('trailerFrame').src = '${
-        trailer && trailer.includes("youtube")
-          ? trailer.replace("watch?v=", "embed/")
-          : trailer
-      }';
+      document.getElementById('trailerFrame').src = '${trailer.embed_url}';
     }
     
     function closeTrailer() {
@@ -431,6 +472,119 @@ export function getAnimePageHTML(anime, seasons, slug) {
         : ""
     }
     
+
+    async function loadAllComments() {
+      var container = document.getElementById('comments-container');
+      var commentCount = document.getElementById('comment-count');
+      
+      container.innerHTML = '<div class="loading-episodes">Yorumlar yükleniyor...</div>';
+      try {
+        var response = await fetch('/api/anime/' + animeSlug);
+        
+        if (!response.ok) {
+          throw new Error('API hatası');
+        }
+        
+        var data = await response.json();
+        var reviews = data.anime && data.anime.reviews ? data.anime.reviews : [];
+        
+        if (reviews.length === 0) {
+          container.innerHTML = '<li class="no-episodes">Bu anime için henüz yorum bulunmamaktadır.</li>';
+          commentCount.textContent = '0 Yorum';
+          return;
+        }
+        
+        commentCount.textContent = reviews.length + ' Yorum';
+        
+        var html = '';
+        
+        for (var i = 0; i < reviews.length; i++) {
+          var review = reviews[i];
+          var index = i;
+          
+          var rating = review.rating || 0;
+          var authorId = review.author || '';
+          var content = review.content || '';
+          var reviewId = review.id || index;
+          var reviewTitle = review.title || '';
+          
+          var authorName = 'Annen amk';
+          var avatarUrl = '';
+          var profileUrl = '#';
+          var userRole = '<i class="fas fa-star"></i> Puan: ' + rating + '/10';
+          
+          if (authorId) {
+            try {
+              var userResponse = await fetch('/api/user/' + authorId);
+              if (userResponse.ok) {
+                var userData = await userResponse.json();
+                authorName = userData.username || 'Anonim';
+                avatarUrl = userData.avatar || '';
+                profileUrl = 'https://openani.me/profile/' + authorId;
+              }
+            } catch (e) {
+              console.error('Kullanıcı verisi alınamadı:', e);
+            }
+          }
+          
+          var isPopular = rating >= 8;
+          var likes = review.likes || 0;
+          var dislikes = review.dislikes || 0;
+          var borderColor = isPopular ? '#ffd70d' : '#8a2be2';
+          
+          var isDefaultAvatar = !avatarUrl || avatarUrl.includes('static.openani.me/profile/default');
+          var avatarInitial = authorName.charAt(0).toUpperCase();
+          
+          html += '<li class="' + (index % 2 === 0 ? 'even' : 'odd') + ' thread-' + (index % 2 === 0 ? 'even' : 'odd') + '" style="border-left: 3px solid ' + borderColor + ';">';
+          html += '  <div class="comment-body">';
+          html += '    <div class="comment-author vcard">';
+          
+          if (isDefaultAvatar) {
+            html += '      <div class="avatar avatar-96 photo" style=" border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: white;">' + avatarInitial + '</div>';
+          } else {
+            html += '      <img alt="" src="' + avatarUrl + '" srcset="' + avatarUrl + '" class="avatar avatar-96 photo" height="96" width="96" decoding="async">';
+          }
+          html += '      <a href="' + profileUrl + '">';
+          html += '        <cite class="fn">' + authorName + '</cite>';
+          html += '      </a>';
+          html += '      <cite id="userrole">' + userRole + '</cite>';
+          html += '    </div>';
+          html += '    <div class="comment-meta commentmetadata">';
+          html += '      <span style="color: #ffffffff !important; font-size: 14px !important; font-weight: bolder;">' + reviewTitle + '</span>';
+          html += '    </div>';
+          
+          html += '    <p>' + content + '</p>';
+          
+          html += '    <div class="cld-like-dislike-wrap cld-template-1">';
+          html += '      <div class="cld-like-wrap cld-common-wrap">';
+          html += '        <a href="https://openani.me/anime/' + animeSlug + '" class="cld-like-trigger cld-like-dislike-trigger" title="Like" data-comment-id="' + reviewId + '" data-trigger-type="like"><i class="fa fa-thumbs-up"></i></a>';
+          html += '        <span class="cld-like-count-wrap cld-count-wrap">' + likes + '</span>';
+          html += '      </div>';
+          html += '      <div class="cld-dislike-wrap cld-common-wrap">';
+          html += '        <a href="https://openani.me/anime/' + animeSlug + '" class="cld-dislike-trigger cld-like-dislike-trigger" title="Dislike" data-comment-id="' + reviewId + '" data-trigger-type="dislike"><i class="fa fa-thumbs-down"></i></a>';
+          html += '        <span class="cld-dislike-count-wrap cld-count-wrap">' + dislikes + '</span>';
+          html += '      </div>';
+          html += '    </div>';
+          
+          html += '    <div class="reply">';
+          html += '      <a rel="nofollow" class="comment-reply-link" href="https://openani.me/anime/' + animeSlug + '">Cevapla</a>';
+          html += '    </div>';
+          html += '  </div>';
+          html += '  <ul class="children"></ul>';
+          html += '</li>';
+        }
+        
+        container.innerHTML = html;
+        
+      } catch (error) {
+        console.error('Yorumlar yüklenirken hata:', error);
+        container.innerHTML = '<li class="no-episodes">Yorumlar yüklenirken bir hata oluştu.</li>';
+        commentCount.textContent = '0 Yorum';
+      }
+    }
+
+
+
   </script>
   
   <script src="/yepyeniwatch/js/jquery.perfect-scrollbar.min.js"></script>

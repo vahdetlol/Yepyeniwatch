@@ -16,6 +16,12 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT;
 
+  const now = new Date();
+  const timestamp = now.toLocaleTimeString("tr-TR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 
 const OPENANIME_API = process.env.OPENANIME_API;
 const OPENANIME_SITE = process.env.OPENANIME_SITE;
@@ -93,7 +99,11 @@ async function getGuncelAnimeData() {
           if (details.nextEpisodeToAir === null) {
             continue;
           }
-          
+           const currentDate = now.toISOString().slice(0, 10);
+          if (currentDate >= details.nextEpisodeToAir.air_date) {
+            continue;
+          }
+
           animeData.push({
             slug: details.slug,
             season: episode.season,
@@ -155,11 +165,22 @@ app.get('/api/home', async (req, res) => {
     let lastAnimes = [];
     if (totalPagesData.totalPages > 0) {
       const lastPageRes = await fetchFromOpenAnime(
-        `/anime?page=${totalPagesData.totalPages}`
+      `/anime?page=${totalPagesData.totalPages}`
       );
       if (lastPageRes.ok) {
-        const lastPageData = await lastPageRes.json();
-        lastAnimes = (lastPageData.animes || []).reverse().slice(0, 20);
+      const lastPageData = await lastPageRes.json();
+      lastAnimes = lastPageData.animes || [];
+      
+      if (lastAnimes.length < 20 && totalPagesData.totalPages > 1) {
+        const prevPageRes = await fetchFromOpenAnime(
+        `/anime?page=${totalPagesData.totalPages - 1}`
+        );
+        if (prevPageRes.ok) {
+        const prevPageData = await prevPageRes.json();
+        lastAnimes = [...(prevPageData.animes || []), ...lastAnimes];
+        }
+      }
+      lastAnimes = lastAnimes.reverse().slice(0, 20);
       }
     }
 
@@ -248,6 +269,25 @@ app.get('/api/anime/:slug', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+app.get('/api/user/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    const response = await fetchFromOpenAnime(`/user/${id}`);
+
+    if (!response.ok) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const user = await response.json();
+
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 app.get('/api/refresh-cache', async (req, res) => {
   guncelAnimeCache = null;

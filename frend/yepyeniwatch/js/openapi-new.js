@@ -66,8 +66,8 @@ $(document).ready(function () {
     
     // Resim URL'sini düzelt
     function fixImageUrl(url) {
-        if (!url) return 'https://openani.me/setsuki/chibi/crying.png';
-        return url.replace('image.tmdb.org', 'image.openanime.net');
+        if (!url) return "https://wsrv.nl/?url=" + 'https://openani.me/setsuki/chibi/crying.png';
+        return "https://wsrv.nl/?url=" + url.replace('image.tmdb.org', 'image.openanime.net');
     }
     
     // Anime kartı oluştur

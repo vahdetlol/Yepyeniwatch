@@ -125,7 +125,7 @@ function fetchResults() {
             var typeRaw = (anime.type || '').toString().toLowerCase();
             var typeText = typeRaw === 'movie' ? 'Film' : (typeRaw === 'tv' ? 'Anime' : (anime.type || '').toString());
             var avatar = anime.pictures && anime.pictures.avatar ? anime.pictures.avatar : '';
-            if (avatar) avatar = avatar.replace('image.tmdb.org', 'image.openanime.net');
+            if (avatar) avatar = "https://wsrv.nl/?url=" + avatar.replace('image.tmdb.org', 'image.openanime.net');
 
             // Yerel anime sayfasına yönlendir (OpenAnime'e değil)
             return (
