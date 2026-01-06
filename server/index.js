@@ -1,12 +1,7 @@
-/**
- * YepYeniWatch Node.js Server
- * Cloudflare Tunnel ile kullanılmak üzere tasarlanmıştır
- */
-
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import fs from 'fs';
+import fs from 'fs/promises';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -15,6 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT;
+const CACHE_FILE_PATH = path.join(__dirname, 'guncel-anime-cache.json');
 
   const now = new Date();
   const timestamp = now.toLocaleTimeString("tr-TR", {
@@ -29,8 +25,28 @@ const OPENANIME_SITE = process.env.OPENANIME_SITE;
 const headers = JSON.parse(process.env.HEADERS);
 
 let guncelAnimeCache = null;
-let guncelAnimeCacheTime = 0;
-const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 saat (milisaniye)
+let isUpdatingCache = false;
+async function loadCacheFromFile() {
+  try {
+    const data = await fs.readFile(CACHE_FILE_PATH, 'utf-8');
+    const cached = JSON.parse(data);
+    guncelAnimeCache = cached;
+    console.log(`Cache loaded (${cached.episodes?.length || 0} anime)`);
+    return cached;
+  } catch (error) {
+    console.log('Cache not found, new cache will be created');
+    return null;
+  }
+}
+
+async function saveCacheToFile(data) {
+  try {
+    await fs.writeFile(CACHE_FILE_PATH, JSON.stringify(data, null, 2), 'utf-8');
+    console.log(`Cache saved (${data.episodes?.length || 0} anime)`);
+  } catch (error) {
+    console.error('Could not save to file:', error.message);
+  }
+}
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -55,12 +71,11 @@ async function fetchFromOpenAnime(apiPath) {
 }
 
 async function getGuncelAnimeData() {
-  if (guncelAnimeCache && (Date.now() - guncelAnimeCacheTime) < CACHE_TTL) {
-    console.log("Güncel anime verileri cache'den alındı");
-    return guncelAnimeCache;
+  if (isUpdatingCache) {
+    return guncelAnimeCache || { episodes: [], lastUpdated: Date.now() };
   }
-
-  console.log("Güncel anime verileri API'den çekiliyor...");
+  isUpdatingCache = true;
+  console.log("Fetching latest anime data from API...");
   
   try {
      const allSlugs = new Set();
@@ -84,7 +99,7 @@ async function getGuncelAnimeData() {
         // Rate limiting için bekle
         await new Promise(resolve => setTimeout(resolve, 100)); 
       } catch (error) {
-        console.error(`Sayfa ${page} çekilemedi:`, error.message);
+        console.error(`Page ${page} could not be fetched:`, error.message);
       }
     }
     
@@ -99,8 +114,10 @@ async function getGuncelAnimeData() {
           if (details.nextEpisodeToAir === null) {
             continue;
           }
-           const currentDate = now.toISOString().slice(0, 10);
-          if (currentDate >= details.nextEpisodeToAir.air_date) {
+          const sevenDaysAgo = new Date(now);
+          sevenDaysAgo.setDate(now.getDate() - 7);
+          const currentDate = sevenDaysAgo.toISOString().slice(0, 10);
+          if (currentDate > details.nextEpisodeToAir.air_date) {
             continue;
           }
 
@@ -118,18 +135,21 @@ async function getGuncelAnimeData() {
         // Rate limiting için bekle
         await new Promise(resolve => setTimeout(resolve, 50));
       } catch (error) {
-        console.error(`Anime ${slug} çekilemedi:`, error.message);
+        console.error(`Anime ${slug} could not be fetched:`, error.message);
       }
     }
     
     const result = { episodes: animeData, lastUpdated: Date.now() };
     guncelAnimeCache = result;
-    guncelAnimeCacheTime = Date.now();
+   
+    await saveCacheToFile(result);
 
-    return guncelAnimeCache;
+    isUpdatingCache = false;
+    return result;
   } catch (error) {
-    console.error("Güncel anime verileri çekilemedi:", error.message);
-    return { episodes: [], lastUpdated: Date.now() };
+    console.error("Latest anime data could not be fetched:", error.message);
+    isUpdatingCache = false;
+    return guncelAnimeCache || { episodes: [], lastUpdated: Date.now() };
   }
 }
 
@@ -140,13 +160,11 @@ app.get('/api/home', async (req, res) => {
       latestEpisodesRes,
       popularsRes,
       fourKRes,
-      guncelAnimes,
     ] = await Promise.all([
       fetchFromOpenAnime("/anime/episodes/latest/populars?limit=20"),
       fetchFromOpenAnime("/anime/episodes/latest?limit=20"),
       fetchFromOpenAnime("/anime/populars"),
       fetchFromOpenAnime("/anime/4k-releases"),
-      getGuncelAnimeData(),
     ]);
 
     const popularEpisodes = popularEpisodesRes.ok
@@ -183,6 +201,7 @@ app.get('/api/home', async (req, res) => {
       lastAnimes = lastAnimes.reverse().slice(0, 20);
       }
     }
+    const guncelAnimes = guncelAnimeCache || { episodes: [], lastUpdated: Date.now() };
 
     res.json({
       popularEpisodes: popularEpisodes.episodes || [],
@@ -190,7 +209,7 @@ app.get('/api/home', async (req, res) => {
       populars: Array.isArray(populars) ? populars : [],
       fourK: fourK.animes || [],
       lastAnimes: lastAnimes,
-      guncelAnimes: guncelAnimes || [],
+      guncelAnimes: guncelAnimes,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -288,16 +307,28 @@ app.get('/api/user/:id', async (req, res) => {
   }
 });
 
-
 app.get('/api/refresh-cache', async (req, res) => {
-  guncelAnimeCache = null;
-  guncelAnimeCacheTime = 0;
-  const data = await getGuncelAnimeData();
-  res.json({ success: true, count: data.episodes?.length || 0 });
+  if (isUpdatingCache) {
+    return res.json({ success: false, message: 'Cache güncellenmekte' });
+  }
+  getGuncelAnimeData().catch(err => console.error('Cache update error:', err));
+  
+  res.json({ success: true, message: 'Cache güncelleme başlatıldı' });
 });
 
 
 import { getAnimePageHTML } from './anime-page.js';
+async function initializeCache() {
+  await loadCacheFromFile();
+  if (!guncelAnimeCache || !guncelAnimeCache.lastUpdated) {
+    console.log('Starting initial cache update...');
+    getGuncelAnimeData().catch(err => console.error('Initial cache update error:', err));
+  }
+  setInterval(() => {
+    console.log('Starting automatic cache update...');
+    getGuncelAnimeData().catch(err => console.error('Automatic cache update error:', err));
+  }, 0.5 * 30 * 60 * 1000); 
+}
 
 
 app.get('/anime/:slug', async (req, res) => {
@@ -376,7 +407,7 @@ app.get('/sitemap_index.xml', (req, res) => {
     res.header('Content-Type', 'application/xml');
     res.send(xml);
   } catch (err) {
-    console.error('Sitemap hatası:', err);
+    console.error('Sitemap_index error:', err);
     res.status(500).send('Sitemap oluşturulamadı');
   }
 });
@@ -417,7 +448,7 @@ app.get('/routes.xml', async (req, res) => {
     res.header('Content-Type', 'application/xml');
     res.send(xml);
   } catch (err) {
-    console.error('Routes sitemap hatası:', err);
+    console.error('Routes sitemap error:', err);
     res.status(500).send('Sitemap oluşturulamadı');
   }
 });
@@ -435,7 +466,7 @@ app.get('/episodes.xml', async (req, res) => {
     
     
     if (!response.ok) {
-      throw new Error(`OpenAnime sitemap çekilemedi: ${response.status}`);
+      throw new Error(`OpenAnime sitemap could not be fetched: ${response.status}`);
     }
     
     const xmlData = await response.text();
@@ -471,9 +502,9 @@ app.get('/episodes.xml', async (req, res) => {
     res.header('Content-Type', 'application/xml');
     res.send(xml);
     
-    console.log('Episodes sitemap başarıyla oluşturuldu');
+    console.log('Episodes sitemap successfully created');
   } catch (err) {
-    console.error('Episodes sitemap hatası detayı:', err.message);
+    console.error('Episodes sitemap error details:', err.message);
     console.error('Stack trace:', err.stack);
     
     const emptyXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -504,6 +535,7 @@ app.get('/search', (req, res) => {
 
 app.use(express.static(path.join(__dirname, '../frend')));
 
-app.listen(PORT, () => {
-  console.log(`Server çalışıyor: http://localhost:${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`Server is running: http://localhost:${PORT}`);
+  await initializeCache();
 });
