@@ -458,41 +458,72 @@ app.get('/episodes.xml', async (req, res) => {
     const baseUrl = 'https://www.yepyeniwatch.xyz';
     const currentDate = new Date().toISOString();
     
+    const headers = JSON.parse(process.env.HEADERS);
+    
+    console.log('Fetching OpenAnime episodes sitemap...');
     
     const response = await fetch('https://api.openani.me/sitemap/episodes.xml', {
       headers: headers,
-      timeout: 30000 
+      signal: AbortSignal.timeout(30000)
     });
     
-    
     if (!response.ok) {
-      throw new Error(`OpenAnime sitemap could not be fetched: ${response.status}`);
+      throw new Error(`OpenAnime sitemap HTTP ${response.status}: ${response.statusText}`);
     }
     
     const xmlData = await response.text();
+    console.log('OpenAnime sitemap received, length:', xmlData.length);
     
-    const urlRegex = /<loc>https?:\/\/openani\.me\/anime\/([^\/]+)(?:\/\d+\/\d+)?<\/loc>/g;
+    const urlRegex = /<loc>\s*https?:\/\/openani\.me\/anime\/([a-zA-Z0-9_-]+)(?:\/\d+\/\d+)?\s*<\/loc>/gi;
     const slugs = new Set();
     let match;
+    let matchCount = 0;
     
     while ((match = urlRegex.exec(xmlData)) !== null) {
+      matchCount++;
       const slug = match[1];
-      if (slug) {
+      if (slug && slug.length > 0) {
         slugs.add(slug);
       }
     }
     
+    console.log(`Total matches: ${matchCount}, Unique slugs: ${slugs.size}`);
+    
+    if (slugs.size === 0) {
+      console.log('No slugs found with primary regex, trying alternative method...');
+      
+      const alternateRegex = /openani\.me\/anime\/([a-zA-Z0-9_-]+)/gi;
+      while ((match = alternateRegex.exec(xmlData)) !== null) {
+        const slug = match[1];
+        if (slug && slug.length > 0 && !slug.includes('/')) {
+          slugs.add(slug);
+        }
+      }
+      
+      console.log(`Alternative method found: ${slugs.size} slugs`);
+    }
+
     
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
 
-    for (const slug of slugs) {
-      xml += `  <url>
+    if (slugs.size > 0) {
+      for (const slug of slugs) {
+        xml += `  <url>
     <loc>${baseUrl}/anime/${slug}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+`;
+      }
+    } else {
+      xml += `  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 `;
     }
@@ -502,18 +533,27 @@ app.get('/episodes.xml', async (req, res) => {
     res.header('Content-Type', 'application/xml');
     res.send(xml);
     
-    console.log('Episodes sitemap successfully created');
+    console.log(`Episodes sitemap created successfully with ${slugs.size} URLs`);
   } catch (err) {
-    console.error('Episodes sitemap error details:', err.message);
+    console.error('Episodes sitemap error:', err.message);
     console.error('Stack trace:', err.stack);
     
-    const emptyXml = `<?xml version="1.0" encoding="UTF-8"?>
+    // Hata durumunda bile geçerli bir sitemap döndür
+    const currentDate = new Date().toISOString();
+    const baseUrl = 'https://www.yepyeniwatch.xyz';
+    
+    const errorXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Geçici olarak boş - API hatası: ${err.message} -->
+  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>`;
     
     res.header('Content-Type', 'application/xml');
-    res.status(200).send(emptyXml);
+    res.status(200).send(errorXml);
   }
 });
 
