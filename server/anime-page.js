@@ -91,7 +91,8 @@ export function getAnimePageHTML(anime, seasons, slug) {
   <meta name="google" content="notranslate">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel="stylesheet" href="/yepyeniwatch/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/yepyeniwatch/common.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/yepyeniwatch/anime-page.css" type="text/css" media="all">
   <link rel="shortcut icon" href="/yepyeniwatch/images/yepyeniwatch_dik.png">
   
   <meta property="og:title" content="${title} - YepYeniWatch">
@@ -582,8 +583,6 @@ export function getAnimePageHTML(anime, seasons, slug) {
         commentCount.textContent = '0 Yorum';
       }
     }
-
-
 
   </script>
   
