@@ -124,7 +124,7 @@
 }
 
 .episode-box {
-  width: calc(100% - 10px);
+  width: calc(100% - 10px) !important;
   float: left;
   margin-bottom: 10px;
 }

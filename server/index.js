@@ -573,6 +573,13 @@ app.get('/search', (req, res) => {
   res.sendFile(path.join(__dirname, '../frend/search.html'));
 });
 
+app.get('/ekipalim', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frend/ekipalim.html'));
+});
+
+app.get('/ekip-alim', (req, res) => {
+  res.redirect(301, '/ekipalim');
+});
 app.use(express.static(path.join(__dirname, '../frend')));
 
 app.listen(PORT, async () => {

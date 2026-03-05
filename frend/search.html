@@ -14,8 +14,9 @@
 		<meta property="og:site_name" content="YepYeniWatch" />
 		<meta property="og:description" content="Arama sonuçları" />
 		<meta name='robots' content='max-image-preview:large' />
+		<script type="text/javascript" src="/yepyeniwatch/js/header-manager.js"></script>
 	</head>
-	<body>
+	<body data-page="search">
 		<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MTXCP52G2K"></script>
 <script>
@@ -27,61 +28,7 @@
 </script>
 		<div class="body-clickable"></div>
 		<div id="wrap">
-			<div id="header">
-				<div class="headerleft">
-					<a href="/">
-						<img src="/yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
-					</a>
-				</div>
-				<div class="headerright">
-					<a class="small-button mobil-diziler" title="Mobil Diziler">
-						<i class="fa fa-hashtag"></i>
-					</a>
-					<a href="https://openani.me/" class="small-button" title="Üye Ol">
-						<i class="fas fa-user-plus"></i>
-						<div class="nomob">Üye Ol</div>
-					</a>
-					<a class="simplemodal-login small-button" href="https://openani.me/" title="Üye Girişi">
-						<i class="fas fa-sign-in-alt"></i>
-						<div class="nomob">Üye Girişi</div>
-					</a>
-				</div>
-				<nav>
-					<ul class="topnav" id="myTopnav">
-						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
-							<a href="/">Anasayfa</a>
-						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="https://openani.me/calendar" target="_blank" rel="noopener">Takvim</a>
-						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="/anime-arsivi">Anime Arşivi</a>
-						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="https://androidoyun.club/apks" target="_blank" rel="noopener">Mobil Uygulama</a>
-						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="/feed">Yeni Bölümler</a>
-						</li>
-						<li class="menu-item menu-item-type-custom menu-item-object-custom">
-							<a href="https://discord.gg/openanime" target="_blank" rel="noopener">Discord</a>
-						</li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page">
-							<a href="https://discord.gg/openanime" target="_blank" rel="noopener">İletişim</a>
-						</li>
-						<li>
-							<form method="get" class="example" action="/search" autocomplete="off">
-								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
-								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
-								<div id="datafetch"></div>
-							</form>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
-						<i class="fas fa-bars"></i>
-					</a>
-				</nav>
-			</div>
+			<!-- Header JavaScript ile yüklenecek -->
 
 			<div id="content" class="homepage search-page">
 				<div class="title">

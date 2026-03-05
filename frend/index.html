@@ -76,9 +76,10 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"
         id="jquery-validate-js"></script>
+    <script type="text/javascript" src="/yepyeniwatch/js/header-manager.js"></script>
 </head>
 
-<body>
+<body data-page="home">
     <div class="body-clickable"></div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -99,66 +100,7 @@
 </script>
 
     <div id="wrap">
-        <div id="header">
-            <div class="headerleft">
-                <a href="/">
-                    <img src="/yepyeniwatch/images/trans_yepyeniwatch.png" alt="YepYeniWatch" />
-                </a>
-            </div>
-            <div class="headerright">
-                <a class="small-button mobil-diziler" title="Mobil Diziler">
-                    <i class="fa fa-hashtag"></i>
-                </a>
-                <a href="https://openani.me/" class="small-button" title="Üye Ol">
-                    <i class="fas fa-user-plus"></i>
-                    <div class="nomob">Üye Ol</div>
-                </a>
-                <a class="simplemodal-login small-button" href="https://openani.me/" title="Üye Girişi">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <div class="nomob">Üye Girişi</div>
-                </a>
-            </div>
-            <nav>
-                <ul class="topnav" id="myTopnav">
-                    <li id="menu-item-16"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-16">
-                        <a href="/">Anasayfa</a>
-                    </li>
-                    <li id="menu-item-2994"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2994">
-                        <a href="https://openani.me/calendar">Takvim</a>
-                    </li>
-                    <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item menu-item-17">
-                        <a href="/anime-arsivi">Anime Arşivi</a>
-                    </li>
-                    <li id="menu-item-1138"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1138">
-                        <a href="https://androidoyun.club/apks">Mobil Uygulama</a>
-                    </li>
-                    <li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28">
-                        <a href="/feed">Yeni Bölümler</a>
-                    </li>
-                    <li id="menu-item-2034"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2034">
-                        <a href="https://discord.gg/openanime">Discord</a>
-                    </li>
-                    <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19">
-                        <a href="https://discord.gg/openanime">İletişim</a>
-                    </li>
-                    <li>
-							<form method="get" class="example" action="/search" autocomplete="off">
-								<input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
-								<button type="submit" title="Ara"><i class="fa fa-search"></i></button>
-								<div id="datafetch"></div>
-							</form>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" class="icon" onclick="navmenufunc()" title="Menü">
-						<i class="fas fa-bars"></i>
-					</a>
-				</nav>
-			</div>
-        <div id="content" class="homepage">
+            <div id="content" class="homepage">
             <div class="title">
                 <span class="title-border">
                     <i class="fas fa-flag"></i> Öne Çıkan Animeler </span>
