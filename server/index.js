@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs/promises';
 import dotenv from 'dotenv';
+import { initializeAllAnimeCache, setupRoutes } from './all-anime-cache.js';
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -316,6 +317,8 @@ app.get('/api/refresh-cache', async (req, res) => {
   res.json({ success: true, message: 'Cache güncelleme başlatıldı' });
 });
 
+setupRoutes(app, headers);
+
 
 import { getAnimePageHTML } from './anime-page.js';
 async function initializeCache() {
@@ -585,4 +588,5 @@ app.use(express.static(path.join(__dirname, '../frend')));
 app.listen(PORT, async () => {
   console.log(`Server is running: http://localhost:${PORT}`);
   await initializeCache();
+  await initializeAllAnimeCache(headers);
 });
