@@ -469,88 +469,69 @@ app.get('/routes.xml', async (req, res) => {
   }
 });
 
-app.get('/episodes.xml', async (req, res) => {
+let sitemapCache = null;
+let lastSitemapUpdate = 0;
+const SITEMAP_UPDATE_INTERVAL = 24 * 60 * 60 * 1000; // 24 saat
+
+async function generateSitemapFromAllAnime() {
   try {
+    const allAnimeJsonPath = path.join(__dirname, 'all-anime.json');
+    const data = await fs.readFile(allAnimeJsonPath, 'utf-8');
+    const allAnimeData = JSON.parse(data);
+    
     const baseUrl = 'https://www.yepyeniwatch.xyz';
     const currentDate = new Date().toISOString();
-    
-    console.log('Fetching OpenAnime episodes sitemap...');
-    
-    const response = await fetch('https://api.openani.me/sitemap/episodes.xml', {
-      headers: headers,
-      signal: AbortSignal.timeout(30000)
-    });
-    
-    if (!response.ok) {
-      throw new Error(`OpenAnime sitemap HTTP ${response.status}: ${response.statusText}`);
-    }
-    
-    const xmlData = await response.text();
-    console.log('OpenAnime sitemap received, length:', xmlData.length);
-    
-    const urlRegex = /<loc>\s*https?:\/\/openani\.me\/anime\/([a-zA-Z0-9_-]+)(?:\/\d+\/\d+)?\s*<\/loc>/gi;
-    const slugs = new Set();
-    let match;
-    let matchCount = 0;
-    
-    while ((match = urlRegex.exec(xmlData)) !== null) {
-      matchCount++;
-      const slug = match[1];
-      if (slug && slug.length > 0) {
-        slugs.add(slug);
-      }
-    }
-    
-    console.log(`Total matches: ${matchCount}, Unique slugs: ${slugs.size}`);
-    
-    if (slugs.size === 0) {
-      console.log('No slugs found with primary regex, trying alternative method...');
-      
-      const alternateRegex = /openani\.me\/anime\/([a-zA-Z0-9_-]+)/gi;
-      while ((match = alternateRegex.exec(xmlData)) !== null) {
-        const slug = match[1];
-        if (slug && slug.length > 0 && !slug.includes('/')) {
-          slugs.add(slug);
-        }
-      }
-      
-      console.log(`Alternative method found: ${slugs.size} slugs`);
-    }
-
     
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
-
-    if (slugs.size > 0) {
-      for (const slug of slugs) {
-        xml += `  <url>
-    <loc>${baseUrl}/anime/${slug}</loc>
+    
+    if (allAnimeData.anime && Array.isArray(allAnimeData.anime)) {
+      for (const anime of allAnimeData.anime) {
+        if (anime.slug) {
+          xml += `  <url>
+    <loc>${baseUrl}/anime/${anime.slug}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 `;
+        }
       }
-    } else {
-      xml += `  <url>
-    <loc>${baseUrl}/</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-`;
     }
-
-    xml += '</urlset>';
-
-    res.header('Content-Type', 'application/xml');
-    res.send(xml);
     
-    console.log(`Episodes sitemap created successfully with ${slugs.size} URLs`);
+    xml += '</urlset>';
+    
+    sitemapCache = xml;
+    lastSitemapUpdate = Date.now();
+    
+    console.log(`Sitemap generated successfully with ${allAnimeData.anime?.length || 0} anime`);
+    return xml;
+  } catch (err) {
+    console.error('Sitemap generation error:', err.message);
+    throw err;
+  }
+}
+
+app.get('/episodes.xml', async (req, res) => {
+  try {
+    const baseUrl = 'https://www.yepyeniwatch.xyz';
+    const currentDate = new Date().toISOString();
+    
+    // 24 saatte bir güncelle
+    if (!sitemapCache || (Date.now() - lastSitemapUpdate) > SITEMAP_UPDATE_INTERVAL) {
+      console.log('Regenerating sitemap from all-anime.json...');
+      await generateSitemapFromAllAnime();
+    }
+    
+    if (!sitemapCache) {
+      throw new Error('Sitemap cache not available');
+    }
+    
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemapCache);
   } catch (err) {
     console.error('Episodes sitemap error:', err.message);
-    console.error('Stack trace:', err.stack);
     
     // Hata durumunda bile geçerli bir sitemap döndür
     const currentDate = new Date().toISOString();
