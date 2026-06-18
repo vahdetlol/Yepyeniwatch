@@ -23,7 +23,20 @@ const CACHE_FILE_PATH = path.join(__dirname, 'guncel-anime-cache.json');
 const OPENANIME_API = process.env.OPENANIME_API;
 const OPENANIME_SITE = process.env.OPENANIME_SITE;
 
-const headers = JSON.parse(process.env.HEADERS);
+function parseJsonEnv(value, fallback) {
+  if (!value) {
+    return fallback;
+  }
+
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    console.warn('Invalid JSON env value, using fallback:', error.message);
+    return fallback;
+  }
+}
+
+const headers = parseJsonEnv(process.env.HEADERS, {});
 
 let guncelAnimeCache = null;
 let isUpdatingCache = false;
@@ -460,8 +473,6 @@ app.get('/episodes.xml', async (req, res) => {
   try {
     const baseUrl = 'https://www.yepyeniwatch.xyz';
     const currentDate = new Date().toISOString();
-    
-    const headers = JSON.parse(process.env.HEADERS);
     
     console.log('Fetching OpenAnime episodes sitemap...');
     
