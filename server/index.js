@@ -487,7 +487,13 @@ async function generateSitemapFromAllAnime() {
 `;
     
     if (allAnimeData.anime && Array.isArray(allAnimeData.anime)) {
-      for (const anime of allAnimeData.anime) {
+      const shuffledAnime = [...allAnimeData.anime];
+      for (let i = shuffledAnime.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledAnime[i], shuffledAnime[j]] = [shuffledAnime[j], shuffledAnime[i]];
+      }
+
+      for (const anime of shuffledAnime) {
         if (anime.slug) {
           xml += `  <url>
     <loc>${baseUrl}/anime/${anime.slug}</loc>
