@@ -473,11 +473,33 @@ let sitemapCache = null;
 let lastSitemapUpdate = 0;
 const SITEMAP_UPDATE_INTERVAL = 24 * 60 * 60 * 1000; // 24 saat
 
+function escapeXml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function getCachedAnimeList(allAnimeData) {
+  if (Array.isArray(allAnimeData?.animes)) {
+    return allAnimeData.animes;
+  }
+
+  if (Array.isArray(allAnimeData?.anime)) {
+    return allAnimeData.anime;
+  }
+
+  return [];
+}
+
 async function generateSitemapFromAllAnime() {
   try {
     const allAnimeJsonPath = path.join(__dirname, 'all-anime-cache.json');
     const data = await fs.readFile(allAnimeJsonPath, 'utf-8');
     const allAnimeData = JSON.parse(data);
+    const animeList = getCachedAnimeList(allAnimeData);
     
     const baseUrl = 'https://www.yepyeniwatch.xyz';
     const currentDate = new Date().toISOString();
@@ -486,8 +508,8 @@ async function generateSitemapFromAllAnime() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
     
-    if (allAnimeData.anime && Array.isArray(allAnimeData.anime)) {
-      const shuffledAnime = [...allAnimeData.anime];
+    if (animeList.length > 0) {
+      const shuffledAnime = [...animeList];
       for (let i = shuffledAnime.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledAnime[i], shuffledAnime[j]] = [shuffledAnime[j], shuffledAnime[i]];
@@ -496,7 +518,7 @@ async function generateSitemapFromAllAnime() {
       for (const anime of shuffledAnime) {
         if (anime.slug) {
           xml += `  <url>
-    <loc>${baseUrl}/anime/${anime.slug}</loc>
+    <loc>${escapeXml(`${baseUrl}/anime/${encodeURIComponent(anime.slug)}`)}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -511,7 +533,7 @@ async function generateSitemapFromAllAnime() {
     sitemapCache = xml;
     lastSitemapUpdate = Date.now();
     
-    console.log(`Sitemap generated successfully with ${allAnimeData.anime?.length || 0} anime`);
+    console.log(`Sitemap generated successfully with ${animeList.length} anime`);
     return xml;
   } catch (err) {
     console.error('Sitemap generation error:', err.message);
@@ -526,7 +548,7 @@ app.get('/episodes.xml', async (req, res) => {
     
     // 24 saatte bir güncelle
     if (!sitemapCache || (Date.now() - lastSitemapUpdate) > SITEMAP_UPDATE_INTERVAL) {
-      console.log('Regenerating sitemap from all-anime.json...');
+      console.log('Regenerating sitemap from all-anime-cache.json...');
       await generateSitemapFromAllAnime();
     }
     
