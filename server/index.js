@@ -475,7 +475,7 @@ const SITEMAP_UPDATE_INTERVAL = 24 * 60 * 60 * 1000; // 24 saat
 
 async function generateSitemapFromAllAnime() {
   try {
-    const allAnimeJsonPath = path.join(__dirname, 'all-anime.json');
+    const allAnimeJsonPath = path.join(__dirname, 'all-anime-cache.json');
     const data = await fs.readFile(allAnimeJsonPath, 'utf-8');
     const allAnimeData = JSON.parse(data);
     
