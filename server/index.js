@@ -12,6 +12,32 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT;
 const CACHE_FILE_PATH = path.join(__dirname, 'guncel-anime-cache.json');
+const OPENANIME_RESPONSE_CACHE_FILE = path.join(__dirname, 'openanime-response-cache.json');
+
+function getPositiveNumberEnv(name, fallback) {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+const OPENANIME_RESPONSE_CACHE_TTL = getPositiveNumberEnv(
+  'OPENANIME_RESPONSE_CACHE_TTL_MS',
+  3 * 60 * 60 * 1000
+);
+const OPENANIME_RESPONSE_CACHE_MAX_STALE = getPositiveNumberEnv(
+  'OPENANIME_RESPONSE_CACHE_MAX_STALE_MS',
+  7 * 24 * 60 * 60 * 1000
+);
+const OPENANIME_RESPONSE_CACHE_MAX_ITEMS = getPositiveNumberEnv(
+  'OPENANIME_RESPONSE_CACHE_MAX_ITEMS',
+  5000
+);
+const OPENANIME_RESPONSE_CACHE_SAVE_DELAY = 1000;
+
+let openAnimeResponseCache = new Map();
+let openAnimeResponseCacheLoaded = false;
+let openAnimeResponseCacheLoadPromise = null;
+let openAnimeResponseCacheSaveTimer = null;
+let pendingOpenAnimeRequests = new Map();
 
   const now = new Date();
   const timestamp = now.toLocaleTimeString("tr-TR", {
@@ -22,6 +48,184 @@ const CACHE_FILE_PATH = path.join(__dirname, 'guncel-anime-cache.json');
 
 const OPENANIME_API = process.env.OPENANIME_API;
 const OPENANIME_SITE = process.env.OPENANIME_SITE;
+
+function shouldCacheOpenAnimePath(apiPath) {
+  return apiPath === '/anime' || apiPath.startsWith('/anime?') || apiPath.startsWith('/anime/');
+}
+
+function isValidOpenAnimeCacheEntry(entry) {
+  return entry
+    && typeof entry.body === 'string'
+    && typeof entry.cachedAt === 'number'
+    && typeof entry.status === 'number';
+}
+
+function pruneOpenAnimeResponseCache(now = Date.now()) {
+  const entries = [...openAnimeResponseCache.entries()]
+    .filter(([, entry]) => (
+      isValidOpenAnimeCacheEntry(entry)
+      && now - entry.cachedAt <= OPENANIME_RESPONSE_CACHE_MAX_STALE
+    ));
+
+  if (entries.length > OPENANIME_RESPONSE_CACHE_MAX_ITEMS) {
+    entries.sort((a, b) => {
+      const aTime = a[1].lastAccessedAt || a[1].cachedAt;
+      const bTime = b[1].lastAccessedAt || b[1].cachedAt;
+      return bTime - aTime;
+    });
+    entries.length = OPENANIME_RESPONSE_CACHE_MAX_ITEMS;
+  }
+
+  openAnimeResponseCache = new Map(entries);
+}
+
+async function loadOpenAnimeResponseCache() {
+  if (openAnimeResponseCacheLoaded) {
+    return;
+  }
+
+  if (openAnimeResponseCacheLoadPromise) {
+    return openAnimeResponseCacheLoadPromise;
+  }
+
+  openAnimeResponseCacheLoadPromise = (async () => {
+    try {
+      const data = await fs.readFile(OPENANIME_RESPONSE_CACHE_FILE, 'utf-8');
+      const cached = JSON.parse(data);
+      openAnimeResponseCache = new Map(Object.entries(cached.entries || {}));
+      pruneOpenAnimeResponseCache();
+      console.log(`OpenAnime response cache loaded: ${openAnimeResponseCache.size} entries`);
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        console.error('OpenAnime response cache could not be loaded:', error.message);
+      }
+      openAnimeResponseCache = new Map();
+    } finally {
+      openAnimeResponseCacheLoaded = true;
+      openAnimeResponseCacheLoadPromise = null;
+    }
+  })();
+
+  return openAnimeResponseCacheLoadPromise;
+}
+
+async function saveOpenAnimeResponseCache() {
+  if (openAnimeResponseCacheSaveTimer) {
+    clearTimeout(openAnimeResponseCacheSaveTimer);
+    openAnimeResponseCacheSaveTimer = null;
+  }
+
+  pruneOpenAnimeResponseCache();
+
+  const payload = {
+    version: 1,
+    ttlMs: OPENANIME_RESPONSE_CACHE_TTL,
+    savedAt: Date.now(),
+    entries: Object.fromEntries(openAnimeResponseCache)
+  };
+
+  try {
+    await fs.writeFile(
+      OPENANIME_RESPONSE_CACHE_FILE,
+      JSON.stringify(payload, null, 2),
+      'utf-8'
+    );
+  } catch (error) {
+    console.error('OpenAnime response cache could not be saved:', error.message);
+  }
+}
+
+function scheduleOpenAnimeResponseCacheSave() {
+  if (openAnimeResponseCacheSaveTimer) {
+    return;
+  }
+
+  openAnimeResponseCacheSaveTimer = setTimeout(() => {
+    saveOpenAnimeResponseCache().catch(error => {
+      console.error('OpenAnime response cache save error:', error.message);
+    });
+  }, OPENANIME_RESPONSE_CACHE_SAVE_DELAY);
+  openAnimeResponseCacheSaveTimer.unref?.();
+}
+
+function createOpenAnimeCachedResponse(entry, cacheStatus) {
+  return new Response(entry.body, {
+    status: entry.status,
+    statusText: entry.statusText || 'OK',
+    headers: {
+      'content-type': entry.contentType || 'application/json',
+      'x-openanime-cache': cacheStatus
+    }
+  });
+}
+
+async function refreshOpenAnimeResponseCache(apiPath, url) {
+  const pendingRequest = pendingOpenAnimeRequests.get(apiPath);
+  if (pendingRequest) {
+    return pendingRequest;
+  }
+
+  const request = (async () => {
+    const response = await fetch(url, { headers });
+    const body = await response.text();
+    const contentType = response.headers.get('content-type') || 'application/json';
+
+    if (response.ok) {
+      const now = Date.now();
+      openAnimeResponseCache.set(apiPath, {
+        status: response.status,
+        statusText: response.statusText,
+        contentType,
+        body,
+        cachedAt: now,
+        lastAccessedAt: now
+      });
+      scheduleOpenAnimeResponseCacheSave();
+    }
+
+    return new Response(body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: {
+        'content-type': contentType,
+        'x-openanime-cache': 'MISS'
+      }
+    });
+  })().finally(() => {
+    pendingOpenAnimeRequests.delete(apiPath);
+  });
+
+  pendingOpenAnimeRequests.set(apiPath, request);
+  return request;
+}
+
+async function fetchOpenAnimeWithCache(apiPath, url) {
+  if (!shouldCacheOpenAnimePath(apiPath)) {
+    return fetch(url, { headers });
+  }
+
+  await loadOpenAnimeResponseCache();
+
+  const now = Date.now();
+  const cached = openAnimeResponseCache.get(apiPath);
+
+  if (isValidOpenAnimeCacheEntry(cached)) {
+    cached.lastAccessedAt = now;
+
+    if (now - cached.cachedAt <= OPENANIME_RESPONSE_CACHE_TTL) {
+      return createOpenAnimeCachedResponse(cached, 'HIT');
+    }
+
+    if (now - cached.cachedAt <= OPENANIME_RESPONSE_CACHE_MAX_STALE) {
+      refreshOpenAnimeResponseCache(apiPath, url).catch(error => {
+        console.error(`OpenAnime cache refresh failed for ${apiPath}:`, error.message);
+      });
+      return createOpenAnimeCachedResponse(cached, 'STALE');
+    }
+  }
+
+  return refreshOpenAnimeResponseCache(apiPath, url);
+}
 
 function parseJsonEnv(value, fallback) {
   if (!value) {
@@ -76,12 +280,7 @@ app.use('/yepyeniwatch', express.static(path.join(__dirname, '../frend/yepyeniwa
 
 async function fetchFromOpenAnime(apiPath) {
   const url = `${OPENANIME_API}${apiPath}`;
-  
-  const response = await fetch(url, {
-    headers: headers
-  });
-  
-  return response;
+  return fetchOpenAnimeWithCache(apiPath, url);
 }
 
 async function getGuncelAnimeData() {
@@ -607,6 +806,7 @@ app.use(express.static(path.join(__dirname, '../frend')));
 
 app.listen(PORT, async () => {
   console.log(`Server is running: http://localhost:${PORT}`);
+  await loadOpenAnimeResponseCache();
   await initializeCache();
   await initializeAllAnimeCache(headers);
 });
