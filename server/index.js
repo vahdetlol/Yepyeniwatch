@@ -658,6 +658,12 @@ app.get('/routes.xml', async (req, res) => {
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>${baseUrl}/ekipalim</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>`;
 
     res.header('Content-Type', 'application/xml');
@@ -701,7 +707,7 @@ async function generateSitemapFromAllAnime() {
     const animeList = getCachedAnimeList(allAnimeData);
     
     const baseUrl = 'https://www.yepyeniwatch.xyz';
-    const currentDate = new Date().toISOString();
+    const currentDate = new Date(allAnimeData.lastUpdated || Date.now()).toISOString();
     
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

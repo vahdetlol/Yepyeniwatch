@@ -44,7 +44,8 @@ function getHeaderTemplate() {
                     </li>
                     <li>
                         <form method="get" class="example" action="/search" autocomplete="off">
-                            <input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
+                            <input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="
+anime arayın......" />
                             <button type="submit" title="Ara"><i class="fa fa-search"></i></button>
                             <div id="datafetch"></div>
                         </form>

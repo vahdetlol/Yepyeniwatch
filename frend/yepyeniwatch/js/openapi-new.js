@@ -86,10 +86,10 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                             <a href="${episodeLink}">
-                                <img src="${avatar}" width="170px" height="255px" title="${animename}">
+                                <img src="${avatar}" width="170px" height="255px" title="${animename}" alt="${animename} anime afişi" loading="lazy" decoding="async">
                             </a>
                         </div>
-                        ${fourKlogo ? `<img src="${fourKlogo}" class="fourk-logo">` : ''}
+                        ${fourKlogo ? `<img src="${fourKlogo}" class="fourk-logo" alt="4K anime">` : ''}
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">
@@ -116,10 +116,10 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                             <a href="${episodeLink}">
-                                <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${animename}">
+                                <img width="244px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${animename} ${seasonEpisode}" loading="lazy" decoding="async">
                             </a>
                         </div>
-                        ${fourKlogo ? `<img src="${fourKlogo}" class="fourk-logo">` : ''}
+                        ${fourKlogo ? `<img src="${fourKlogo}" class="fourk-logo" alt="4K anime">` : ''}
                     </div>
                     <div class="episode-title">
                         <div class="serie-name" lang="en">
@@ -147,10 +147,10 @@ $(document).ready(function () {
                     <div class="poster">
                         <div class="img">
                             <a href="${episodeLink}">
-                                <img src="${avatar}" width="170px" height="255px" title="${animename}">
+                                <img src="${avatar}" width="170px" height="255px" title="${animename}" alt="${animename} anime afişi" loading="lazy" decoding="async">
                             </a>
                         </div>
-                        ${fourKlogo ? `<img src="${fourKlogo}" class="fourk-logo">` : ''}
+                        ${fourKlogo ? `<img src="${fourKlogo}" class="fourk-logo" alt="4K anime">` : ''}
                     </div>
                     <div class="episode-title">
                         <div class="serie-name">

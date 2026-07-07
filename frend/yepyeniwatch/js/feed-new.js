@@ -42,7 +42,7 @@ $(document).ready(function() {
                             <div class="poster">
                                 <div class="img">
                                     <a href="${episodeLink}">
-                                        <img width="250px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${english}">
+                                        <img width="250px" height="141px" class="lazy" src="${banner}" data-src="${banner}" alt="${english} ${seasonEpisode}" loading="lazy" decoding="async">
                                     </a>
                                 </div>
                             </div>

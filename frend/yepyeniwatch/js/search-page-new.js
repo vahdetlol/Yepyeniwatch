@@ -62,14 +62,14 @@
             '<div class="anime-card">' +
             '  <div class="anime-poster">' +
             '    <a href="' + animeLink + '">' +
-            (avatar ? '      <img src="' + avatar + '" alt="' + english + '" loading="lazy">' : '') +
+            (avatar ? '      <img src="' + avatar + '" alt="' + english + ' anime afişi" loading="lazy" decoding="async">' : '') +
             '    </a>' +
             '  </div>' +
             '  <div class="anime-info" style="margin-top: -10px;">' +
             '    <div class="imdb-score">' + seasonText + '</div>' +
             '    <h3 class="anime-title">' +
             '      <a href="' + animeLink + '">' + english + '</a>' + 
-            (fourk ? '<img class="search-card-4k" src="' + fourk + '" style="height: 35px;">' : '') +
+            (fourk ? '<img class="search-card-4k" src="' + fourk + '" alt="4K anime" style="height: 35px;">' : '') +
             '    </h3>' +
             '    <div class="anime-meta-2">' +
             '      <span class="seasons-info">' + romaji + '</span>' +

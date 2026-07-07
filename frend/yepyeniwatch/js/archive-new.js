@@ -137,6 +137,7 @@ $(document).ready(function() {
                 
                 // Render animes
                 animes.forEach(anime => {
+                    const animeTitle = anime.english || anime.romaji || "İsimsiz anime";
                     const imageUrl = fixImageUrl(anime.pictures?.avatar);
                     const imdbScore = anime.tmdbScore ? parseFloat(anime.tmdbScore).toFixed(1) : 'N/A';
                     const genres = anime.genres || [];
@@ -150,13 +151,13 @@ $(document).ready(function() {
                         <div class="anime-card">
                             <div class="anime-poster">
                                 <a href="${animeLink}">
-                                    <img src="${imageUrl}" alt="${anime.english}" loading="lazy">
+                                    <img src="${imageUrl}" alt="${animeTitle} anime afişi" loading="lazy" decoding="async">
                                 </a>
                             </div>
                             <div class="anime-info">
                                 <div class="imdb-score">IMDb: ${imdbScore}</div>
                                 <h3 class="anime-title">
-                                    <a href="${animeLink}">${anime.english}</a>
+                                    <a href="${animeLink}">${animeTitle}</a>
                                 </h3>
                                 <div class="anime-meta">
                                     <span class="seasons-info">${anime.numberOfSeasons ? `${anime.numberOfSeasons} Sezon ${anime.numberOfEpisodes} Bölüm` : "Film"}</span>

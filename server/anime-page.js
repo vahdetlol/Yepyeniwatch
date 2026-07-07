@@ -26,28 +26,146 @@ function formatDate(dateStr) {
   }
 }
 
+const SITE_URL = "https://www.yepyeniwatch.xyz";
+const SITE_NAME = "YepYeniWatch";
+const DEFAULT_IMAGE = `${SITE_URL}/yepyeniwatch/images/yepyeniwatch.png`;
+const DEFAULT_DESCRIPTION =
+  "Bu animenin konusu, sezon bilgileri ve bölümleri YepYeniWatch'ta.";
+
+function normalizeText(value) {
+  return String(value ?? "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function truncateText(value, maxLength) {
+  const text = normalizeText(value);
+  if (text.length <= maxLength) return text;
+
+  const slice = text.slice(0, maxLength + 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  const cut = lastSpace > 80 ? slice.slice(0, lastSpace) : text.slice(0, maxLength);
+  return `${cut.trim()}...`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function normalizeImageUrl(value) {
+  const url = String(value ?? "")
+    .replace("image.tmdb.org", "image.openanime.net")
+    .trim();
+
+  if (!/^https?:\/\//i.test(url)) {
+    return "";
+  }
+
+  return url;
+}
+
+function getProxyImageUrl(value) {
+  const imageUrl = normalizeImageUrl(value);
+  return imageUrl ? `https://wsrv.nl/?url=${encodeURIComponent(imageUrl)}` : "";
+}
+
+function normalizeDate(value) {
+  const text = normalizeText(value);
+  const dottedDate = text.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+
+  if (dottedDate) {
+    const [, day, month, year] = dottedDate;
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+
+  const parsedDate = new Date(text);
+  if (Number.isNaN(parsedDate.getTime())) {
+    return "";
+  }
+
+  return parsedDate.toISOString().slice(0, 10);
+}
+
+function compactStructuredData(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map(compactStructuredData)
+      .filter((item) => item !== undefined && item !== null && item !== "");
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value)
+        .map(([key, item]) => [key, compactStructuredData(item)])
+        .filter(([, item]) => item !== undefined && item !== null && item !== "")
+    );
+  }
+
+  return value;
+}
+
+function stringifyStructuredData(value) {
+  return JSON.stringify(compactStructuredData(value), null, 2).replace(
+    /</g,
+    "\\u003c"
+  );
+}
+
+function stringifyJs(value) {
+  return JSON.stringify(String(value ?? "")).replace(/</g, "\\u003c");
+}
+
 export function getAnimePageHTML(anime, seasons, slug) {
-  const title = anime.english || anime.romaji || "Anime";
-  const romaji = anime.romaji || "";
-  const summary = anime.summary || "Bu animenin açıklaması bulunmamaktadır.";
-  const genres = anime.genres || [];
-  const vravatar =
-    anime.pictures?.avatar?.replace("image.tmdb.org", "image.openanime.net") ||
-    "";
-  const avatar = "https://wsrv.nl/?url=" + vravatar;
-  const vrbanner =
-    anime.pictures?.banner?.replace("image.tmdb.org", "image.openanime.net") ||
-    "";
-  const banner = "https://wsrv.nl/?url=" + vrbanner;
+  const title = normalizeText(anime.english || anime.romaji || "Anime");
+  const romaji = normalizeText(anime.romaji || "");
+  const summary = normalizeText(anime.summary || DEFAULT_DESCRIPTION);
+  const genres = Array.isArray(anime.genres) ? anime.genres.map(normalizeText).filter(Boolean) : [];
+  const avatar = getProxyImageUrl(anime.pictures?.avatar);
+  const banner = getProxyImageUrl(anime.pictures?.banner) || "/yepyeniwatch/images/background.jpg";
+  const primaryImage = avatar || DEFAULT_IMAGE;
+  const slugPath = encodeURIComponent(slug);
+  const canonicalUrl = `${SITE_URL}/anime/${slugPath}`;
+  const metaDescription = truncateText(
+    `${title} izle sayfasında konu, sezon bilgileri ve Türkçe anime bölümleri ${SITE_NAME}'ta. ${summary}`,
+    155
+  );
   const tmdbScore = anime.tmdbScore
     ? parseFloat(anime.tmdbScore).toFixed(1)
     : "N/A";
-  const trailer = typeof anime.trailer === "string" ? anime.trailer : "";
+  const trailer =
+    typeof anime.trailer === "string" ? anime.trailer : anime.trailer?.embed_url || "";
+  const serializedSlug = stringifyJs(slug);
+  const serializedTrailer = stringifyJs(trailer);
   const firstAirDate = anime.firstAirDate || "";
+  const publishedDate = normalizeDate(firstAirDate);
   const year = firstAirDate ? firstAirDate.split(".").pop() : "";
   const fourK = anime.is4K;
   const type = anime.type;
   const isTV = type === "tv";
+  const ogType = isTV ? "video.tv_show" : "video.movie";
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": isTV ? "TVSeries" : "Movie",
+    name: title,
+    alternateName: romaji && romaji !== title ? romaji : undefined,
+    description: summary,
+    image: primaryImage,
+    url: canonicalUrl,
+    genre: genres,
+    inLanguage: "tr-TR",
+    datePublished: publishedDate || undefined,
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+    },
+  };
 
   let seasonButtons = "";
   let firstSeasonNum = 1;
@@ -70,12 +188,12 @@ export function getAnimePageHTML(anime, seasons, slug) {
         season.season_number !== undefined ? season.season_number : index + 1;
       const activeClass = index === 0 ? "active" : "";
       const seasonName = season.name || `${seasonNum}. Sezon`;
-      seasonButtons += `<button class="btn ${activeClass}" data-season="${seasonNum}">${seasonName}</button>`;
+      seasonButtons += `<button class="btn ${activeClass}" data-season="${escapeHtml(seasonNum)}">${escapeHtml(seasonName)}</button>`;
     });
   }
 
   const genreTags = genres
-    .map((g) => `<div class="genres"><a href="/anime-arsivi">${g}</a></div>`)
+    .map((g) => `<div class="genres"><a href="/anime-arsivi">${escapeHtml(g)}</a></div>`)
     .join("");
 
   return `<!DOCTYPE html>
@@ -83,23 +201,31 @@ export function getAnimePageHTML(anime, seasons, slug) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${title} - YepYeniWatch</title>
-  <meta name="description" content="${summary.substring(0, 160)}">
-  <meta name="keywords" content="${title}, ${romaji}, anime izle, türkçe anime">
+  <title>${escapeHtml(`${title} izle - Türkçe Anime | ${SITE_NAME}`)}</title>
+  <meta name="description" content="${escapeHtml(metaDescription)}">
   <meta content="tr" http-equiv="Content-Language">
   <meta name="language" content="Turkish">
   <meta name="google" content="notranslate">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="${escapeHtml(canonicalUrl)}">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="/yepyeniwatch/common.css" type="text/css" media="all">
   <link rel="stylesheet" href="/yepyeniwatch/anime-page.css" type="text/css" media="all">
   <link rel="shortcut icon" href="/yepyeniwatch/images/yepyeniwatch_dik.png">
   
-  <meta property="og:title" content="${title} - YepYeniWatch">
-  <meta property="og:site_name" content="YepYeniWatch">
-  <meta property="og:url" content="https://yepyeniwatch.xyz/anime/${slug}">
-  <meta property="og:description" content="${summary.substring(0, 200)}">
-  <meta property="og:image" content="${avatar}">
+  <meta property="og:type" content="${ogType}">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:title" content="${escapeHtml(`${title} izle - ${SITE_NAME}`)}">
+  <meta property="og:site_name" content="${SITE_NAME}">
+  <meta property="og:url" content="${escapeHtml(canonicalUrl)}">
+  <meta property="og:description" content="${escapeHtml(metaDescription)}">
+  <meta property="og:image" content="${escapeHtml(primaryImage)}">
+  <meta property="og:image:alt" content="${escapeHtml(`${title} anime afişi`)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+${stringifyStructuredData(structuredData)}
+  </script>
   
   <style>
     .body-clickable {
@@ -188,7 +314,8 @@ export function getAnimePageHTML(anime, seasons, slug) {
                     </li>
                     <li>
               <form method="get" class="example" action="/search" autocomplete="off">
-                <input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="bölüm veya anime arayın..." />
+                <input type="text" class="field" name="q" id="searchInput" onkeyup="fetchResults()" placeholder="
+anime arayın......" />
                 <button type="submit" title="Ara"><i class="fa fa-search"></i></button>
                 <div id="datafetch"></div>
               </form>
@@ -205,11 +332,11 @@ export function getAnimePageHTML(anime, seasons, slug) {
         <div class="title">
         ${
           fourK
-            ? `<img src="https://yepyeniwatch.xyz/yepyeniwatch/images/4klogo.png" class="fourk-logoo far fa-dot-circle">`
+            ? `<img src="${SITE_URL}/yepyeniwatch/images/4klogo.png" class="fourk-logoo far fa-dot-circle" alt="4K anime">`
             : '<i class="fourk-logoo far fa-dot-circle"></i>'
         }
           <div class="title-border bd-purple">
-             <div class= "anime-title">${title} </div> 
+             <h1 class="anime-title">${escapeHtml(`${title} izle`)}</h1> 
           </div>
 
         </div>
@@ -222,7 +349,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
           
           <div id="icerikcatleft">
             <div class="category_image">
-              ${avatar ? `<img src="${avatar}" alt="${title}">` : ""}
+              ${avatar ? `<img src="${escapeHtml(avatar)}" alt="${escapeHtml(`${title} anime afişi`)}">` : ""}
               ${
                 trailer
                   ? `<button id="trailerbutton" onclick="openTrailer()"><i class="fas fa-video"></i> Fragmanı izle</button>`
@@ -233,7 +360,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
           
           <div id="icerikcatright">
             <div class="category_desc custom-scrollbar">
-              ${summary}
+              ${escapeHtml(summary)}
             </div>
             <div id="icerikcat2">
               ${genreTags}
@@ -293,9 +420,9 @@ export function getAnimePageHTML(anime, seasons, slug) {
         <div id="scrollbar-container" class="custom-scrollbar">
           <div class="container" id="episodes-container">
             <div class="bolumust show">
-              <a href="/anime/${slug}/1/1">
-                <div class="baslik">${title}</div>
-                <div class="tarih">${formatDate(year)}</div>
+              <a href="/anime/${slugPath}/1/1">
+                <div class="baslik">${escapeHtml(title)}</div>
+                <div class="tarih">${escapeHtml(formatDate(year))}</div>
               </a>
             </div>
           </div>
@@ -358,10 +485,21 @@ export function getAnimePageHTML(anime, seasons, slug) {
   </div>
     </div>
   <script>
-    var animeSlug = '${slug}';
+    var animeSlug = ${serializedSlug};
     var currentSeason = ${firstSeasonNum};
     var loadedSeasons = {};
     
+    function escapeHTML(value) {
+      return String(value || '').replace(/[&<>"']/g, function(char) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[char];
+      });
+    }
     
 
     function navmenufunc() {
@@ -383,7 +521,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
       
       container.innerHTML = '<div class="loading-episodes">Bölümler yükleniyor...</div>';
       try {
-        var response = await fetch('/api/anime/' + animeSlug + '/season/' + seasonNum);
+        var response = await fetch('/api/anime/' + encodeURIComponent(animeSlug) + '/season/' + seasonNum);
         
         if (!response.ok) {
           throw new Error('API hatası');
@@ -402,9 +540,9 @@ export function getAnimePageHTML(anime, seasons, slug) {
         var html = '';
         episodes.forEach(function(ep) {
           var epNum = ep.episodeNumber || 1;
-          var epTitle = ep.name || '';
-          var airDate = ep.airDate || '';
-          var episodeLink = '/anime/' + animeSlug + '/' + seasonNum + '/' + epNum;
+          var epTitle = escapeHTML(ep.name || '');
+          var airDate = escapeHTML(ep.airDate || '');
+          var episodeLink = '/anime/' + encodeURIComponent(animeSlug) + '/' + seasonNum + '/' + epNum;
           
           html += '<div class="bolumust show">';
           html += '  <a href="' + episodeLink + '">';
@@ -462,7 +600,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
         ? `
     function openTrailer() {
       document.getElementById('trailer').style.display = 'flex';
-      document.getElementById('trailerFrame').src = '${trailer.embed_url}';
+      document.getElementById('trailerFrame').src = ${serializedTrailer};
     }
     
     function closeTrailer() {
@@ -480,7 +618,7 @@ export function getAnimePageHTML(anime, seasons, slug) {
       
       container.innerHTML = '<div class="loading-episodes">Yorumlar yükleniyor...</div>';
       try {
-        var response = await fetch('/api/anime/' + animeSlug);
+        var response = await fetch('/api/anime/' + encodeURIComponent(animeSlug));
         
         if (!response.ok) {
           throw new Error('API hatası');
@@ -503,38 +641,41 @@ export function getAnimePageHTML(anime, seasons, slug) {
           var review = reviews[i];
           var index = i;
           
-          var rating = review.rating || 0;
+          var rating = escapeHTML(review.rating || 0);
           var authorId = review.author || '';
-          var content = review.content || '';
-          var reviewId = review.id || index;
-          var reviewTitle = review.title || '';
+          var content = escapeHTML(review.content || '');
+          var reviewId = escapeHTML(review.id || index);
+          var reviewTitle = escapeHTML(review.title || '');
           
-          var authorName = 'Annen amk';
+          var authorName = 'Anonim';
           var avatarUrl = '';
           var profileUrl = '#';
           var userRole = '<i class="fas fa-star"></i> Puan: ' + rating + '/10';
           
           if (authorId) {
             try {
-              var userResponse = await fetch('/api/user/' + authorId);
+              var userResponse = await fetch('/api/user/' + encodeURIComponent(authorId));
               if (userResponse.ok) {
                 var userData = await userResponse.json();
                 authorName = userData.username || 'Anonim';
                 avatarUrl = userData.avatar || '';
-                profileUrl = 'https://openani.me/profile/' + authorId;
+                profileUrl = 'https://openani.me/profile/' + encodeURIComponent(authorId);
               }
             } catch (e) {
               console.error('Kullanıcı verisi alınamadı:', e);
             }
           }
           
-          var isPopular = rating >= 8;
-          var likes = review.likes || 0;
-          var dislikes = review.dislikes || 0;
+          var isPopular = Number(rating) >= 8;
+          var likes = escapeHTML(review.likes || 0);
+          var dislikes = escapeHTML(review.dislikes || 0);
           var borderColor = isPopular ? '#ffd70d' : '#8a2be2';
           
           var isDefaultAvatar = !avatarUrl || avatarUrl.includes('static.openani.me/profile/default');
-          var avatarInitial = authorName.charAt(0).toUpperCase();
+          var avatarInitial = escapeHTML((authorName.charAt(0) || 'A').toUpperCase());
+          var safeAuthorName = escapeHTML(authorName);
+          var safeAvatarUrl = escapeHTML(avatarUrl);
+          var safeProfileUrl = escapeHTML(profileUrl);
           
           html += '<li class="' + (index % 2 === 0 ? 'even' : 'odd') + ' thread-' + (index % 2 === 0 ? 'even' : 'odd') + '" style="border-left: 3px solid ' + borderColor + ';">';
           html += '  <div class="comment-body">';
@@ -543,10 +684,10 @@ export function getAnimePageHTML(anime, seasons, slug) {
           if (isDefaultAvatar) {
             html += '      <div class="avatar avatar-96 photo" style=" border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: white;">' + avatarInitial + '</div>';
           } else {
-            html += '      <img alt="" src="' + avatarUrl + '" srcset="' + avatarUrl + '" class="avatar avatar-96 photo" height="96" width="96" decoding="async">';
+            html += '      <img alt="' + safeAuthorName + ' avatarı" src="' + safeAvatarUrl + '" srcset="' + safeAvatarUrl + '" class="avatar avatar-96 photo" height="96" width="96" decoding="async">';
           }
-          html += '      <a href="' + profileUrl + '">';
-          html += '        <cite class="fn">' + authorName + '</cite>';
+          html += '      <a href="' + safeProfileUrl + '">';
+          html += '        <cite class="fn">' + safeAuthorName + '</cite>';
           html += '      </a>';
           html += '      <cite id="userrole">' + userRole + '</cite>';
           html += '    </div>';
@@ -558,17 +699,17 @@ export function getAnimePageHTML(anime, seasons, slug) {
           
           html += '    <div class="cld-like-dislike-wrap cld-template-1">';
           html += '      <div class="cld-like-wrap cld-common-wrap">';
-          html += '        <a href="https://openani.me/anime/' + animeSlug + '" class="cld-like-trigger cld-like-dislike-trigger" title="Like" data-comment-id="' + reviewId + '" data-trigger-type="like"><i class="fa fa-thumbs-up"></i></a>';
+          html += '        <a href="https://openani.me/anime/' + encodeURIComponent(animeSlug) + '" class="cld-like-trigger cld-like-dislike-trigger" title="Like" data-comment-id="' + reviewId + '" data-trigger-type="like"><i class="fa fa-thumbs-up"></i></a>';
           html += '        <span class="cld-like-count-wrap cld-count-wrap">' + likes + '</span>';
           html += '      </div>';
           html += '      <div class="cld-dislike-wrap cld-common-wrap">';
-          html += '        <a href="https://openani.me/anime/' + animeSlug + '" class="cld-dislike-trigger cld-like-dislike-trigger" title="Dislike" data-comment-id="' + reviewId + '" data-trigger-type="dislike"><i class="fa fa-thumbs-down"></i></a>';
+          html += '        <a href="https://openani.me/anime/' + encodeURIComponent(animeSlug) + '" class="cld-dislike-trigger cld-like-dislike-trigger" title="Dislike" data-comment-id="' + reviewId + '" data-trigger-type="dislike"><i class="fa fa-thumbs-down"></i></a>';
           html += '        <span class="cld-dislike-count-wrap cld-count-wrap">' + dislikes + '</span>';
           html += '      </div>';
           html += '    </div>';
           
           html += '    <div class="reply">';
-          html += '      <a rel="nofollow" class="comment-reply-link" href="https://openani.me/anime/' + animeSlug + '">Cevapla</a>';
+          html += '      <a rel="nofollow" class="comment-reply-link" href="https://openani.me/anime/' + encodeURIComponent(animeSlug) + '">Cevapla</a>';
           html += '    </div>';
           html += '  </div>';
           html += '  <ul class="children"></ul>';
