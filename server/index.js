@@ -549,6 +549,10 @@ async function initializeCache() {
 app.get('/anime/:slug', async (req, res) => {
   try {
     const { slug } = req.params;
+
+    if (String(slug || '').toLowerCase() === 'flcl') {
+      return res.status(404).send('Bu sayfa bulunamadı');
+    }
     
     const animeRes = await fetchFromOpenAnime(`/anime/${slug}`);
 
@@ -568,6 +572,7 @@ app.get('/anime/:slug', async (req, res) => {
 
 app.get('/anime/:slug/:season/:episode', (req, res) => {
   const { slug, season, episode } = req.params;
+
   res.redirect(302, `${OPENANIME_SITE}/anime/${slug}/${season}/${episode}`);
 });
 
