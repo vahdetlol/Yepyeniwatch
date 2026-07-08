@@ -72,7 +72,7 @@ function normalizeImageUrl(value) {
 
 function getProxyImageUrl(value) {
   const imageUrl = normalizeImageUrl(value);
-  return imageUrl ? `https://wsrv.nl/?url=${encodeURIComponent(imageUrl)}` : "";
+  return imageUrl;
 }
 
 function normalizeDate(value) {
