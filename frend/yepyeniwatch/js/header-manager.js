@@ -37,10 +37,10 @@ function getHeaderTemplate() {
                         <a href="/feed">Yeni Bölümler</a>
                     </li>
                     <li id="menu-item-2993" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2993">
-                        <a href="https://discord.gg/openanime" target="_blank" rel="noopener">Discord</a>
+                        <a href="https://vahdet.lol/#contact" target="_blank" rel="noopener">Discord</a>
                     </li>
                     <li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30">
-                        <a href="https://discord.gg/openanime" target="_blank" rel="noopener">İletişim</a>
+                        <a href="https://vahdet.lol/#contact" target="_blank" rel="noopener">İletişim</a>
                     </li>
                     <li>
                         <form method="get" class="example" action="/search" autocomplete="off">

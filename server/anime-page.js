@@ -307,10 +307,10 @@ ${stringifyStructuredData(structuredData)}
                     </li>
                     <li id="menu-item-2034"
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2034">
-                        <a href="https://discord.gg/openanime">Discord</a>
+                        <a href="https://vahdet.lol/#contact">Discord</a>
                     </li>
                     <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19">
-                        <a href="https://discord.gg/openanime">İletişim</a>
+                        <a href="https://vahdet.lol/#contact">İletişim</a>
                     </li>
                     <li>
               <form method="get" class="example" action="/search" autocomplete="off">
